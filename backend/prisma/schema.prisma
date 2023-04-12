@@ -1,0 +1,120 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                String              @id @default(cuid())
+  name              String
+  username          String              @unique
+  email             String              @unique
+  password          String
+  picture           String?
+  dob               DateTime?
+  blocked           Boolean             @default(false)
+  createdAt         DateTime            @default(now())
+  updatedAt         DateTime            @updatedAt
+  bio               String?
+  phoneNumber       String?
+  role              String?             @default("user")
+  college           String?
+  department        String?
+  year              String?
+  Posts             Post[]
+  isVerified        Boolean             @default(false)
+  Comment           Comment[]
+  DownVoteOnComment DownVoteOnComment[]
+  DownVoteOnTopic   DownVoteOnTopic[]
+  UpVoteOnComment   UpVoteOnComment[]
+  UpVoteonTopic     UpVoteOnTopic[]
+}
+model emailTokens {
+  id        String        @id @default(cuid())
+  category  emailCategory
+  token     String        @unique
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+}
+enum emailCategory {
+  VERIFYMAIL
+  RESETPASSWORD
+}
+
+model Post {
+  id              String            @id @default(cuid())
+  title           String
+  description     Json
+  votes           Int               @default(0)
+  upvotes         Int               @default(0)
+  downvotes       Int               @default(0)
+  shares          Int               @default(0)
+  commentCount    Int               @default(0)
+  userId          String
+  assetUrl        String[]
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime          @updatedAt
+  user            User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  comments        Comment[]
+  UpVoteonTopic   UpVoteOnTopic[]
+  DownVoteOnTopic DownVoteOnTopic[]
+}
+
+model Comment {
+  id                String              @id @default(cuid())
+  description       String
+  userId            String
+  postId            String
+  createdAt         DateTime            @default(now())
+  updatedAt         DateTime            @updatedAt
+  user              User                @relation(fields: [userId], references: [id], onDelete: Cascade)
+  post              Post                @relation(fields: [postId], references: [id], onDelete: Cascade)
+  DownVoteOnComment DownVoteOnComment[]
+  UpVoteOnComment   UpVoteOnComment[]
+}
+
+model DownVoteOnTopic {
+  id        String   @id @default(cuid())
+  userId    String
+  topicId   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  Post      Post     @relation(fields: [topicId], references: [id], onDelete: Cascade)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model UpVoteOnComment {
+  id        String   @id @default(cuid())
+  userId    String
+  commentId String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  comment   Comment  @relation(fields: [commentId], references: [id], onDelete: Cascade)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model DownVoteOnComment {
+  id        String   @id @default(cuid())
+  userId    String
+  commentId String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  comment   Comment  @relation(fields: [commentId], references: [id], onDelete: Cascade)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model UpVoteOnTopic {
+  id        String   @id @default(cuid())
+  userId    String
+  topicId   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  Post      Post     @relation(fields: [topicId], references: [id], onDelete: Cascade)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
