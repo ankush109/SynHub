@@ -54,6 +54,7 @@
     "recharts": "^2.3.2",
     "slate-history": "^0.86.0",
     "slate-react": "^0.88.2",
+    "tailwind-scrollbar-hide": "^1.1.7",
     "typescript": "4.9.4",
     "zod": "^3.21.4"
   },
