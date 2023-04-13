@@ -34,7 +34,19 @@ model User {
   DownVoteOnTopic   DownVoteOnTopic[]
   UpVoteOnComment   UpVoteOnComment[]
   UpVoteonTopic     UpVoteOnTopic[]
+  rooms             Room[]
 }
+
+model Room {
+  id        String   @id @default(cuid())
+  name      String   @unique @default("General")
+  picture   String?
+  description String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  users     User[]
+}
+
 model emailTokens {
   id        String        @id @default(cuid())
   category  emailCategory
@@ -42,6 +54,7 @@ model emailTokens {
   createdAt DateTime      @default(now())
   updatedAt DateTime      @updatedAt
 }
+
 enum emailCategory {
   VERIFYMAIL
   RESETPASSWORD
@@ -63,6 +76,7 @@ model Post {
   user            User              @relation(fields: [userId], references: [id], onDelete: Cascade)
   comments        Comment[]
   UpVoteonTopic   UpVoteOnTopic[]
+  
   DownVoteOnTopic DownVoteOnTopic[]
 }
 
