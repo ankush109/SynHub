@@ -60,10 +60,10 @@ const loginController = {
 
   async logout(req, res, next) {
     try {
-      const { refreshToken } = req.cookies;
+      const token = req.cookies;
       await prisma.refreshTokens.delete({
         where: {
-          token: refreshToken,
+          token: token,
         },
       });
       res.clearCookie("refreshToken");

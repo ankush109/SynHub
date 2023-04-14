@@ -4,12 +4,16 @@ import { NextFunction, Request, Response } from "express";
 import createError from "http-errors";
 import { z } from "zod";
 const postController = {
-async getRoomsPosts(req, res, next) {
-    
-
-
-},
-
+  async getRoomsPosts(req, res, next) {
+    const { roomID } = req.params.id;
+    try {
+      const posts = await prisma.post.findMany({
+        where: {
+          roomID: roomID,
+        },
+      });
+    } catch (err) {}
+  },
 
   async editPost(req, res, next) {
     try {
@@ -31,7 +35,7 @@ async getRoomsPosts(req, res, next) {
           title: resp.title,
           description: resp.description,
           image: resp.image,
-        }, 
+        },
       });
       res.json(customResponse(200, updatedPost));
     } catch (err) {

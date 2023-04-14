@@ -34,8 +34,9 @@ model User {
   DownVoteOnTopic   DownVoteOnTopic[]
   UpVoteOnComment   UpVoteOnComment[]
   UpVoteonTopic     UpVoteOnTopic[]
-  rooomId           String
-  Room              Room                @relation(fields: [rooomId], references: [id], onDelete: Cascade)
+ roomID            String?
+  room              Room?               @relation(fields: [roomID], references: [id])
+    
 }
 
 model Room {
@@ -47,6 +48,7 @@ model Room {
   updatedAt   DateTime @updatedAt
   users       User[]
   posts       Post[]
+
 }
 
 model emailTokens {
@@ -78,8 +80,8 @@ model Post {
   user          User            @relation(fields: [userId], references: [id], onDelete: Cascade)
   comments      Comment[]
   UpVoteonTopic UpVoteOnTopic[]
-roomId        String
-  Room          Room            @relation(fields: [roomId], references: [id], onDelete: Cascade)
+roomID        String?
+  room          Room?           @relation(fields: [roomID], references: [id])
   DownVoteOnTopic DownVoteOnTopic[]
 }
 
