@@ -13,16 +13,16 @@ import NextNProgress from "nextjs-progressbar";
 import "../styles/globals.css";
 
 function isJWTValid() {
-  // const token = localStorage.getItem("token");
-  // if (token) {
-  //   const tokenDecodablePart = token.split(".")[1];
-  //   const decoded = JSON.parse(Buffer.from(tokenDecodablePart, "base64").toString());
-  //   const currentTime = Date.now() / 1000;
-  //   if (decoded.exp > currentTime) {
-  //     return true;
-  //   }
-  // }
-  // return false;
+  const token = localStorage.getItem("token");
+  if (token) {
+    const tokenDecodablePart = token.split(".")[1];
+    // const decoded = JSON.parse(Buffer.from(tokenDecodablePart, "base64").toString());
+    // const currentTime = Date.now() / 1000;
+    // if (decoded.exp > currentTime) {
+      return true;
+    // }
+  }
+  return false;
 }
 
 const ssp = Source_Sans_Pro({

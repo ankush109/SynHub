@@ -10,7 +10,7 @@ import xss from "xss-clean";
 
 import "./v1/config/env.config";
 
-import {authRoutes, userRoutes} from "./v1/routes";
+import {authRoutes, userRoutes,postRoutes} from "./v1/routes";
 
 // RateLimitter
 const limiter = rateLimit({
@@ -54,6 +54,7 @@ const apiVersion = "v1";
 // Routes
 app.use(`/${apiVersion}/auth`, authRoutes);
 app.use(`/${apiVersion}/user`, userRoutes);
+app.use(`/${apiVersion}/post`, postRoutes)
 
 // 404 Handler
 app.use((req, res, next) => {
