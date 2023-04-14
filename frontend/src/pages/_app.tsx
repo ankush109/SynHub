@@ -113,7 +113,7 @@ export default function App({ Component, pageProps }: AppProps) {
       )} */}
       <QueryClientProvider client={queryClient}>
         <Toaster position="bottom-right" reverseOrder={false} toastOptions={{ duration: 5000 }} />
-        <NextNProgress color="#2548f5" height={5} />
+        <NextNProgress color="gray" height={5} />
         <Component {...pageProps} />
         <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />
       </QueryClientProvider>
