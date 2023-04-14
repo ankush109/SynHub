@@ -4,7 +4,7 @@ return (
       <div>
        
         <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css" />
-        {/* <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" /> */}
+        <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" />
         <main className="profile-page">
           <section className="relative block h-500-px">
             <div className="absolute top-0 w-full h-full bg-center bg-cover" style={{backgroundImage: "/images/bg.jpg"}}>
