@@ -142,7 +142,7 @@ useEffect(() => {
             <h2 className="my-5">Love Code and Anime</h2>
           </div>
           <div className="w-full mx-5 p-2">
-            <Link href="/p">
+            <Link href="/profile">
             <button className="bg-zinc-800 text-white rounded-xl p-2 w-full">
              My Profile
             </button></Link>
