@@ -1,22 +1,22 @@
-import AppBar from '@/components/AppBar'
-import Home from '@/components/Home'
-import LeftBar from '@/components/LeftBar'
-import Rightbar from '@/components/Rightbar'
-import React from 'react'
+import AppBar from "@/components/AppBar";
+import Home from "@/components/Home";
+import LeftBar from "@/components/LeftBar";
+import Rightbar from "@/components/Rightbar";
+import React from "react";
 
 function index() {
   return (
-  <div className="">
+    <div className="">
       <div className="">
         <AppBar />
         <div className="flex flex-row h-[88.5vh]">
-          <LeftBar/>
+          <LeftBar />
           <Home />
-       <Rightbar/>
+          <Rightbar />
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default index
+export default index;

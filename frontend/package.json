@@ -15,6 +15,7 @@
     "@emotion/styled": "^11.10.6",
     "@hookform/resolvers": "^2.9.10",
     "@material-tailwind/react": "^1.4.2",
+    "@mui/icons-material": "^5.11.16",
     "@mui/material": "^5.11.14",
     "@next/font": "^13.3.0",
     "@paralleldrive/cuid2": "^2.2.0",
