@@ -19,7 +19,7 @@ function isJWTValid() {
     // const decoded = JSON.parse(Buffer.from(tokenDecodablePart, "base64").toString());
     // const currentTime = Date.now() / 1000;
     // if (decoded.exp > currentTime) {
-      return true;
+    return true;
     // }
   }
   return false;
@@ -72,8 +72,13 @@ export default function App({ Component, pageProps }: AppProps) {
     }
   }, []);
 
-  const serializeAndSetCookie = (name: string, value: unknown, options: CookieSerializeOptions = {}) => {
-    const stringValue = typeof value === "object" ? JSON.stringify(value) : String(value);
+  const serializeAndSetCookie = (
+    name: string,
+    value: unknown,
+    options: CookieSerializeOptions = {}
+  ) => {
+    const stringValue =
+      typeof value === "object" ? JSON.stringify(value) : String(value);
     if (typeof options.maxAge === "number") {
       options.expires = new Date(Date.now() + options.maxAge * 1000);
     }
