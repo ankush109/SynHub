@@ -34,17 +34,19 @@ model User {
   DownVoteOnTopic   DownVoteOnTopic[]
   UpVoteOnComment   UpVoteOnComment[]
   UpVoteonTopic     UpVoteOnTopic[]
-  rooms             Room[]
+  rooomId           String
+  Room              Room                @relation(fields: [rooomId], references: [id], onDelete: Cascade)
 }
 
 model Room {
-  id        String   @id @default(cuid())
-  name      String   @unique @default("General")
-  picture   String?
+  id          String   @id @default(cuid())
+  name        String   @unique @default("General")
+  picture     String?
   description String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  users     User[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  users       User[]
+  posts       Post[]
 }
 
 model emailTokens {
@@ -61,22 +63,23 @@ enum emailCategory {
 }
 
 model Post {
-  id              String            @id @default(cuid())
-  title           String
-  description     Json
-  votes           Int               @default(0)
-  upvotes         Int               @default(0)
-  downvotes       Int               @default(0)
-  shares          Int               @default(0)
-  commentCount    Int               @default(0)
-  userId          String
-  assetUrl        String[]
-  createdAt       DateTime          @default(now())
-  updatedAt       DateTime          @updatedAt
-  user            User              @relation(fields: [userId], references: [id], onDelete: Cascade)
-  comments        Comment[]
-  UpVoteonTopic   UpVoteOnTopic[]
-  
+  id            String          @id @default(cuid())
+  title         String
+  description   Json
+  votes         Int             @default(0)
+  upvotes       Int             @default(0)
+  downvotes     Int             @default(0)
+  shares        Int             @default(0)
+  commentCount  Int             @default(0)
+  userId        String
+  assetUrl      String[]
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+  user          User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  comments      Comment[]
+  UpVoteonTopic UpVoteOnTopic[]
+roomId        String
+  Room          Room            @relation(fields: [roomId], references: [id], onDelete: Cascade)
   DownVoteOnTopic DownVoteOnTopic[]
 }
 
