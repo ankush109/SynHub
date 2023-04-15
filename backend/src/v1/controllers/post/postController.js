@@ -64,6 +64,21 @@ const postController = {
         where: {
           userId: req.user.id,
         },
+        select: {
+          id: true,
+          displayImages: true,
+          description: true,
+          createdAt: true,
+          updatedAt: true,
+          user: {
+            select: {
+              id: true,
+              name: true,
+              email: true,
+              picture: true,
+            },
+          },
+        },
       });
       res.json(customResponse(200, posts));
     } catch (err) {

@@ -16,6 +16,7 @@ const usercontroller = {
           name: true,
           username: true,
           email: true,
+          college: true,
           picture: true,
           roomID: true,
           bio: true,
@@ -24,18 +25,19 @@ const usercontroller = {
           year: true,
           createdAt: true,
           updatedAt: true,
+          room: {
+            select: {
+              id: true,
+              name: true,
+              description: true,
+              createdAt: true,
+              updatedAt: true,
+            },
+          },
         },
       });
-      let room = null;
-      if (user.roomID !== null) {
-        room = await prisma.room.findUnique({
-          where: {
-            id: user.roomID,
-          },
-        });
-      }
 
-      res.json(customResponse(200, { user, room }));
+      res.json(customResponse(200, user));
     } catch (err) {
       console.log(err);
       return next(createError.InternalServerError());
@@ -46,6 +48,7 @@ const usercontroller = {
       name: z.string(),
       username: z.string(),
       bio: z.string(),
+      college: z.string(),
       phoneNumber: z.string(),
       department: z.string(),
       year: z.string(),

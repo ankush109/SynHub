@@ -66,7 +66,6 @@ enum emailCategory {
 
 model Post {
   id            String          @id @default(cuid())
-  title         String
   description   Json
   votes         Int             @default(0)
   upvotes       Int             @default(0)
@@ -80,6 +79,7 @@ model Post {
   user          User            @relation(fields: [userId], references: [id], onDelete: Cascade)
   comments      Comment[]
   UpVoteonTopic UpVoteOnTopic[]
+    displayImages      String[]
 roomID        String?
   room          Room?           @relation(fields: [roomID], references: [id])
   DownVoteOnTopic DownVoteOnTopic[]
