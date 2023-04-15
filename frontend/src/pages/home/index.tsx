@@ -10,7 +10,7 @@ function index() {
     <div className="">
       <div className="">
         <AppBar />
-        <div className="flex flex-row h-[88.5vh]">
+        <div className="flex flex-row h-[91.5vh]">
           <LeftBar />
           <Home />
           <Rightbar />
