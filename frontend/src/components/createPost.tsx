@@ -32,10 +32,12 @@ import axios from "axios";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { FcPlus } from "react-icons/fc";
 import { GetPostQuery, createPost } from "@/api/user";
+import { Router, useRouter } from "next/router";
 // import { createClinic, GetClinicsQuery } from "../../api/clinic";
 
 export default function CreateClinic() {
   const [files, setFiles] = useState<any[]>([]);
+  const router = useRouter();
   const [uploadedFiles, setUploadedFiles] = useState<any[]>([]);
   const uploadedImages: React.MutableRefObject<any[]> = useRef([]);
   const uploadedImageFiles: React.MutableRefObject<any[]> = useRef([]);
@@ -173,6 +175,7 @@ export default function CreateClinic() {
       } else {
         const data = await createPost(formData);
         PostQuery.refetch();
+        router.push("/home");
         toast.success("post created successfully");
       }
     } catch (err: any) {
@@ -204,7 +207,7 @@ export default function CreateClinic() {
           </Dialog.Trigger>
           <Dialog.Portal className="">
             <Dialog.Overlay className="fixed inset-0 bg-black opacity-50" />
-            <Dialog.Content className="z-10 p-2 h-[550px] w-3/5 rounded-xl bg-gray-800 shadow-lg shadow-zinc-900 fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
+            <Dialog.Content className="z-10 p-2 h-[610px] w-3/5 rounded-xl bg-gray-800 shadow-lg shadow-zinc-900 fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
               <Dialog.Close className="absolute top-4 right-4">
                 <MdOutlineCancel size={31} color="gray" />
               </Dialog.Close>
@@ -234,26 +237,41 @@ export default function CreateClinic() {
                 </div>
                 <div className="flex flex-col mt-8 w-2/3">
                   <form onSubmit={handleSubmit(onSubmit)}>
-                    <div className="flex flex-row my-2 ml-4">
-                      <div className="w-full">
+                    <div className="flex flex-col  my-2 ml-4">
+                      <div>
+                        <p>Post Title</p>
+                      </div>
+                      <div>
+                        <TextField
+                          {...register("title")}
+                          className="w-4/5 p-3 bg-gray-600 rounded-lg text-white"
+                        />
+                      </div>
+                      <div>
+                        <p>Write something about the post</p>
+                      </div>
+                      <div className="w-full my-4">
                         <TextareaAutosize
-                          className="w-4/5 min-h-[30%] bg-gray-600 rounded-lg text-white"
+                          className="w-4/5 p-3 min-h-[25%] bg-gray-600 rounded-lg text-white"
                           id="email"
                           {...register("description")}
                         />
                       </div>
                     </div>
 
-                    <div className="flex flex-col ml-4 hover:cursor-pointer">
-                      {files.length < 2 ? (
-                        <Dropzone
-                          setFiles={setFiles}
-                          title="Add upto four other clinic images"
-                          className="w-[370px] h-[137px] rounded-2xl hover:cursor-pointer text-center focus:outline-none"
-                        />
+                    <div className="flex ml-4 hover:cursor-pointer">
+                      {files.length < 1 ? (
+                        <>
+                          <Dropzone
+                            setFiles={setFiles}
+                            title="Add upto four other clinic images"
+                            className="w-[370px] h-[137px] rounded-2xl hover:cursor-pointer text-center focus:outline-none"
+                          />
+                        </>
                       ) : (
                         <></>
                       )}
+
                       {files.length > 0 ? (
                         <div className="flex ml-4 w-[370px] overflow-x-scroll scrollbar custom-scrollbar mb-4">
                           <div className="flex gap-x-1">
@@ -309,16 +327,27 @@ export default function CreateClinic() {
                         <></>
                       )}
                     </div>
-                    <button
-                      type="submit"
-                      onClick={() => {
-                        handleSubmit(onSubmit);
-                      }}
-                      // disabled={isSubmitting || isValidating}
-                      className=" mx-10  flex flex-row items-center justify-center mt-4 h-9 w-28 shadow-lg shadow-black bg-zinc-600 rounded-md hover:cursor-pointer"
-                    >
-                      <div className="text-white font-bold text-md">Post</div>
-                    </button>
+                    <div className="">
+                      <div className="flex ">
+                        <Dialog.Close>
+                          <button
+                            type="submit"
+                            onClick={() => {
+                              handleSubmit(onSubmit);
+                            }}
+                            // disabled={isSubmitting || isValidating}
+                            className=" mx-10 pd-2 flex flex-row items-center justify-center mt-4 h-9 w-28 shadow-lg bg-zinc-600 rounded-md hover:cursor-pointer hover:bg-slate-500"
+                          >
+                            <div className="text-white font-bold text-md my-10">
+                              Post
+                            </div>
+                          </button>
+                        </Dialog.Close>
+                        <Dialog.Close className=" mx-36 pd-2 flex flex-row items-center justify-center mt-4 h-9 w-28 shadow-lg bg-zinc-600 rounded-md hover:cursor-pointer hover:bg-slate-500">
+                          <p>cancel</p>
+                        </Dialog.Close>
+                      </div>
+                    </div>
                   </form>
                 </div>
               </div>

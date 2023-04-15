@@ -101,180 +101,178 @@ function Edit() {
     <div>
       <div>
         <AppBar />
-        <div className="flex flex-row h-[91.7vh]">
+        <div className="flex flex-row h-[90.7vh]">
           <LeftBar />
-          <div
-            className={classNames([
-              "flex flex-col overflow-y-scroll scrollbar mt-2 w-full lg:w-1/2 h-[90vh]",
-            ])}
-          >
-            <div>
-              <h2 className="text-3xl font-bold ">Edit your Profile</h2>
-            </div>
-            <div className="mt-8 max-w-md">
-              <form onSubmit={handleSubmit(onSubmit)}>
-                <div className="grid grid-cols-1 gap-6 ">
-                  <label className="block">
-                    <span className="text-white">Full name</span>
-                    <input
-                      id="name"
-                      className={classNames(
-                        ["rounded w-full py-2 px-3 text-gray-700"],
-                        [
-                          errors.name
-                            ? "border-2 border-red-500 focus:outline-red-600"
-                            : "border border-gray-300 focus:outline-blue-600",
-                        ]
+          <div className="bg-zinc-900 w-full overflow-y-scroll scrollbar-hide">
+            <div className="bg-zinc-700 p-5 my-10 mx-10 rounded-lg">
+              <div>
+                <h2 className="text-3xl font-bold w-full">Edit your Profile</h2>
+              </div>
+              <div className="mt-8 max-w-md">
+                <form onSubmit={handleSubmit(onSubmit)}>
+                  <div className="grid grid-cols-1 gap-6 ">
+                    <label className="block">
+                      <span className="text-white">Full name</span>
+                      <input
+                        id="name"
+                        className={classNames(
+                          ["rounded w-full py-2 px-3 text-gray-700"],
+                          [
+                            errors.name
+                              ? "border-2 border-red-500 focus:outline-red-600"
+                              : "border border-gray-300 focus:outline-blue-600",
+                          ]
+                        )}
+                        type="text"
+                        {...register("name")}
+                        placeholder="Enter your name"
+                      />
+                    </label>
+                    <label className="block">
+                      <span className="text-white">Your Username</span>
+                      <input
+                        className={classNames(
+                          ["rounded w-full py-2 px-3 text-gray-700"],
+                          [
+                            errors.username
+                              ? "border-2 border-red-500 focus:outline-red-600"
+                              : "border border-gray-300 focus:outline-blue-600",
+                          ],
+                          [
+                            isUsernameAvailable &&
+                              !errors.username &&
+                              "!border-2 border-green-600 focus:!outline-green-600",
+                          ]
+                        )}
+                        id="username"
+                        type="text"
+                        placeholder="Choose your username"
+                        {...register("username")}
+                      />
+                      {errors.username && (
+                        <p className="text-red-500 text-sm italic">
+                          {errors.username.message}
+                        </p>
                       )}
-                      type="text"
-                      {...register("name")}
-                      placeholder="Enter your name"
-                    />
-                  </label>
-                  <label className="block">
-                    <span className="text-white">Your Username</span>
-                    <input
-                      className={classNames(
-                        ["rounded w-full py-2 px-3 text-gray-700"],
-                        [
-                          errors.username
-                            ? "border-2 border-red-500 focus:outline-red-600"
-                            : "border border-gray-300 focus:outline-blue-600",
-                        ],
-                        [
-                          isUsernameAvailable &&
-                            !errors.username &&
-                            "!border-2 border-green-600 focus:!outline-green-600",
-                        ]
+                      {isUsernameAvailable && !errors.username && (
+                        <p className="text-green-700 text-sm italic">
+                          Username available!
+                        </p>
                       )}
-                      id="username"
-                      type="text"
-                      placeholder="Choose your username"
-                      {...register("username")}
-                    />
-                    {errors.username && (
-                      <p className="text-red-500 text-sm italic">
-                        {errors.username.message}
-                      </p>
-                    )}
-                    {isUsernameAvailable && !errors.username && (
-                      <p className="text-green-700 text-sm italic">
-                        Username available!
-                      </p>
-                    )}
-                  </label>
+                    </label>
 
-                  <label className="block">
-                    <span className="text-white">Your DOB</span>
-                    <input
-                      {...register("dob")}
-                      type="date"
-                      className={classNames(
-                        ["rounded w-full py-2 px-3 text-gray-700"],
-                        ["border border-gray-300 focus:outline-blue-600"]
-                      )}
-                      placeholder="Enter your DOB"
-                    />
-                  </label>
+                    <label className="block">
+                      <span className="text-white">Your DOB</span>
+                      <input
+                        {...register("dob")}
+                        type="date"
+                        className={classNames(
+                          ["rounded w-full py-2 px-3 text-gray-700"],
+                          ["border border-gray-300 focus:outline-blue-600"]
+                        )}
+                        placeholder="Enter your DOB"
+                      />
+                    </label>
 
-                  <label className="block">
-                    <span className="text-white">Your Bio</span>
-                    <textarea
-                      className={classNames(
-                        ["rounded w-full py-2 px-3 text-gray-700"],
-                        [
-                          errors.bio
-                            ? "border-2 border-red-500 focus:outline-red-600"
-                            : "border border-gray-300 focus:outline-blue-600",
-                        ]
-                      )}
-                      maxLength={300}
-                      {...register("bio")}
-                      placeholder="Enter your bio "
-                    ></textarea>
-                  </label>
+                    <label className="block">
+                      <span className="text-white">Your Bio</span>
+                      <textarea
+                        className={classNames(
+                          ["rounded w-full py-2 px-3 text-gray-700"],
+                          [
+                            errors.bio
+                              ? "border-2 border-red-500 focus:outline-red-600"
+                              : "border border-gray-300 focus:outline-blue-600",
+                          ]
+                        )}
+                        maxLength={300}
+                        {...register("bio")}
+                        placeholder="Enter your bio "
+                      ></textarea>
+                    </label>
 
-                  <label className="block">
-                    <span className="text-white">Phone number</span>
+                    <label className="block">
+                      <span className="text-white">Phone number</span>
 
-                    <input
-                      type="text"
-                      {...register("phoneNumber")}
-                      className={classNames(
-                        ["rounded w-full py-2 px-3 text-gray-700"],
-                        [
-                          errors.phone
-                            ? "border-2 border-red-500 focus:outline-red-600"
-                            : "border border-gray-300 focus:outline-blue-600",
-                        ]
-                      )}
-                      placeholder="Enter your phone number"
-                    />
-                  </label>
-                  <label className="block">
-                    <span className="text-white">College Name</span>
+                      <input
+                        type="text"
+                        {...register("phoneNumber")}
+                        className={classNames(
+                          ["rounded w-full py-2 px-3 text-gray-700"],
+                          [
+                            errors.phone
+                              ? "border-2 border-red-500 focus:outline-red-600"
+                              : "border border-gray-300 focus:outline-blue-600",
+                          ]
+                        )}
+                        placeholder="Enter your phone number"
+                      />
+                    </label>
+                    <label className="block">
+                      <span className="text-white">College Name</span>
 
-                    <input
-                      type="text"
-                      {...register("college")}
-                      className={classNames(
-                        ["rounded w-full py-2 px-3 text-gray-700"],
-                        [
-                          errors.phone
-                            ? "border-2 border-red-500 focus:outline-red-600"
-                            : "border border-gray-300 focus:outline-blue-600",
-                        ]
-                      )}
-                      placeholder="Enter your college name"
-                    />
-                  </label>
-                  <label className="block">
-                    <span className="text-white">Year of College</span>
+                      <input
+                        type="text"
+                        {...register("college")}
+                        className={classNames(
+                          ["rounded w-full py-2 px-3 text-gray-700"],
+                          [
+                            errors.phone
+                              ? "border-2 border-red-500 focus:outline-red-600"
+                              : "border border-gray-300 focus:outline-blue-600",
+                          ]
+                        )}
+                        placeholder="Enter your college name"
+                      />
+                    </label>
+                    <label className="block">
+                      <span className="text-white">Year of College</span>
 
-                    <input
-                      type="text"
-                      {...register("year")}
-                      className={classNames(
-                        ["rounded w-full py-2 px-3 text-gray-700"],
-                        [
-                          errors.phone
-                            ? "border-2 border-red-500 focus:outline-red-600"
-                            : "border border-gray-300 focus:outline-blue-600",
-                        ]
-                      )}
-                      placeholder="Enter your college year"
-                    />
-                  </label>
-                  <label className="block">
-                    <span className="text-white">Department</span>
+                      <input
+                        type="text"
+                        {...register("year")}
+                        className={classNames(
+                          ["rounded w-full py-2 px-3 text-gray-700"],
+                          [
+                            errors.phone
+                              ? "border-2 border-red-500 focus:outline-red-600"
+                              : "border border-gray-300 focus:outline-blue-600",
+                          ]
+                        )}
+                        placeholder="Enter your college year"
+                      />
+                    </label>
+                    <label className="block">
+                      <span className="text-white">Department</span>
 
-                    <input
-                      type="text"
-                      {...register("department")}
-                      className={classNames(
-                        ["rounded w-full py-2 px-3 text-gray-700"],
-                        [
-                          errors.phone
-                            ? "border-2 border-red-500 focus:outline-red-600"
-                            : "border border-gray-300 focus:outline-blue-600",
-                        ]
-                      )}
-                      placeholder="Enter your bracnch"
-                    />
-                  </label>
-                  <div>
-                    <button
-                      type="submit"
-                      onClick={() => {
-                        handleSubmit(onSubmit);
-                      }}
-                      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                    >
-                      Save
-                    </button>
+                      <input
+                        type="text"
+                        {...register("department")}
+                        className={classNames(
+                          ["rounded w-full py-2 px-3 text-gray-700"],
+                          [
+                            errors.phone
+                              ? "border-2 border-red-500 focus:outline-red-600"
+                              : "border border-gray-300 focus:outline-blue-600",
+                          ]
+                        )}
+                        placeholder="Enter your bracnch"
+                      />
+                    </label>
+                    <div>
+                      <button
+                        type="submit"
+                        onClick={() => {
+                          handleSubmit(onSubmit);
+                        }}
+                        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                      >
+                        Save
+                      </button>
+                    </div>
                   </div>
-                </div>
-              </form>
+                </form>
+              </div>
             </div>
           </div>
           <Rightbar />

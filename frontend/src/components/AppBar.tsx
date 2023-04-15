@@ -29,14 +29,20 @@
 // }
 
 // export default AppBar;
-import React from "react";
+import React, { useEffect } from "react";
 import { AiOutlineMessage } from "react-icons/ai";
 import { BiHomeCircle } from "react-icons/bi";
 import { CgProfile } from "react-icons/cg";
 import { HiOutlineSearch } from "react-icons/hi";
 import { MdOutlineNotificationsActive } from "react-icons/md";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
-import { IoIosNotificationsOutline, IoIosLogOut, IoIosSearch, IoMdArrowDropup, IoMdArrowDropdown } from "react-icons/io";
+import {
+  IoIosNotificationsOutline,
+  IoIosLogOut,
+  IoIosSearch,
+  IoMdArrowDropup,
+  IoMdArrowDropdown,
+} from "react-icons/io";
 import { CiEdit } from "react-icons/ci";
 import { useRouter } from "next/router";
 import Link from "next/link";
@@ -47,12 +53,16 @@ const ProfileDropdownMenu = () => {
     <DropdownMenu.Root>
       <DropdownMenu.Trigger className="outline-none">
         <div className="border-2 border-gray-400 rounded-2xl ml-5 shrink-0 hover:cursor-pointer">
-          <img src="/images/bg.jpg" className="h-10 w-10 rounded-2xl" />
+          <img
+            src="/images/logo.png"
+            className="h-10 w-10 rounded-full object-cover"
+            alt="Synergy Logo"
+          />
         </div>
       </DropdownMenu.Trigger>
       <DropdownMenu.Portal>
         <DropdownMenu.Content
-          className="w-36 h-[90px] flex flex-col items-end  bg-zinc-700 rounded-md shadow-lg shadow-slate-200"
+          className="w-36 h-[90px] flex flex-col items-end "
           side="bottom"
           align="end"
           sideOffset={2}
@@ -62,24 +72,22 @@ const ProfileDropdownMenu = () => {
             className="outline-none"
             onClick={() => router.push("/profile")}
           >
-            <div className="flex flex-row items-start w-36 pt-2 px-4 py-2 rounded-tr-md rounded-tl-md bg-slate-100 hover:bg-slate-200 hover:cursor-pointer ">
+            <div className="flex flex-row items-start w-36 pt-2 px-4 py-2 rounded-tr-md rounded-tl-md bg-zinc-700 hover:bg-slate-500 hover:cursor-pointer ">
               <div>
-                <CgProfile size={25} color="gray" />
+                <CgProfile size={25} color="white" />
               </div>
-              <div className="ml-4 text-md font-bold text-slate-700">
-                Profile
-              </div>
+              <div className="ml-4 text-md font-bold text-white">Profile</div>
             </div>
           </DropdownMenu.Item>
           <DropdownMenu.Item
-            onClick={() => router.push("/edit")}
+            onClick={() => router.push("/edit-user")}
             className="outline-none"
           >
-            <div className="flex flex-row items-start w-36 px-4 py-2 bg-slate-100  hover:bg-slate-200 hover:cursor-pointer ">
+            <div className="flex flex-row items-start w-36 px-4 py-2  bg-zinc-700  hover:bg-slate-500 hover:cursor-pointer ">
               <div>
-                <CiEdit size={25} color="gray" />
+                <CiEdit size={25} color="white" />
               </div>
-              <div className="ml-4 text-md font-bold text-slate-700">Edit</div>
+              <div className="ml-4 text-md font-bold text-white">Edit</div>
             </div>
           </DropdownMenu.Item>
 
@@ -90,13 +98,11 @@ const ProfileDropdownMenu = () => {
               router.push("/login");
             }}
           >
-            <div className="flex flex-row items-start rounded-bl-md rounded-br-md w-36 px-4 py-2 bg-slate-100  hover:bg-slate-200 hover:cursor-pointer outline-none">
+            <div className="flex flex-row items-start rounded-bl-md rounded-br-md w-36 px-4 py-2  bg-zinc-700  hover:bg-slate-500 hover:cursor-pointer outline-none">
               <div>
-                <IoIosLogOut size={25} color="gray" />
+                <IoIosLogOut size={25} color="white" />
               </div>
-              <div className="ml-4 text-md font-bold text-slate-700">
-                Logout
-              </div>
+              <div className="ml-4 text-md font-bold text-white">Logout</div>
             </div>
           </DropdownMenu.Item>
         </DropdownMenu.Content>
@@ -106,20 +112,28 @@ const ProfileDropdownMenu = () => {
 };
 
 const AppBar = () => {
+  const [selectedTab, setSelectedTab] = React.useState("");
+  useEffect(() => {
+    const path = window.location.pathname;
+    console.log(path);
+
+    setSelectedTab(path);
+  }, [selectedTab]);
   return (
     <nav className="bg-white border-gray-200 dark:bg-gray-800">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-2.5 ">
-        
         <Link href="/home" className="flex items-center">
-          
-          <img src="/images/bg.jpg" className="h-8 mr-3" alt="Synergy Logo" />
-     
+          <img
+            src="/images/logo.png"
+            className="h-10 w-10 rounded-full mr-3"
+            alt="Synergy Logo"
+          />
+
           <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
             Synergy
           </span>
         </Link>
         <div className="flex md:order-2">
-      
           <button
             type="button"
             data-collapse-toggle="navbar-search"
@@ -127,7 +141,6 @@ const AppBar = () => {
             aria-expanded="false"
             className="md:hidden text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 mr-1"
           >
-            
             <svg
               className="w-5 h-5"
               aria-hidden="true"
@@ -141,13 +154,11 @@ const AppBar = () => {
                 clipRule="evenodd"
               />
             </svg>
-            
+
             <span className="sr-only">Search</span>
-            
           </button>
-     
+
           <div className="relative hidden md:block">
-            
             <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
               <svg
                 className="w-5 h-5 text-gray-500"
@@ -163,7 +174,6 @@ const AppBar = () => {
                 />
               </svg>
               <span className="sr-only">Search icon</span>
-              
             </div>
             <input
               type="text"
@@ -172,7 +182,7 @@ const AppBar = () => {
               placeholder="Search..."
             />
           </div>
-               
+
           <button
             data-collapse-toggle="navbar-search"
             type="button"
@@ -194,9 +204,9 @@ const AppBar = () => {
               />
             </svg>
           </button>
-              <ProfileDropdownMenu/>
+          <ProfileDropdownMenu />
         </div>
-        
+
         <div
           className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
           id="navbar-search"
@@ -224,33 +234,47 @@ const AppBar = () => {
               placeholder="Search..."
             />
           </div>
-          
+
           <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-800 dark:border-gray-700">
             <li>
-              <a
-                href="#"
-                className="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500"
+              <Link
+                href="/home"
+                onClick={() => setSelectedTab("home")}
+                className={
+                  selectedTab === "/home"
+                    ? "block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500"
+                    : ""
+                }
                 aria-current="page"
               >
                 <BiHomeCircle size="24" />
-              </a>
+              </Link>
             </li>
 
             <li>
-              <a
-                href="#"
-                className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+              <Link
+                href="/profile"
+                onClick={() => setSelectedTab("profile")}
+                className={
+                  selectedTab === "/profile"
+                    ? "block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500"
+                    : "bg-yellow-500"
+                }
               >
                 <MdOutlineNotificationsActive size="24" />
-              </a>
+              </Link>
             </li>
             <li>
-              <a
+              <Link
                 href="#"
-                className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                className={
+                  selectedTab === ""
+                    ? "block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500"
+                    : "bg-yellow-500"
+                }
               >
                 <CgProfile size="24" />
-              </a>
+              </Link>
             </li>
           </ul>
         </div>

@@ -5,6 +5,7 @@ import CreateClinic from "./createPost";
 import { GetPostQuery, GetUserQuery } from "@/api/user";
 
 import { MdPermMedia } from "react-icons/md";
+import PostItem from "./PostCard";
 
 function Home() {
   const userQuery = GetUserQuery();
@@ -44,8 +45,7 @@ function Home() {
           </div>
           {/* <div className="flex my-5 bg-zinc-700 rounded-xl h-1/2 flex-col mx-20"> */}
           {/* <div className="flex items-center"> */}
-          <PostCard />
-          <PostCard />
+
           {/* </div> */}
           {/* </div> */}
           <div className="flex p-2 my-8  bg-zinc-700 rounded-xl flex-col mx-20">
@@ -58,16 +58,17 @@ function Home() {
               <CreateClinic />
             </div>
           </div>
-          {/* {PostQuery.data?.map((post: any, index: any) => (
+          {PostQuery.data?.map((post: any, index: any) => (
             <PostCard
               key={index}
               user={post.user}
+              createdAt={post.createdAt}
               name={post.name}
               description={post.description}
               displayImages={post.displayImages}
               id={post.id}
             />
-          ))} */}
+          ))}
         </div>
       </div>
     </div>

@@ -1,42 +1,3 @@
-// import React, { FC } from "react";
-
-// const PostCard: FC<any> = ({ logo }) => {
-//   return (
-//     <div className="flex my-5 bg-zinc-700 rounded-xl h-1/2 flex-col mx-20">
-//       <div className="flex items-center">
-//         <img
-//           className=" my-10 mx-5 w-10 h-10 rounded-xl"
-//           src="https://scontent.fccu3-1.fna.fbcdn.net/v/t39.30808-1/323871600_892778521853988_6150767426817074706_n.jpg?stp=dst-jpg_s320x320&_nc_cat=109&ccb=1-7&_nc_sid=7206a8&_nc_ohc=W1snVqUjgBIAX85f965&_nc_ht=scontent.fccu3-1.fna&oh=00_AfAw4kZ7hbXVWyboFm5ZEzesyyOGUyOCI6TbEFWsSWY8oA&oe=643C467B"
-//         />
-//         <div className="flex flex-col items-center">
-//           <div>
-//             <p>Souvik Sen </p>
-//             <h2>Kolkata , West Bengal</h2>
-//           </div>
-//         </div>
-//         <div className="mx-4">
-//           <p className="text-yellow-400">1 hr ago</p>
-//         </div>
-//       </div>
-//       <div className="flex flex-col items-center">
-//         <div className=" mx-4">
-//           <h2>
-//             Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque fugit
-//             rem voluptas laboriosam officia natus nemo, qui eveniet, excepturi
-//             accusantium illum? Cupiditate amet vel eaque doloribus natus maiores
-//             accusamus similique.
-//           </h2>
-//         </div>
-//         <div className="w-3/5 m-4">
-//           <img className="h-96 w-full" src={logo} alt="logo" />
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default PostCard;
-
 import React, { useState } from "react";
 import {
   Flex,
@@ -47,6 +8,7 @@ import {
   Stack,
   Text,
 } from "@chakra-ui/react";
+import ImageGallery from "react-image-gallery";
 import moment from "moment";
 import { NextRouter } from "next/router";
 import { AiOutlineDelete } from "react-icons/ai";
@@ -62,14 +24,29 @@ import {
 } from "react-icons/io5";
 import Link from "next/link";
 
-const PostItem: React.FC<any> = ({}) => {
-  const handleDelete = async () => {};
+const PostItem: React.FC<any> = ({
+  user,
+  description,
+  displayImages,
+  createdAt,
+}) => {
+  let images: any = [];
+  displayImages?.map((image: any) => {
+    images.push({
+      original: image,
+      thumbnail: image,
+    });
+  });
+  const handleDelete = async () => {
+    console.log(user);
+  };
+  var moment = require("moment");
   const handleClick = () => {};
 
   return (
     <Flex
       border="1px solid"
-      backgroundColor={"gray.50"}
+      backgroundColor="rgba(255, 255, 255, 0.1)"
       borderColor={"gray.300"}
       borderRadius={4}
       cursor={"pointer"}
@@ -145,6 +122,7 @@ const PostItem: React.FC<any> = ({}) => {
                   {/* <Text color="gray.500" fontWeight="bold">
                     Cp Room
                   </Text> */}
+
                   <Image
                     borderRadius="full"
                     boxSize="18px"
@@ -159,19 +137,22 @@ const PostItem: React.FC<any> = ({}) => {
                   <div>
                     <Link href={`#`}>
                       <Text
+                        className="ml-1"
                         color="gray.500"
                         fontWeight="bold"
                         _hover={{ textDecoration: "underline" }}
                         onClick={handleClick}
                       >
-                        Ron007
+                        {user?.name}
                       </Text>
                     </Link>
                   </div>
                   {/* <p>Ron007</p> */}
                 </div>
                 <div className="mx-4">
-                  <p className="text-yellow-400">1 hr ago</p>
+                  <p className="text-yellow-400">
+                    {moment(createdAt).fromNow()}
+                  </p>
                 </div>
               </div>
             </div>
@@ -180,24 +161,16 @@ const PostItem: React.FC<any> = ({}) => {
           <Text fontSize="12pt" fontWeight={600}>
             Post title
           </Text>
-          <Text fontSize="10pt">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque fugit
-            rem voluptas laboriosam officia natus nemo, qui eveniet, excepturi
-            accusantium illum? Cupiditate amet vel eaque doloribus natus maiore
-            accusamus similique.
-          </Text>
+          <Text fontSize="10pt">{description}</Text>
 
-          <Flex justify="center" align="center" p={2}>
-            <Skeleton height="200px" width="100%" borderRadius={4} />
-
-            <Image
-              // width="80%"
-              // maxWidth="500px"
-              maxHeight="460px"
-              src="https://wallpapershome.com/images/pages/pic_h/10326.jpg"
-              alt="Post Image"
+          <div className="flex flex-col gap-2">
+            <Skeleton width="100%" borderRadius={4} />
+            <ImageGallery
+              disableSwipe={true}
+              showPlayButton={false}
+              items={images}
             />
-          </Flex>
+          </div>
         </Stack>
         <Flex ml={1} mb={0.5} color="gray.500" fontWeight={600}>
           <Flex

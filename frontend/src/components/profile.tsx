@@ -117,7 +117,7 @@ const UserProfile = () => {
   return (
     <div className="w-full bg-zinc-900 overflow-y-scroll scrollbar-hide">
       <div>
-        <div className="w-full my-10 h-1/2  ">
+        <div className="   ">
           {userQuery.data ? (
             <div className="bg-zinc-700  mx-5   rounded-xl">
               <div className="flex flex-col  my-10">
@@ -144,14 +144,12 @@ const UserProfile = () => {
                       />
                     )}
                   </div>
-                </div>
-                <div className="">
-                  <div className="flex flex-col">
+                  <div className="flex flex-col my-4">
                     <div className="flex gap-2 items-center">
-                      <h1 className="mx-8 text-bold">{userQuery.data?.name}</h1>
+                      <h1 className=" text-bold">{userQuery.data?.name}</h1>
                     </div>
 
-                    <div className="my-10">
+                    <div className="my-4">
                       <div className="flex ">
                         <FcGraduationCap size={25} color="gray" />
                         <p className="mx-2">Techno Main SaltLake</p>
@@ -160,18 +158,20 @@ const UserProfile = () => {
                         <CiLocationOn color="green" size={25} />
                         <p>Kolkata, West Bengal ,India</p>
                       </div>
+
                       <div className="flex ">
-                        <p className="mx-2 my-2">
-                          Lorem ipsum dolor sit amet, consectetur adipisicing
-                          elit. Praesentium a quos aspernatur rem reprehenderit?
-                          Accusantium corrupti atque sunt molestiae earum ut
-                          modi, deleniti iste quas! Fugit nemo quos quae
-                          excepturi.
-                        </p>
+                        <p className="mx-2 my-2">k</p>
                       </div>
                     </div>
                   </div>
-                  <h2 className="my-5">Love Code and Anime</h2>
+                  <div className="mx-20 flex  gap-2 my-5 ">
+                    <Link href="/edit-user">
+                      <div className="flex items-center gap-2">
+                        <p>Edit User</p>
+                        <BiEdit />
+                      </div>
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
@@ -215,6 +215,7 @@ const UserProfile = () => {
             <PostCard
               key={index}
               user={post.user}
+              createdAt={post.createdAt}
               name={post.name}
               description={post.description}
               displayImages={post.displayImages}
