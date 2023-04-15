@@ -3,30 +3,40 @@ import AppBar from "./AppBar";
 import LeftBar from "./LeftBar";
 import Rightbar from "./Rightbar";
 import { CiLocationOn } from "react-icons/ci";
-
+import { BiEdit } from "react-icons/bi";
 import { FcGraduationCap } from "react-icons/fc";
 
 import PostCard from "./PostCard";
+import { GetPostQuery, GetUserQuery } from "@/api/user";
+import CreateClinic from "./createPost";
 
 const UserProfile = () => {
+  const PostQuery = GetPostQuery();
+  const userQuery = GetUserQuery();
+  console.log(userQuery.data);
+
   const [toggle, settogle] = React.useState(1);
   const updatetoggle = (id: any) => {
     settogle(id);
+    console.log(PostQuery.data);
   };
+  if (userQuery.isLoading) return <div>Loading...</div>;
+  if (userQuery.isError) return <div>Error</div>;
+
   return (
     <div className="w-full bg-zinc-900 overflow-y-scroll scrollbar-hide">
       <div>
         <div className="w-full my-10 h-1/2 bg-zinc-800  ">
           <div className="my-10 p-5 flex">
             <img
-              src="https://scontent.fccu3-1.fna.fbcdn.net/v/t39.30808-6/334029236_3110192395946947_220618054366163614_n.jpg?stp=dst-jpg_p843x403&_nc_cat=104&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=QNtD-EzYBGwAX9wfcYm&_nc_ht=scontent.fccu3-1.fna&oh=00_AfBNasJSHHzPbNK1lpK-26xZwXaGDq4PfmLfaXh16A-UUg&oe=643DED5A"
+              src={userQuery.data?.picture}
               alt=""
               className="w-36 mx-10 my-10 h-36  rounded-full"
             />
 
             <div className="flex flex-col">
               <div className="flex gap-2 items-center">
-                <h1 className="mx-1 text-bold">Ankush Banerjee</h1>
+                <h1 className="mx-1 text-bold">{userQuery.data?.name}</h1>
               </div>
 
               <div className="my-10">
@@ -50,6 +60,8 @@ const UserProfile = () => {
             </div>
           </div>
         </div>
+        <CreateClinic />
+
         <div></div>
         <div className="flex justify-evenly bg-zinc-700 mx-20 rounded-full p-2">
           <p
@@ -79,10 +91,16 @@ const UserProfile = () => {
         </div>
         <div className="flex flex-col items-center">
           <div className={toggle === 1 ? " items-center" : "hidden"}>
-            <PostCard logo="https://scontent.fccu3-1.fna.fbcdn.net/v/t39.30808-6/340474975_728392899076592_1538111526232044092_n.jpg?stp=dst-jpg_s960x960&_nc_cat=1&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=1TIQKHEltzwAX827Yfj&_nc_ht=scontent.fccu3-1.fna&oh=00_AfCLec47NJ5gARDmrGIQWJQbQFKyCI8lx_ENeOXXpxUdlg&oe=643D4DFC" />
-            <PostCard logo="https://scontent.fccu3-1.fna.fbcdn.net/v/t39.30808-6/340633038_551190090453814_776047172445159497_n.jpg?stp=dst-jpg_s960x960&_nc_cat=1&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=4FSdfLsFmpkAX9LHKK_&_nc_ht=scontent.fccu3-1.fna&oh=00_AfBAtfmydHtweBVwutF5pOUybPnt1N_UnKMIHHw2mBwOog&oe=643CE19D" />
-            <PostCard logo="https://scontent.fccu3-1.fna.fbcdn.net/v/t39.30808-6/340474975_728392899076592_1538111526232044092_n.jpg?stp=dst-jpg_s960x960&_nc_cat=1&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=1TIQKHEltzwAX827Yfj&_nc_ht=scontent.fccu3-1.fna&oh=00_AfCLec47NJ5gARDmrGIQWJQbQFKyCI8lx_ENeOXXpxUdlg&oe=643D4DFC" />
-            <PostCard logo="https://scontent.fccu3-1.fna.fbcdn.net/v/t39.30808-6/340633038_551190090453814_776047172445159497_n.jpg?stp=dst-jpg_s960x960&_nc_cat=1&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=4FSdfLsFmpkAX9LHKK_&_nc_ht=scontent.fccu3-1.fna&oh=00_AfBAtfmydHtweBVwutF5pOUybPnt1N_UnKMIHHw2mBwOog&oe=643CE19D" />
+            {PostQuery.data?.map((post: any, index: any) => (
+              <PostCard
+                key={index}
+                user={post.user}
+                name={post.name}
+                description={post.description}
+                displayImages={post.displayImages}
+                id={post.id}
+              />
+            ))}
           </div>
           <div className={toggle === 2 ? "flex  items-center" : "hidden"}>
             <p className="text-white">

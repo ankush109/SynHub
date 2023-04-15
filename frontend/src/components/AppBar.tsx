@@ -51,24 +51,37 @@ const ProfileDropdownMenu = () => {
         </div>
       </DropdownMenu.Trigger>
       <DropdownMenu.Portal>
-        <DropdownMenu.Content className="w-36 h-[90px] flex flex-col items-end  bg-white rounded-md shadow-lg shadow-slate-200" side="bottom" align="end" sideOffset={2}>
+        <DropdownMenu.Content
+          className="w-36 h-[90px] flex flex-col items-end  bg-zinc-700 rounded-md shadow-lg shadow-slate-200"
+          side="bottom"
+          align="end"
+          sideOffset={2}
+        >
           <div className="items-end mr-[2px] w-0 h-0 border-l-transparent border-l-[6px] border-r-transparent border-r-[6px] border-b-[6px] border-b-slate-100"></div>
-          <DropdownMenu.Item className="outline-none" onClick={() => router.push("/profile")}>
+          <DropdownMenu.Item
+            className="outline-none"
+            onClick={() => router.push("/profile")}
+          >
             <div className="flex flex-row items-start w-36 pt-2 px-4 py-2 rounded-tr-md rounded-tl-md bg-slate-100 hover:bg-slate-200 hover:cursor-pointer ">
               <div>
                 <CgProfile size={25} color="gray" />
               </div>
-              <div className="ml-4 text-md font-bold text-slate-700">Profile</div>
+              <div className="ml-4 text-md font-bold text-slate-700">
+                Profile
+              </div>
             </div>
           </DropdownMenu.Item>
-          <DropdownMenu.Item onClick={() => router.push("/edit")} className="outline-none">
+          <DropdownMenu.Item
+            onClick={() => router.push("/edit")}
+            className="outline-none"
+          >
             <div className="flex flex-row items-start w-36 px-4 py-2 bg-slate-100  hover:bg-slate-200 hover:cursor-pointer ">
               <div>
                 <CiEdit size={25} color="gray" />
               </div>
               <div className="ml-4 text-md font-bold text-slate-700">Edit</div>
             </div>
-          </DropdownMenu.Item> 
+          </DropdownMenu.Item>
 
           <DropdownMenu.Item
             className="outline-none"
@@ -81,7 +94,9 @@ const ProfileDropdownMenu = () => {
               <div>
                 <IoIosLogOut size={25} color="gray" />
               </div>
-              <div className="ml-4 text-md font-bold text-slate-700">Logout</div>
+              <div className="ml-4 text-md font-bold text-slate-700">
+                Logout
+              </div>
             </div>
           </DropdownMenu.Item>
         </DropdownMenu.Content>

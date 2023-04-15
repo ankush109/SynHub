@@ -27,9 +27,30 @@ const getUser = () => {
     return e;
   }
 };
+const createPost = (data: any) => {
+  try {
+    return AuthAPI().post("/post/create-post", data);
+  } catch (e) {
+    return e;
+  }
+};
+const EditUser = (data: any) => {
+  try {
+    return AuthAPI().post("/user/edit-user", data);
+  } catch (e) {
+    return e;
+  }
+};
+const getPost = () => {
+  try {
+    return AuthAPI().get("/post/get-post");
+  } catch (e) {
+    return e;
+  }
+};
 const updateProfilePicture = (data: { picture: string }) => {
   try {
-    return AuthAPI().put("/user/update-picture", data);
+    return AuthAPI().post("/user/upload-profile-picture", data);
   } catch (e) {
     return e;
   }
@@ -44,4 +65,19 @@ const GetUserQuery = () =>
       return resp;
     },
   });
-export { GetUserQuery, updateProfilePicture };
+const GetPostQuery = () =>
+  useQuery({
+    queryKey: ["get-post"],
+    queryFn: () => getPost(),
+    select: (data: any) => {
+      const resp = data.data.message;
+      return resp;
+    },
+  });
+export {
+  GetUserQuery,
+  GetPostQuery,
+  EditUser,
+  createPost,
+  updateProfilePicture,
+};
