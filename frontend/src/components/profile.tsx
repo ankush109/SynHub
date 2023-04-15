@@ -115,7 +115,7 @@ const UserProfile = () => {
   if (userQuery.isError) return <div>Error</div>;
 
   return (
-    <div className="w-full bg-zinc-900 overflow-y-scroll scrollbar-hide">
+    <div className="w-full p-3 bg-zinc-900 overflow-y-scroll scrollbar-hide">
       <div>
         <div className="   ">
           {userQuery.data ? (
@@ -152,7 +152,7 @@ const UserProfile = () => {
                     <div className="my-4">
                       <div className="flex ">
                         <FcGraduationCap size={25} color="gray" />
-                        <p className="mx-2">Techno Main SaltLake</p>
+                        <p className="mx-2">{userQuery.data?.college}</p>
                       </div>
                       <div className="flex gap-2 items-center">
                         <CiLocationOn color="green" size={25} />
@@ -160,7 +160,7 @@ const UserProfile = () => {
                       </div>
 
                       <div className="flex ">
-                        <p className="mx-2 my-2">k</p>
+                        <p className="mx-2 my-2">{userQuery.data.bio}</p>
                       </div>
                     </div>
                   </div>

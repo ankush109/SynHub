@@ -93,8 +93,20 @@ function Edit() {
 
     try {
       await EditUser(formdata);
+      toast.success("Profile Updated Successfully", { id: "profile-updated" });
+      router.push("/profile");
+
     } catch (err: any) {
       console.log(err);
+      if (err.response) {
+        const errorMessage = err.response.data.message[0] as {
+          message: string;
+          path: any;
+        };
+        setError(errorMessage.path[0], {
+          message: errorMessage.message,
+        });
+      }
     }
   };
   return (

@@ -163,13 +163,15 @@ const PostItem: React.FC<any> = ({
           </Text>
           <Text fontSize="10pt">{description}</Text>
 
-          <div className="flex flex-col gap-2">
+          <div className="flex h-full flex-col gap-2">
             <Skeleton width="100%" borderRadius={4} />
-            <ImageGallery
-              disableSwipe={true}
-              showPlayButton={false}
-              items={images}
-            />
+            <div className="">
+              <ImageGallery
+                disableSwipe={true}
+                showPlayButton={false}
+                items={images}
+              />
+            </div>
           </div>
         </Stack>
         <Flex ml={1} mb={0.5} color="gray.500" fontWeight={600}>
