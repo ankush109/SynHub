@@ -67,6 +67,7 @@ enum emailCategory {
 model Post {
   id            String          @id @default(cuid())
   description   Json
+  title         String ?
   votes         Int             @default(0)
   upvotes       Int             @default(0)
   downvotes     Int             @default(0)
