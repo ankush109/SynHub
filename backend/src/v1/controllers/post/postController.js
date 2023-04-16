@@ -17,27 +17,20 @@ const postController = {
 
   async editPost(req, res, next) {
     try {
-      const { postId } = req.body;
-      const post = await prisma.post.findUnique({
+      const post = await prisma.post.findFirst({
         where: {
-          id: postId,
+          id: req.params.id,
         },
       });
-      if (post.userId !== req.user.id) {
-        return next(createError.Unauthorized());
-      }
-      const resp = req.body;
-      const updatedPost = await prisma.post.update({
+      if (post === null) return next(createError.NotFound());
+      if (post.userId !== req.user.id) return next(createError.Unauthorized());
+      await prisma.post.update({
         where: {
-          id: postId,
+          id: req.params.id,
         },
-        data: {
-          title: resp.title,
-          description: resp.description,
-          image: resp.image,
-        },
+        data: req.body,
       });
-      res.json(customResponse(200, updatedPost));
+      res.json(customResponse(200, "Post Updated."));
     } catch (err) {
       console.log(err);
       return next(createError.InternalServerError());
@@ -66,6 +59,7 @@ const postController = {
         },
         select: {
           id: true,
+          title: true,
           displayImages: true,
           description: true,
           createdAt: true,
@@ -84,6 +78,281 @@ const postController = {
     } catch (err) {
       console.log(err);
       return next(createError.InternalServerError());
+    }
+  },
+  async upvoteComment(req, res, next) {
+    try {
+      const commentId = req.params.id;
+      console.log(req.user?.id);
+      const upvote = await prisma.upVoteOnComment.findFirst({
+        where: {
+          commentId,
+          userId: req.user?.id,
+        },
+      });
+      const downvote = await prisma.downVoteOnComment.findFirst({
+        where: {
+          commentId,
+          userId: req.user?.id,
+        },
+      });
+      if (downvote !== null) {
+        await prisma.downVoteOnComment.delete({
+          where: {
+            id: downvote.id,
+          },
+        });
+        await prisma.comment.update({
+          where: {
+            id: commentId,
+          },
+          data: {
+            downvotes: {
+              decrement: 1,
+            },
+            votes: {
+              increment: 1,
+            },
+          },
+        });
+      }
+      if (upvote === null) {
+        await prisma.upVoteOnComment.create({
+          data: {
+            commentId,
+            userId: req.user?.id,
+          },
+        });
+        await prisma.comment.update({
+          where: {
+            id: commentId,
+          },
+          data: {
+            upvotes: {
+              increment: 1,
+            },
+            votes: {
+              increment: 1,
+            },
+          },
+        });
+        res.json(customResponse(200, "Comment Upvoted."));
+      }
+      if (upvote !== null) {
+        res.json(customResponse(200, "Already Upvoted."));
+      }
+    } catch (err) {
+      console.log(err);
+      return next({
+        status: createError.InternalServerError().status,
+        message: err,
+      });
+    }
+  },
+  async downvoteComment(req, res, next) {
+    try {
+      const commentId = req.params.id;
+      const upvote = await prisma.upVoteOnComment.findFirst({
+        where: {
+          commentId,
+          userId: req.user?.id,
+        },
+      });
+      const downvote = await prisma.downVoteOnComment.findFirst({
+        where: {
+          commentId,
+          userId: req.user?.id,
+        },
+      });
+
+      if (upvote !== null) {
+        await prisma.upVoteOnComment.delete({
+          where: {
+            id: upvote.id,
+          },
+        });
+        await prisma.comment.update({
+          where: {
+            id: commentId,
+          },
+          data: {
+            upvotes: {
+              decrement: 1,
+            },
+            votes: {
+              decrement: 1,
+            },
+          },
+        });
+      }
+      if (downvote === null) {
+        await prisma.downVoteOnComment.create({
+          data: {
+            commentId,
+            userId: req.user?.id,
+          },
+        });
+        await prisma.comment.update({
+          where: {
+            id: commentId,
+          },
+          data: {
+            downvotes: {
+              increment: 1,
+            },
+            votes: {
+              decrement: 1,
+            },
+          },
+        });
+        res.json(customResponse(200, "Comment Downvoted."));
+      }
+      if (downvote !== null) {
+        res.json(customResponse(200, "Already Downvoted."));
+      }
+    } catch (err) {
+      console.log(err);
+      return next({
+        status: createError.InternalServerError().status,
+        message: err,
+      });
+    }
+  },
+  async upvotePost(req, res, next) {
+    try {
+      const PostId = req.params.id;
+      const upvote = await prisma.upVoteOnTopic.findFirst({
+        where: {
+          PostId,
+          userId: req.user?.id,
+        },
+      });
+      const downvote = await prisma.downVoteOnTopic.findFirst({
+        where: {
+          PostId,
+          userId: req.user?.id,
+        },
+      });
+      if (downvote !== null) {
+        await prisma.downVoteOnTopic.delete({
+          where: {
+            id: downvote.id,
+          },
+        });
+        await prisma.topic.update({
+          where: {
+            id: PostId,
+          },
+          data: {
+            downvotes: {
+              decrement: 1,
+            },
+            votes: {
+              increment: 1,
+            },
+          },
+        });
+      }
+      if (upvote === null) {
+        await prisma.upVoteOnTopic.create({
+          data: {
+            PostId,
+            userId: req.user?.id,
+          },
+        });
+        await prisma.topic.update({
+          where: {
+            id: PostId,
+          },
+          data: {
+            upvotes: {
+              increment: 1,
+            },
+            votes: {
+              increment: 1,
+            },
+          },
+        });
+        res.json(customResponse(200, "Topic Upvoted."));
+      }
+      if (upvote !== null) {
+        res.json(customResponse(200, "Already Upvoted."));
+      }
+    } catch (err) {
+      console.log(err);
+      return next({
+        status: createError.InternalServerError().status,
+        message: err,
+      });
+    }
+  },
+  async downvotePost(req, res, next) {
+    try {
+      const topicId = req.params.id;
+      const upvote = await prisma.upVoteOnTopic.findFirst({
+        where: {
+          topicId,
+          userId: req.user?.id,
+        },
+      });
+      const downvote = await prisma.downVoteOnTopic.findFirst({
+        where: {
+          topicId,
+          userId: req.user?.id,
+        },
+      });
+
+      if (upvote !== null) {
+        await prisma.upVoteOnTopic.delete({
+          where: {
+            id: upvote.id,
+          },
+        });
+        await prisma.topic.update({
+          where: {
+            id: topicId,
+          },
+          data: {
+            upvotes: {
+              decrement: 1,
+            },
+            votes: {
+              decrement: 1,
+            },
+          },
+        });
+      }
+      if (downvote === null) {
+        await prisma.downVoteOnTopic.create({
+          data: {
+            topicId,
+            userId: req.user?.id,
+          },
+        });
+        await prisma.topic.update({
+          where: {
+            id: topicId,
+          },
+          data: {
+            downvotes: {
+              increment: 1,
+            },
+            votes: {
+              decrement: 1,
+            },
+          },
+        });
+        res.json(customResponse(200, "Topic Downvoted."));
+      }
+      if (downvote !== null) {
+        res.json(customResponse(200, "Already Downvoted."));
+      }
+    } catch (err) {
+      console.log(err);
+      return next({
+        status: createError.InternalServerError().status,
+        message: err,
+      });
     }
   },
   async deletePost(req, res, next) {
