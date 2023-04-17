@@ -196,12 +196,12 @@ export default function CreateClinic() {
   };
 
   return (
-    <div className=" mx-20 my-5 w-48  flex  items-center rounded-full bg-zinc-600">
-      <div className=" flex ">
+    <div className=" mx-20 my-5 w-25 flex  items-center rounded-full bg-zinc-600">
+      <div className=" flex  ">
         <Dialog.Root>
           <Dialog.Trigger className="h-10 justify-around rounded-full flex flex-col items-center ">
-            <div className="flex  gap-1 items-center ">
-              <div className="mx-4">Make a new Post</div>
+            <div className="flex  mx-1 gap-1 items-center ">
+              <div className="mx-2">Make a new Post</div>
               <FcPlus size={25} />
             </div>
           </Dialog.Trigger>
