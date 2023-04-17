@@ -5,19 +5,36 @@ import createError from "http-errors";
 import { z } from "zod";
 const commentSchema = z.object({
   description: z.string(),
-  postId: z.string(),
+  PostId: z.string(),
 });
 const commentController = {
+  async getcomments(req, res, next) {
+    try {
+      const comments = await prisma.comment.findMany({
+        where: { PostId: req.params.id },
+        include: {
+          user: true,
+        },
+      });
+      res.status(200).json(comments);
+    } catch (err) {
+      console.log(err);
+      return next({
+        status: createError.InternalServerError().status,
+        message: err,
+      });
+    }
+  },
   async createComment(req, res, next) {
     try {
-      const resp = await commentSchema.parseAsync(req.body);
+      const resp = await req.body;
       const data = {
         ...resp,
         userId: req.user.id,
       };
       await prisma.comment.create({ data });
       await prisma.post.update({
-        where: { id: data.postId },
+        where: { id: data.PostId },
         data: {
           commentCount: { increment: 1 },
         },

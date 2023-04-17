@@ -34,9 +34,8 @@ model User {
   DownVoteOnTopic   DownVoteOnTopic[]
   UpVoteOnComment   UpVoteOnComment[]
   UpVoteonTopic     UpVoteOnTopic[]
- roomID            String?
+  roomID            String?
   room              Room?               @relation(fields: [roomID], references: [id])
-    
 }
 
 model Room {
@@ -48,7 +47,6 @@ model Room {
   updatedAt   DateTime @updatedAt
   users       User[]
   posts       Post[]
-
 }
 
 model emailTokens {
@@ -65,35 +63,44 @@ enum emailCategory {
 }
 
 model Post {
-  id            String          @id @default(cuid())
-  description   Json
-  votes         Int             @default(0)
-  upvotes       Int             @default(0)
-  downvotes     Int             @default(0)
-  shares        Int             @default(0)
-  commentCount  Int             @default(0)
-  userId        String
-  assetUrl      String[]
-  createdAt     DateTime        @default(now())
-  updatedAt     DateTime        @updatedAt
-  user          User            @relation(fields: [userId], references: [id], onDelete: Cascade)
-  comments      Comment[]
-  UpVoteonTopic UpVoteOnTopic[]
-    displayImages      String[]
-roomID        String?
-  room          Room?           @relation(fields: [roomID], references: [id])
+  id              String            @id @default(cuid())
+  description     Json
+  title           String?
+  votes           Int               @default(0)
+  upvotes         Int               @default(0)
+  downvotes       Int               @default(0)
+  shares          Int               @default(0)
+  commentCount    Int               @default(0)
+  userId          String
+  assetUrl        String[]
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime          @updatedAt
+  user            User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  comments        Comment[]
+  UpVoteonTopic   UpVoteOnTopic[]
+  displayImages   String[]
+  roomID          String?
+  room            Room?             @relation(fields: [roomID], references: [id])
   DownVoteOnTopic DownVoteOnTopic[]
 }
 
 model Comment {
   id                String              @id @default(cuid())
   description       String
-  userId            String
-  postId            String
+  votes             Int                 @default(0)
+  upvotes           Int                 @default(0)
+  downvotes         Int                 @default(0)
+  views             Int                 @default(0)
+  shares            Int                 @default(0)
+  userId            String  
+  assetUrl          String[]
+  PostId            String             
   createdAt         DateTime            @default(now())
   updatedAt         DateTime            @updatedAt
+  categories        String[]
+  parent_id         String?
+  post              Post                @relation(fields: [PostId], references: [id], onDelete: Cascade)
   user              User                @relation(fields: [userId], references: [id], onDelete: Cascade)
-  post              Post                @relation(fields: [postId], references: [id], onDelete: Cascade)
   DownVoteOnComment DownVoteOnComment[]
   UpVoteOnComment   UpVoteOnComment[]
 }
@@ -101,10 +108,10 @@ model Comment {
 model DownVoteOnTopic {
   id        String   @id @default(cuid())
   userId    String
-  topicId   String
+  PostId   String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  Post      Post     @relation(fields: [topicId], references: [id], onDelete: Cascade)
+  Post      Post     @relation(fields: [PostId], references: [id], onDelete: Cascade)
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
@@ -131,9 +138,9 @@ model DownVoteOnComment {
 model UpVoteOnTopic {
   id        String   @id @default(cuid())
   userId    String
-  topicId   String
+  PostId   String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  Post      Post     @relation(fields: [topicId], references: [id], onDelete: Cascade)
+  Post      Post     @relation(fields: [PostId], references: [id], onDelete: Cascade)
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
