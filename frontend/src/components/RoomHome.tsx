@@ -1,7 +1,7 @@
 import React from "react";
-import PostCard from "./PostCard";
+import PostCard from "@/components/PostCard";
 import { FcStackOfPhotos } from "react-icons/fc";
-import CreateClinic from "./createPost";
+import CreateClinic from "@/components/createPost";
 import { GetPostQuery, GetUserQuery } from "@/api/user";
 
 import { MdPermMedia } from "react-icons/md";
@@ -28,14 +28,6 @@ function Home() {
     <div className="bg-zinc-900 w-full overflow-y-scroll scrollbar-hide ">
       <div className="  my-4">
         <div className="flex flex-col">
-          {/* <div className="flex gap-4 justify-center">
-            <div className="w-20 h-20 rounded-xl bg-neutral-50"></div>
-            <div className="w-20 h-20 rounded-xl bg-neutral-50"></div>
-            <div className="w-20 h-20 rounded-xl bg-neutral-50"></div>
-            <div className="w-20 h-20 rounded-xl bg-neutral-50"></div>
-            <div className="w-20 h-20 rounded-xl bg-neutral-50"></div>
-          </div> */}
-
           <div className="inline-flex ml-8 mt-8">
             {/* <Carousel
               responsive={responsive}
@@ -53,6 +45,7 @@ function Home() {
                 Web Development
               </h1>
             </div>
+
             <div className="flex-1 text-center px-2 py-2 m-1">
               <div className="relative shadow-xl mx-auto h-24 w-24 -my-12 border-white rounded-full overflow-hidden border-4">
                 <img
@@ -121,7 +114,11 @@ function Home() {
             </div>
             {/* </Carousel> */}
           </div>
-
+          <div className="flex flex-col justify-center item-center pl-12">
+            <h1 className="text-base text-start cursor-pointer font-bold text-yellow-400  pb-1 w-full">
+              #WEB DEVELOPMENT
+            </h1>
+          </div>
           <div className="flex  my-2 flex-col mx-10 bg-zinc-700 rounded-xl  ">
             <div className="flex items-center  flex-row h-14">
               <img

@@ -1,7 +1,7 @@
 import React from "react";
 import AppBar from "./AppBar";
 import LeftBar from "./LeftBar";
-import Rightbar from "./Rightbar";
+import Rightbar from "./RightUpbar";
 import { CiLocationOn } from "react-icons/ci";
 import { BiEdit } from "react-icons/bi";
 import { FcGraduationCap } from "react-icons/fc";

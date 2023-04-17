@@ -12,7 +12,7 @@ import Calendar from "react-calendar";
 import { GetUserQuery, EditUser } from "@/api/user";
 import AppBar from "@/components/AppBar";
 import LeftBar from "@/components/LeftBar";
-import Rightbar from "@/components/Rightbar";
+import Rightbar from "@/components/RightUpbar";
 // const editUserSchema = z
 //   .object({
 //     name: nameSchema,
