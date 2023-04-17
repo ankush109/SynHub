@@ -64,6 +64,13 @@ const likePost = async (postId: any) => {
     return e;
   }
  }
+ const deletePost = async (postId: any) => {  
+  try{
+    return  AuthAPI().delete(`/post/delete-post/${postId}`);
+  }catch(e){
+    return e;
+  }
+ }
 const getCommentsQuery=(id:any)=>
 useQuery({
  queryKey: ["get-comments"],
@@ -75,5 +82,5 @@ useQuery({
 })
 
 export {
-  createComment,updatePost,getCommentsQuery,getComments,likePost,disklikePost
+  createComment,updatePost,getCommentsQuery,getComments,likePost,disklikePost,deletePost
 }

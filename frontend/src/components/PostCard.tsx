@@ -29,6 +29,7 @@ import { TextField } from "@mui/material";
 import { useForm } from "react-hook-form";
 import {
   createComment,
+  deletePost,
   disklikePost,
   getComments,
   getCommentsQuery,
@@ -38,6 +39,8 @@ import { toast } from "react-hot-toast";
 import CommentCard from "./commentCard";
 import { GetPostQuery } from "@/api/user";
 import { FiSend } from "react-icons/fi";
+import { CgRemove } from "react-icons/cg";
+import { MdDelete } from "react-icons/md";
 const PostItem: React.FC<any> = ({
   id,
   title,
@@ -57,14 +60,17 @@ const PostItem: React.FC<any> = ({
       thumbnail: image,
     });
   });
-  const handleDelete = async () => {
-    console.log(title);
-  };
+
   var moment = require("moment");
   const handleDownvote = async () => {
     const data = await disklikePost(id);
     toast.success(data?.data.message);
     GetPostQuerys.refetch();
+  };
+  const handledelete = async () => {
+    await deletePost(id);
+    GetPostQuerys.refetch();
+    toast.success("Post Deleted");
   };
   const handleupvote = async () => {
     const data = await likePost(id);
@@ -142,6 +148,12 @@ const PostItem: React.FC<any> = ({
         </Flex>
         <Flex direction="column" width="100%">
           <Stack spacing={1} p="10px 10px">
+            <EditPost
+              data={description}
+              id={id}
+              title={title}
+              picture={displayImages}
+            />
             <Stack direction="row" spacing={0.6} align="center" fontSize="9pt">
               <>
                 {/* <Image
@@ -162,6 +174,7 @@ const PostItem: React.FC<any> = ({
     </Link> */}
                 {/* <Icon as={BsDot} color="gray.500" fontSize={8} /> */}
               </>
+
               <div className="flex flex-col">
                 <Link href={`#`}>
                   <Text
@@ -214,13 +227,10 @@ const PostItem: React.FC<any> = ({
                 </div>
               </div>
             </Stack>
-            <EditPost
-              data={description}
-              id={id}
-              title={title}
-              picture={displayImages}
-            />
-            <Text fontSize="12pt" fontWeight={600}></Text>
+
+            <Text fontSize="12pt" fontWeight={600}>
+              {title}
+            </Text>
             <Text fontSize="10pt">{description}</Text>
 
             <div className="flex h-full flex-col gap-2">
@@ -278,7 +288,7 @@ const PostItem: React.FC<any> = ({
               borderRadius={4}
               _hover={{ bg: "gray.200" }}
               cursor="pointer"
-              onClick={handleDelete}
+              onClick={handledelete}
             >
               {/* <Spinner size="sm" /> */}
               <>

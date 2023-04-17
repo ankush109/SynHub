@@ -13,6 +13,8 @@ import { GetUserQuery, EditUser } from "@/api/user";
 import AppBar from "@/components/AppBar";
 import LeftBar from "@/components/LeftBar";
 import Rightbar from "@/components/RightUpbar";
+import RightUpbar from "@/components/RightUpbar";
+import RightDownbar from "@/components/RightDownbar";
 // const editUserSchema = z
 //   .object({
 //     name: nameSchema,
@@ -95,18 +97,8 @@ function Edit() {
       await EditUser(formdata);
       toast.success("Profile Updated Successfully", { id: "profile-updated" });
       router.push("/profile");
-
     } catch (err: any) {
       console.log(err);
-      if (err.response) {
-        const errorMessage = err.response.data.message[0] as {
-          message: string;
-          path: any;
-        };
-        setError(errorMessage.path[0], {
-          message: errorMessage.message,
-        });
-      }
     }
   };
   return (
@@ -287,7 +279,11 @@ function Edit() {
               </div>
             </div>
           </div>
-          <Rightbar />
+          <div className="grid justify-items-center w-[44%]  bg-zinc-900">
+            <RightUpbar />
+
+            <RightDownbar />
+          </div>
         </div>
       </div>
     </div>

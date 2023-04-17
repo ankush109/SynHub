@@ -203,13 +203,12 @@ const EditPost: FC<any> = ({ data, picture, id, title }) => {
   };
 
   return (
-    <div className="  w-36  flex  items-center rounded-xl ">
-      <div className=" flex ">
+    <div className=" flex items-end justify-end">
+      <div className=" flex items-end justify-end ">
         <Dialog.Root>
           <Dialog.Trigger className="">
-            <div className="flex  gap-1 items-center ">
-              <div className="text-lg"> Edit</div>
-              <BiEdit color="red" size={20} />
+            <div className="flex justify-end items-end   ">
+              <BiEdit color="red" size={25} />
             </div>
           </Dialog.Trigger>
           <Dialog.Portal className="">
@@ -222,7 +221,7 @@ const EditPost: FC<any> = ({ data, picture, id, title }) => {
                 <div className="flex flex-col w-1/3 items-center h-full justify-between">
                   <div className="flex flex-col w-full items-center">
                     <div className="text-3xl my-5 font-bold text-white">
-                      Make a post
+                      Edit post
                     </div>
                     <Lottie
                       animationData={postAnime}
@@ -252,7 +251,7 @@ const EditPost: FC<any> = ({ data, picture, id, title }) => {
                         <TextField
                           {...register("title")}
                           value={data?.title}
-                          className=" bg-gray-600 rounded-lg text-white w-96"
+                          className="w-4/5 p-3 bg-gray-600 rounded-lg text-white"
                         />
                       </div>
                       <div>
@@ -261,7 +260,7 @@ const EditPost: FC<any> = ({ data, picture, id, title }) => {
                       <div className="w-full my-4">
                         <TextareaAutosize
                           value={data?.description}
-                          className="w-4/5 max-h-36 p-3 overflow-y-scroll bg-gray-600 rounded-lg text-white"
+                          className="w-4/5 p-3 min-h-[25%] bg-gray-600 rounded-lg text-white"
                           id="email"
                           {...register("description")}
                         />
