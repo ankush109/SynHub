@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Flex,
   Icon,
@@ -27,18 +27,30 @@ import Editpost from "@/pages/edit-user";
 import EditPost from "./Editpost";
 import { TextField } from "@mui/material";
 import { useForm } from "react-hook-form";
-import { createComment } from "@/api/posts";
+import {
+  createComment,
+  disklikePost,
+  getComments,
+  getCommentsQuery,
+  likePost,
+} from "@/api/posts";
 import { toast } from "react-hot-toast";
+import CommentCard from "./commentCard";
+import { GetPostQuery } from "@/api/user";
+import { FiSend } from "react-icons/fi";
 const PostItem: React.FC<any> = ({
   id,
   title,
+  data,
   user,
   description,
   displayImages,
   createdAt,
 }) => {
   let images: any = [];
+
   const [comments, setComments] = useState<any>(false);
+  const GetPostQuerys = GetPostQuery();
   displayImages?.map((image: any) => {
     images.push({
       original: image,
@@ -49,7 +61,17 @@ const PostItem: React.FC<any> = ({
     console.log(title);
   };
   var moment = require("moment");
-  const handleClick = () => {};
+  const handleDownvote = async () => {
+    const data = await disklikePost(id);
+    toast.success(data?.data.message);
+    GetPostQuerys.refetch();
+  };
+  const handleupvote = async () => {
+    const data = await likePost(id);
+    console.log(data);
+    toast.success(data?.data.message);
+    GetPostQuerys.refetch();
+  };
   const {
     reset,
     register,
@@ -65,11 +87,19 @@ const PostItem: React.FC<any> = ({
       description: "",
     },
   });
+
   const onSubmit = async (val: any) => {
     try {
       await createComment(id, val.description);
       toast.success("Comment Added");
-    } catch (err) {}
+      reset();
+      setValue("description", "");
+
+      GetPostQuerys.refetch();
+    } catch (err) {
+      console.log(err);
+      toast.error("Something went wrong");
+    }
   };
 
   return (
@@ -81,7 +111,6 @@ const PostItem: React.FC<any> = ({
         borderRadius={4}
         cursor={"pointer"}
         _hover={{ borderColor: "gray.500" }}
-        onClick={handleClick}
         mx={50}
         my={7}
       >
@@ -98,17 +127,17 @@ const PostItem: React.FC<any> = ({
             color={"gray.400"}
             fontSize={25}
             cursor="pointer"
-            onClick={handleClick}
+            onClick={handleupvote}
           />
           <Text fontSize="11pt" fontWeight={600}>
-            20
+            {data.upvotes - data.downvotes}
           </Text>
           <Icon
             as={IoArrowDownCircleOutline}
             color={"gray.400"}
             fontSize={25}
             cursor="pointer"
-            onClick={handleClick}
+            onClick={handleDownvote}
           />
         </Flex>
         <Flex direction="column" width="100%">
@@ -140,7 +169,6 @@ const PostItem: React.FC<any> = ({
                     fontWeight="bold"
                     fontSize="11pt"
                     _hover={{ textDecoration: "underline" }}
-                    onClick={handleClick}
                   >
                     Cp Room
                   </Text>
@@ -171,7 +199,6 @@ const PostItem: React.FC<any> = ({
                           color="gray.500"
                           fontWeight="bold"
                           _hover={{ textDecoration: "underline" }}
-                          onClick={handleClick}
                         >
                           {user?.name}
                         </Text>
@@ -221,7 +248,9 @@ const PostItem: React.FC<any> = ({
                 cursor="pointer"
               >
                 <Icon as={BsChat} mr={2} />
-                <Text fontSize="9pt">42</Text>
+                <Text fontSize="9pt">{
+                  data.comments.length
+                }</Text>
               </Flex>
             </div>
             <Flex
@@ -263,30 +292,40 @@ const PostItem: React.FC<any> = ({
         </Flex>
       </Flex>
       {comments ? (
-        <div className=" mx-20 w-5/6 h-28 bg-zinc-700 border border-white">
+        <div className=" mx-20 w-5/6 h-96 overflow-none overflow-y-auto bg-zinc-700 border border-white">
           <div className="mx-20 my-4">
             <p>Commenting to {user?.name} </p>
-            <form onSubmit={handleSubmit(onSubmit)}>
-              <div className="flex">
-                <TextField
-                  {...register("description")}
-                  className="w-full"
-                  placeholder="Add a comment"
-                />
-                <button
-                  type="submit"
-                  onClick={() => {
-                    handleSubmit(onSubmit);
-                  }}
-                  // disabled={isSubmitting || isValidating}
-                  className=" "
-                >
-                  <div className="text-white font-bold text-md my-10">
-                    commment
+            <div className="flex flex-col">
+              <div>
+                <form onSubmit={handleSubmit(onSubmit)}>
+                  <div className="flex p-4 rounded-lg  bg-zinc-400">
+                    <TextField
+                      className=" bg-zinc-400 rounded-lg text-black w-full"
+                      {...register("description")}
+                      placeholder="Add a comment"
+                    />
+
+                    <button
+                      type="submit"
+                      onClick={() => {
+                        handleSubmit(onSubmit);
+                      }}
+                      // disabled={isSubmitting || isValidating}
+                      className="my-2 mx-1 "
+                    >
+                      <FiSend color="black" />
+                    </button>
                   </div>
-                </button>
+                </form>
               </div>
-            </form>
+              <div className="">
+                {data.comments?.map((comment: any) => (
+                  <div className="my-3">
+                    <CommentCard comment={comment} user={data.user} />
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       ) : (

@@ -42,10 +42,38 @@ const updatePost = async (postId: any, data: any) => {
    }
 
  }
+const likePost = async (postId: any) => {
+  try{
+    return  AuthAPI().post(`/post/like-post/${postId}`);
+  }catch(e){
+    return e;
+  }
+ }
+ const disklikePost = async (postId: any) => {
+  try{
+    return  AuthAPI().post(`/post/dislike-post/${postId}`);
+  }catch(e){
+    return e;
+  }
+ }
 
- 
-
+ const getComments = async (postId: any) => {
+  try{
+    return  AuthAPI().get(`/post/get-comments/${postId}`);
+  }catch(e){
+    return e;
+  }
+ }
+const getCommentsQuery=(id:any)=>
+useQuery({
+ queryKey: ["get-comments"],
+    queryFn: () => getComments(id),
+    select: (data: any) => {
+      const resp = data.data
+      return resp;
+    },
+})
 
 export {
-  createComment,updatePost,
+  createComment,updatePost,getCommentsQuery,getComments,likePost,disklikePost
 }
