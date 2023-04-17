@@ -10,6 +10,7 @@ import { DialogActions, TextField, TextareaAutosize } from "@mui/material";
 import { FiUpload } from "react-icons/fi";
 import { Dropzone } from "./Dropzone";
 import React, {
+  FC,
   ReactNode,
   useCallback,
   useEffect,
@@ -33,9 +34,14 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import { FcPlus } from "react-icons/fc";
 import { GetPostQuery, createPost } from "@/api/user";
 import { Router, useRouter } from "next/router";
-// import { createClinic, GetClinicsQuery } from "../../api/clinic";
+import { updatePost } from "@/api/posts";
 
-export default function CreateClinic() {
+// import { EditPost, GetClinicsQuery } from "../../api/clinic";
+const EditPost: FC<any> = ({ data, picture, id, title }) => {
+  console.log(data);
+  console.log(picture);
+  console.log(title);
+  const PostId = id;
   const [files, setFiles] = useState<any[]>([]);
   const router = useRouter();
   const [uploadedFiles, setUploadedFiles] = useState<any[]>([]);
@@ -71,6 +77,14 @@ export default function CreateClinic() {
     },
     []
   );
+  useEffect(() => {
+    setValue(
+      "displayImages",
+      picture.map((pic: any) => pic.picture)
+    );
+    setValue("description", data);
+    setValue("title", title);
+  }, []);
 
   const { getRootProps, getInputProps, isDragAccept, isDragReject } =
     useDropzone({
@@ -108,8 +122,8 @@ export default function CreateClinic() {
     mode: "onChange",
 
     defaultValues: {
-      description: "",
-      displayImages: [],
+      description: data.description,
+      displayImages: picture,
     },
   });
 
@@ -160,23 +174,15 @@ export default function CreateClinic() {
 
   const onSubmit = async (formData: any) => {
     formData.displayImages = uploadedImages.current;
-
-    console.log(formData);
-
-    // uploadedImages.current.forEach((img, index) => {
-    //   console.log("Image ", index, " :", img);
-    // });
-    // console.log("Formdata images", formData.displayImages);
-    // console.table(formData);
     try {
       if (formData.description.length < 10) {
         toast.error("Description should be atleast 10 characters long");
         return;
       } else {
-        const data = await createPost(formData);
+        const data = await updatePost(PostId, formData);
         PostQuery.refetch();
-        router.push("/home");
-        toast.success("post created successfully");
+
+        toast.success("edited successfully");
       }
     } catch (err: any) {
       toast.error("Unable to create post");
@@ -201,7 +207,7 @@ export default function CreateClinic() {
         <Dialog.Root>
           <Dialog.Trigger className="h-10 justify-around rounded-full flex flex-col items-center ">
             <div className="flex  gap-1 items-center ">
-              <div className="mx-4">Make a new Post</div>
+              <div className="mx-4"> Edit Post</div>
               <FcPlus size={25} />
             </div>
           </Dialog.Trigger>
@@ -244,6 +250,7 @@ export default function CreateClinic() {
                       <div>
                         <TextField
                           {...register("title")}
+                          value={data?.title}
                           className="w-4/5 p-3 bg-gray-600 rounded-lg text-white"
                         />
                       </div>
@@ -252,6 +259,7 @@ export default function CreateClinic() {
                       </div>
                       <div className="w-full my-4">
                         <TextareaAutosize
+                          value={data?.description}
                           className="w-4/5 p-3 min-h-[25%] bg-gray-600 rounded-lg text-white"
                           id="email"
                           {...register("description")}
@@ -338,7 +346,7 @@ export default function CreateClinic() {
                           className=" mx-10 pd-2 flex flex-row items-center justify-center mt-4 h-9 w-28 shadow-lg bg-zinc-600 rounded-md hover:cursor-pointer hover:bg-slate-500"
                         >
                           <div className="text-white font-bold text-md my-10">
-                            Post
+                            Edit Post
                           </div>
                         </button>
 
@@ -356,5 +364,5 @@ export default function CreateClinic() {
       </div>
     </div>
   );
-}
-z;
+};
+export default EditPost;

@@ -213,10 +213,11 @@ const UserProfile = () => {
         <div className={toggle === 1 ? " items-center" : "hidden"}>
           {PostQuery.data?.map((post: any, index: any) => (
             <PostCard
+              data={post}
               key={index}
               user={post.user}
               createdAt={post.createdAt}
-              name={post.name}
+              title={post.title}
               description={post.description}
               displayImages={post.displayImages}
               id={post.id}
