@@ -35,6 +35,7 @@ import { FcPlus } from "react-icons/fc";
 import { GetPostQuery, createPost } from "@/api/user";
 import { Router, useRouter } from "next/router";
 import { updatePost } from "@/api/posts";
+import { BiEdit } from "react-icons/bi";
 
 // import { EditPost, GetClinicsQuery } from "../../api/clinic";
 const EditPost: FC<any> = ({ data, picture, id, title }) => {
@@ -202,13 +203,13 @@ const EditPost: FC<any> = ({ data, picture, id, title }) => {
   };
 
   return (
-    <div className=" mx-20 my-5 w-48  flex  items-center rounded-full bg-zinc-600">
+    <div className="  w-36  flex  items-center rounded-xl ">
       <div className=" flex ">
         <Dialog.Root>
-          <Dialog.Trigger className="h-10 justify-around rounded-full flex flex-col items-center ">
+          <Dialog.Trigger className="">
             <div className="flex  gap-1 items-center ">
-              <div className="mx-4"> Edit Post</div>
-              <FcPlus size={25} />
+              <div className="text-lg"> Edit</div>
+              <BiEdit color="red" size={20} />
             </div>
           </Dialog.Trigger>
           <Dialog.Portal className="">
@@ -251,7 +252,7 @@ const EditPost: FC<any> = ({ data, picture, id, title }) => {
                         <TextField
                           {...register("title")}
                           value={data?.title}
-                          className="w-4/5 p-3 bg-gray-600 rounded-lg text-white"
+                          className=" bg-gray-600 rounded-lg text-white w-96"
                         />
                       </div>
                       <div>
@@ -260,7 +261,7 @@ const EditPost: FC<any> = ({ data, picture, id, title }) => {
                       <div className="w-full my-4">
                         <TextareaAutosize
                           value={data?.description}
-                          className="w-4/5 p-3 min-h-[25%] bg-gray-600 rounded-lg text-white"
+                          className="w-4/5 max-h-36 p-3 overflow-y-scroll bg-gray-600 rounded-lg text-white"
                           id="email"
                           {...register("description")}
                         />

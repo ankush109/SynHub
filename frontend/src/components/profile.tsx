@@ -16,6 +16,8 @@ import Link from "next/link";
 import { CgProfile } from "react-icons/cg";
 import Image from "next/image";
 import toast from "react-hot-toast";
+import RightUpbar from "./RightUpbar";
+import RightDownbar from "./RightDownbar";
 const UserProfile = () => {
   const PostQuery = GetPostQuery();
 
@@ -209,8 +211,8 @@ const UserProfile = () => {
           Liked Posts
         </p>
       </div>
-      <div className="flex flex-col items-center">
-        <div className={toggle === 1 ? " items-center" : "hidden"}>
+      <div className="flex flex-col">
+        <div className={toggle === 1 ? "block" : "hidden"}>
           {PostQuery.data?.map((post: any, index: any) => (
             <PostCard
               data={post}
@@ -241,7 +243,11 @@ function Profile() {
         <div className="flex flex-row h-[91vh]">
           <LeftBar />
           <UserProfile />
-          <Rightbar />
+          <div className="grid justify-items-center w-[44%]  bg-zinc-900">
+            <RightUpbar />
+
+            <RightDownbar />
+          </div>
         </div>
       </div>
     </div>

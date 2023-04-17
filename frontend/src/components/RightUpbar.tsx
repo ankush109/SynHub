@@ -17,7 +17,7 @@ import { MdBiotech } from "react-icons/md";
 
 const RightUpbar = () => {
   return (
-    <div className="w-[100%] col-span-1 relative lg:h-[40vh] h-[50vh] my-4 mx-4 border rounded-xl bg-zinc-800 overflow-scroll  scrollbar-hide ">
+    <div className="w-[100%] mx col-span-1 relative lg:h-[40vh] h-[50vh] my-4 mx-4 border rounded-xl bg-zinc-800 overflow-scroll  scrollbar-hide ">
       <div className="sticky top-0 bg-zinc-800 bg-zinc-800    rounded-lg h-10 w-full absolute top ">
         <h1 className=" text-base text-center cursor-pointer font-bold text-gray-100 py-1 w-full ">
           Recent Activity
