@@ -6,7 +6,7 @@ import express, { Router } from "express";
 const router = express.Router();
 router.post("/create-post", authMiddleware, postController.createPost);
 router.get("/get-post", authMiddleware, postController.getUserPosts);
-router.delete("/delete-post", authMiddleware, postController.deletePost);
+router.delete("/delete-post/:id", authMiddleware, postController.deletePost);
 router.put("/update-post/:id", authMiddleware, postController.editPost);
 router.post("/like-post/:id", authMiddleware, postController.upvotePost);
 router.post("/dislike-post/:id", authMiddleware, postController.downvotePost);
