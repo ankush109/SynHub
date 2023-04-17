@@ -63,7 +63,25 @@ const postController = {
           displayImages: true,
           description: true,
           createdAt: true,
+          upvotes: true,
+          downvotes: true,
           updatedAt: true,
+          comments: {
+            select: {
+              id: true,
+              description: true,
+              createdAt: true,
+              updatedAt: true,
+              user: {
+                select: {
+                  id: true,
+                  name: true,
+                  email: true,
+                  picture: true,
+                },
+              },
+            },
+          },
           user: {
             select: {
               id: true,
@@ -239,7 +257,7 @@ const postController = {
             id: downvote.id,
           },
         });
-        await prisma.topic.update({
+        await prisma.post.update({
           where: {
             id: PostId,
           },
@@ -260,7 +278,7 @@ const postController = {
             userId: req.user?.id,
           },
         });
-        await prisma.topic.update({
+        await prisma.post.update({
           where: {
             id: PostId,
           },
@@ -280,24 +298,21 @@ const postController = {
       }
     } catch (err) {
       console.log(err);
-      return next({
-        status: createError.InternalServerError().status,
-        message: err,
-      });
+      return next({ status: createError.InternalServerError().status, message: err });
     }
   },
   async downvotePost(req, res, next) {
     try {
-      const topicId = req.params.id;
+      const PostId = req.params.id;
       const upvote = await prisma.upVoteOnTopic.findFirst({
         where: {
-          topicId,
+          PostId,
           userId: req.user?.id,
         },
       });
       const downvote = await prisma.downVoteOnTopic.findFirst({
         where: {
-          topicId,
+          PostId,
           userId: req.user?.id,
         },
       });
@@ -308,9 +323,9 @@ const postController = {
             id: upvote.id,
           },
         });
-        await prisma.topic.update({
+        await prisma.post.update({
           where: {
-            id: topicId,
+            id: PostId,
           },
           data: {
             upvotes: {
@@ -325,13 +340,13 @@ const postController = {
       if (downvote === null) {
         await prisma.downVoteOnTopic.create({
           data: {
-            topicId,
+            PostId,
             userId: req.user?.id,
           },
         });
-        await prisma.topic.update({
+        await prisma.post.update({
           where: {
-            id: topicId,
+            id: PostId,
           },
           data: {
             downvotes: {
@@ -349,10 +364,7 @@ const postController = {
       }
     } catch (err) {
       console.log(err);
-      return next({
-        status: createError.InternalServerError().status,
-        message: err,
-      });
+      return next({ status: createError.InternalServerError().status, message: err });
     }
   },
   async deletePost(req, res, next) {

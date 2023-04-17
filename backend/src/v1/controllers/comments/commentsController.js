@@ -8,6 +8,23 @@ const commentSchema = z.object({
   PostId: z.string(),
 });
 const commentController = {
+  async getcomments(req, res, next) {
+    try {
+      const comments = await prisma.comment.findMany({
+        where: { PostId: req.params.id },
+        include: {
+          user: true,
+        },
+      });
+      res.status(200).json(comments);
+    } catch (err) {
+      console.log(err);
+      return next({
+        status: createError.InternalServerError().status,
+        message: err,
+      });
+    }
+  },
   async createComment(req, res, next) {
     try {
       const resp = await req.body;
