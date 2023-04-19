@@ -13,6 +13,8 @@ import { GetUserQuery, EditUser } from "@/api/user";
 import AppBar from "@/components/AppBar";
 import LeftBar from "@/components/LeftBar";
 import Rightbar from "@/components/RightUpbar";
+import RightUpbar from "@/components/RightUpbar";
+import RightDownbar from "@/components/RightDownbar";
 // const editUserSchema = z
 //   .object({
 //     name: nameSchema,
@@ -32,6 +34,7 @@ function Edit() {
     setValue("college", user?.college as string);
     setValue("year", user?.year as string);
     setValue("department", user?.department as string);
+    // setValue("linkedin profile", user?.linkedinprofile as string);
 
     setValue("bio", user?.bio as string);
     setValue("phone", user?.phoneNumber as string);
@@ -95,7 +98,6 @@ function Edit() {
       await EditUser(formdata);
       toast.success("Profile Updated Successfully", { id: "profile-updated" });
       router.push("/profile");
-
     } catch (err: any) {
       console.log(err);
       if (err.response) {
@@ -115,16 +117,20 @@ function Edit() {
         <AppBar />
         <div className="flex flex-row h-[90.7vh]">
           <LeftBar />
-          <div className="bg-zinc-900 w-full overflow-y-scroll scrollbar-hide">
-            <div className="bg-zinc-700 p-5 my-10 mx-10 rounded-lg">
-              <div>
-                <h2 className="text-3xl font-bold w-full">Edit your Profile</h2>
+          <div className="bg-zinc-900  mx-4 px-8 w-full overflow-y-scroll scrollbar-hide">
+            <div className="bg-gray-800 py-5 px-8 my-10 mx-4 rounded-lg flex-col justify-center">
+              <div className="flex flex-row justify-center">
+                <h2 className="text-3xl text-yellow-300 font-bold ">
+                  Edit your Profile
+                </h2>
               </div>
-              <div className="mt-8 max-w-md">
+              <div className="mt-8 ">
                 <form onSubmit={handleSubmit(onSubmit)}>
                   <div className="grid grid-cols-1 gap-6 ">
                     <label className="block">
-                      <span className="text-white">Full name</span>
+                      <span className="text-white font-semibold">
+                        Full name
+                      </span>
                       <input
                         id="name"
                         className={classNames(
@@ -141,7 +147,9 @@ function Edit() {
                       />
                     </label>
                     <label className="block">
-                      <span className="text-white">Your Username</span>
+                      <span className="text-white font-semibold">
+                        Your Username
+                      </span>
                       <input
                         className={classNames(
                           ["rounded w-full py-2 px-3 text-gray-700"],
@@ -174,7 +182,9 @@ function Edit() {
                     </label>
 
                     <label className="block">
-                      <span className="text-white">Your DOB</span>
+                      <span className="text-white font-semibold">
+                        Your Date Of Birth
+                      </span>
                       <input
                         {...register("dob")}
                         type="date"
@@ -187,7 +197,8 @@ function Edit() {
                     </label>
 
                     <label className="block">
-                      <span className="text-white">Your Bio</span>
+                      <span className="text-white font-semibold">Your Bio</span>
+                      <span className="text-white ">(Max 100 words)</span>
                       <textarea
                         className={classNames(
                           ["rounded w-full py-2 px-3 text-gray-700"],
@@ -204,7 +215,9 @@ function Edit() {
                     </label>
 
                     <label className="block">
-                      <span className="text-white">Phone number</span>
+                      <span className="text-white font-semibold">
+                        Phone number
+                      </span>
 
                       <input
                         type="text"
@@ -221,7 +234,9 @@ function Edit() {
                       />
                     </label>
                     <label className="block">
-                      <span className="text-white">College Name</span>
+                      <span className="text-white font-semibold">
+                        College Name
+                      </span>
 
                       <input
                         type="text"
@@ -238,7 +253,9 @@ function Edit() {
                       />
                     </label>
                     <label className="block">
-                      <span className="text-white">Year of College</span>
+                      <span className="text-white font-semibold">
+                        Year of College
+                      </span>
 
                       <input
                         type="text"
@@ -255,7 +272,9 @@ function Edit() {
                       />
                     </label>
                     <label className="block">
-                      <span className="text-white">Department</span>
+                      <span className="text-white font-semibold">
+                        Department
+                      </span>
 
                       <input
                         type="text"
@@ -268,26 +287,52 @@ function Edit() {
                               : "border border-gray-300 focus:outline-blue-600",
                           ]
                         )}
-                        placeholder="Enter your bracnch"
+                        placeholder="Enter your branch"
+                      />
+                    </label>
+                    <label className="block">
+                      <span className="text-white font-semibold">
+                        Your Linkedin Profile
+                      </span>
+
+                      <input
+                        type="text"
+                        // {...register("linkedinprofile")}
+                        className={classNames(
+                          ["rounded w-full py-2 px-3 text-gray-700"],
+                          [
+                            errors.phone
+                              ? "border-2 border-red-500 focus:outline-red-600"
+                              : "border border-gray-300 focus:outline-blue-600",
+                          ]
+                        )}
+                        placeholder="Enter your Linkedin profile link"
                       />
                     </label>
                     <div>
-                      <button
-                        type="submit"
-                        onClick={() => {
-                          handleSubmit(onSubmit);
-                        }}
-                        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                      >
-                        Save
-                      </button>
+                      <div className="flex flex-row justify-center">
+                        <button
+                          type="submit"
+                          onClick={() => {
+                            handleSubmit(onSubmit);
+                          }}
+                          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                        >
+                          Save
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </form>
               </div>
             </div>
           </div>
-          <Rightbar />
+
+          <div className="grid justify-items-center w-[60%] mx-2 ">
+            <RightUpbar />
+
+            <RightDownbar />
+          </div>
         </div>
       </div>
     </div>

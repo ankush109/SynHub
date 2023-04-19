@@ -16,6 +16,10 @@ import Link from "next/link";
 import { CgProfile } from "react-icons/cg";
 import Image from "next/image";
 import toast from "react-hot-toast";
+import RightUpbar from "./RightUpbar";
+import RightDownbar from "./RightDownbar";
+import { FaInstagram, FaFacebookSquare, FaLinkedin } from "react-icons/fa";
+import { BsTwitter } from "react-icons/bs";
 const UserProfile = () => {
   const PostQuery = GetPostQuery();
 
@@ -115,75 +119,119 @@ const UserProfile = () => {
   if (userQuery.isError) return <div>Error</div>;
 
   return (
-    <div className="w-full p-3 bg-zinc-900 overflow-y-scroll scrollbar-hide">
-      <div>
-        <div className="   ">
-          {userQuery.data ? (
-            <div className="bg-zinc-700  mx-5   rounded-xl">
-              <div className="flex flex-col  my-10">
-                <div className="flex my-5">
-                  <div
-                    {...getRootProps()}
-                    className="flex flex-row h-40 max-sm:w-28 max-sm:h-28 rounded-2xl m-4 shrink-0 hover:cursor-pointer"
-                  >
-                    <input {...getInputProps()} />
-
-                    {!userQuery.data.picture ? (
-                      <div className="flex flex-row max-sm:w-28 max-sm:h-28 rounded-2xl shrink-0 bg-slate-100 w-36 h-36 hover:cursor-pointer items-center justify-center">
-                        <CgProfile size={80} color="gray" />
-                      </div>
-                    ) : (
-                      <Image
-                        style={{
-                          borderRadius: "20px",
-                        }}
+    <div className="  relative h-screen w-full p-3 bg-zinc-900 overflow-y-scroll scrollbar-hide">
+      {userQuery.data ? (
+        <div className="flex flex-col h-[55%] w-full pt-6 mt-2 px-4 justify-center m-1">
+          <div className="flex flex-col w-full rounded-xl p-4 shadow-md shadow-blue-300 bg-zinc-900">
+            <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
+              <div className="grid-cols-1 lg:col-span-3 py-2">
+                <div
+                  {...getRootProps()}
+                  className="flex-1  text-center px-2 py-2 m-1"
+                >
+                  <input {...getInputProps()} />
+                  {!userQuery.data.picture ? (
+                    <div className="relative shadow-xl ml-6 h-32 w-32 -my-4  rounded-2xl overflow-hidden ">
+                      <CgProfile size={80} color="gray" />
+                    </div>
+                  ) : (
+                    <div className="relative shadow-xl mx-auto h-28 w-28 -my-4  rounded-full overflow-hidden  ">
+                      <img
+                        className="object-cover w-full h-full"
                         src={userQuery.data.picture}
-                        alt={""}
-                        height={30}
-                        width={160}
+                        // src="https://wallpapershome.com/images/pages/pic_h/10326.jpg"
                       />
-                    )}
-                  </div>
-                  <div className="flex flex-col my-4">
-                    <div className="flex gap-2 items-center">
-                      <h1 className=" text-bold">{userQuery.data?.name}</h1>
                     </div>
-
-                    <div className="my-4">
-                      <div className="flex ">
-                        <FcGraduationCap size={25} color="gray" />
-                        <p className="mx-2">{userQuery.data?.college}</p>
-                      </div>
-                      <div className="flex gap-2 items-center">
-                        <CiLocationOn color="green" size={25} />
-                        <p>Kolkata, West Bengal ,India</p>
-                      </div>
-
-                      <div className="flex ">
-                        <p className="mx-2 my-2">{userQuery.data.bio}</p>
-                      </div>
-                    </div>
+                  )}
+                </div>
+              </div>
+              <div className="col-span-1 lg:col-span-9">
+                <div className="text-center lg:text-left">
+                  <h2 className="text-2xl font-bold text-gray-100">
+                    {userQuery.data?.name}
+                  </h2>
+                  <p className="mt-1 font-semibold text-gray-500">
+                    @{userQuery.data?.username}
+                  </p>
+                  <p className="mt-3 text-gray-200">
+                    {/* Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque
+                  fugit rem voluptas laboriosam officia natus nemo Lorem ipsum
+                  dolor sit am */}
+                    {/* {userQuery.data.bio} */}
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Eaque fugit rem voluptas laboriosam officia natus nemoLorem
+                    ipsum dolor sit amet consectetur adipisicing elit. Eaque
+                    fugit rem voluptas laboriosam officia natus nemo
+                  </p>
+                </div>
+                <div className="mt-6 grid grid-cols-4 gap-6 text-center lg:text-left">
+                  <div>
+                    <p className="text-lg font-bold text-gray-100">345</p>
+                    <p className="text-md font-semibold text-gray-400">Posts</p>
                   </div>
-                  <div className="mx-20 flex  gap-2 my-5 ">
-                    <Link href="/edit-user">
-                      <div className="flex items-center gap-2">
-                        <p>Edit User</p>
-                        <BiEdit />
-                      </div>
+                  <div>
+                    <p className="text-lg font-bold text-gray-100">345</p>
+                    <p className="text-md font-semibold text-gray-400">
+                      Followers
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-lg font-bold text-gray-100">345</p>
+                    <p className="text-md font-semibold text-gray-400">
+                      Following
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-lg font-bold text-gray-100">345</p>
+                    <p className="text-md font-semibold text-gray-400">
+                      Contributions
+                    </p>
+                  </div>
+                </div>
+                <div className="mt-4 grid grid-cols-2 gap-8">
+                  <button className="w-full rounded-xl border-2 border-blue-500 bg-white px-2 py-2 font-semibold text-blue-500 hover:bg-blue-500 hover:text-white">
+                    Follow
+                  </button>
+                  <Link href="/edit-user">
+                    <button className="w-full rounded-xl border-2 border-blue-500 bg-white px-2 py-2 font-semibold text-blue-500 hover:bg-blue-500 hover:text-white">
+                      {/* <BiEdit className="justify-center" /> */}
+                      Edit Profile
+                    </button>
+                  </Link>
+                </div>
+
+                <div>
+                  <div className="flex justify-center ">
+                    <p className="text-md font-semibold text-blue-300 mt-2  ">
+                      Stay Connected With
+                    </p>
+                  </div>
+                  <div className="flex justify-center  gap-16 pt-2">
+                    <Link href="https://www.facebook.com/">
+                      <FaFacebookSquare className="w-6 h-6 text-blue-600 cursor-pointer" />
+                    </Link>
+                    <Link href="https://twitter.com/">
+                      <BsTwitter className="w-6 h-6 text-blue-400 cursor-pointer" />
+                    </Link>
+                    <Link href="https://www.instagram.com/">
+                      <FaInstagram className="w-6 h-6 text-yellow-400 cursor-pointer" />
+                    </Link>
+                    <Link href="https://www.linkedin.com/">
+                      <FaLinkedin className="w-6 h-6 text-blue-400 cursor-pointer" />
                     </Link>
                   </div>
                 </div>
               </div>
             </div>
-          ) : (
-            "please login"
-          )}
+          </div>
         </div>
-      </div>
-      <CreateClinic />
+      ) : (
+        "please login"
+      )}
 
-      <div></div>
-      <div className="flex justify-evenly bg-zinc-700 mx-20 rounded-full p-2">
+      {/* <CreateClinic /> */}
+
+      <div className="flex justify-evenly mt-16 bg-zinc-700 mx-20 rounded-full p-2">
         <p
           className={
             toggle === 1
@@ -209,7 +257,7 @@ const UserProfile = () => {
           Liked Posts
         </p>
       </div>
-      <div className="flex flex-col items-center">
+      <div className="flex flex-col ">
         <div className={toggle === 1 ? " items-center" : "hidden"}>
           {PostQuery.data?.map((post: any, index: any) => (
             <PostCard
@@ -241,7 +289,11 @@ function Profile() {
         <div className="flex flex-row h-[91vh]">
           <LeftBar />
           <UserProfile />
-          <Rightbar />
+          <div className="grid justify-items-center w-[45%] mx-2 ">
+            <RightUpbar />
+
+            <RightDownbar />
+          </div>
         </div>
       </div>
     </div>

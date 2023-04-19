@@ -248,9 +248,7 @@ const PostItem: React.FC<any> = ({
                 cursor="pointer"
               >
                 <Icon as={BsChat} mr={2} />
-                <Text fontSize="9pt">{
-                  data.comments.length
-                }</Text>
+                <Text fontSize="9pt">{data.comments.length}</Text>
               </Flex>
             </div>
             <Flex
