@@ -81,7 +81,7 @@ const EditPost: FC<any> = ({ data, picture, id, title }) => {
   useEffect(() => {
     setValue(
       "displayImages",
-      picture.map((pic: any) => pic.picture)
+      picture?.map((pic: any) => pic.picture)
     );
     setValue("description", data);
     setValue("title", title);

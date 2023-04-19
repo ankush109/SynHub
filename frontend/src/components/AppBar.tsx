@@ -46,15 +46,17 @@ import {
 import { CiEdit } from "react-icons/ci";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import { GetUserQuery } from "@/api/user";
 const ProfileDropdownMenu = () => {
   const router = useRouter();
+  const userQuery = GetUserQuery();
 
   return (
     <DropdownMenu.Root>
       <DropdownMenu.Trigger className="outline-none">
-        <div className="border-2 border-gray-400 rounded-2xl ml-5 shrink-0 hover:cursor-pointer">
+        <div className="border-2 border-gray-400 rounded-full ml-5 shrink-0 hover:cursor-pointer">
           <img
-            src="/images/logo.png"
+            src={userQuery.data?.picture}
             className="h-10 w-10 rounded-full object-cover"
             alt="Synergy Logo"
           />
@@ -113,6 +115,7 @@ const ProfileDropdownMenu = () => {
 
 const AppBar = () => {
   const [selectedTab, setSelectedTab] = React.useState("");
+
   useEffect(() => {
     const path = window.location.pathname;
     console.log(path);
@@ -120,8 +123,8 @@ const AppBar = () => {
     setSelectedTab(path);
   }, [selectedTab]);
   return (
-    <nav className="bg-white border-gray-200 dark:bg-zinc-700">
-      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-2.5 ">
+    <nav className="bg-white w-full border-gray-200 dark:bg-gray-800">
+      <div className=" flex flex-wrap items-center justify-between mx-10  p-2.5 ">
         <Link href="/home" className="flex items-center">
           <img
             src="/images/logo.png"

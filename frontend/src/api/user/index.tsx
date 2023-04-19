@@ -19,7 +19,33 @@ const AuthAPI = () => {
     });
   }
 };
+const getUserByUsername = (username: string) => {
+  try {
+    if (!username) {
+      throw new Error();
+    }
+    return AuthAPI().get(`/user/get-user-by-username/${username}`);
+  } catch (e) {
+    return e as any;
+  }
+};
 
+const GetUserByUsernameQuery = (username: string) =>
+  useQuery({
+    queryKey: ["get-user-by-username", username],
+    queryFn: () => getUserByUsername(username),
+    select: (data: any) => {
+      const resp = data.data;
+      return resp;
+    },
+  });
+const getreccommendedUsers = () => {
+  try {
+    return AuthAPI().get("/user/get-recommended-users");
+  } catch (e) {
+    return e;
+  }
+};
 const getUser = () => {
   try {
     return AuthAPI().get("/user/get-user");
@@ -55,7 +81,15 @@ const updateProfilePicture = (data: { picture: string }) => {
     return e;
   }
 };
-
+const GetRecommendedUsersQuery = () =>
+  useQuery({
+    queryKey: ["get-recommended-users"],
+    queryFn: () => getreccommendedUsers(),
+    select: (data: any) => {
+      const resp = data.data;
+      return resp;
+    },
+  });
 const GetUserQuery = () =>
   useQuery({
     queryKey: ["get-user"],
@@ -79,5 +113,7 @@ export {
   GetPostQuery,
   EditUser,
   createPost,
+  GetUserByUsernameQuery,
   updateProfilePicture,
+  GetRecommendedUsersQuery,
 };

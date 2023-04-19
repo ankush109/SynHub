@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import AppBar from "./AppBar";
 import LeftBar from "./LeftBar";
 import Rightbar from "./RightUpbar";
@@ -8,7 +8,12 @@ import { FcGraduationCap } from "react-icons/fc";
 import { useDropzone } from "react-dropzone";
 import PostCard from "./PostCard";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { GetPostQuery, GetUserQuery, updateProfilePicture } from "@/api/user";
+import {
+  GetPostQuery,
+  GetUserByUsernameQuery,
+  GetUserQuery,
+  updateProfilePicture,
+} from "@/api/user";
 import CreateClinic from "./createPost";
 import { PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
 import { createId } from "@paralleldrive/cuid2";
@@ -18,13 +23,23 @@ import Image from "next/image";
 import toast from "react-hot-toast";
 import RightUpbar from "./RightUpbar";
 import RightDownbar from "./RightDownbar";
-const UserProfile = () => {
-  const PostQuery = GetPostQuery();
+import { useRouter } from "next/router";
+import UserPostCard from "./userPostCard";
 
+const User: FC<{
+  username: string;
+}> = ({ username }) => {
+  const PostQuery = GetPostQuery();
+  const router = useRouter();
+  const userQuery = GetUserByUsernameQuery(username);
   const [files, setFiles] = useState<any[]>([]);
-  const userQuery = GetUserQuery();
+
   const profileImage = useRef("");
 
+  useEffect(() => {
+    userQuery.refetch();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [username]);
   const onDrop: any = useCallback(
     (acceptedFiles: string[], fileRejections: any[]) => {
       if (acceptedFiles.length > 0) {
@@ -168,14 +183,7 @@ const UserProfile = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="mx-20 flex  gap-2 my-5 ">
-                    <Link href="/edit-user">
-                      <div className="flex items-center gap-2">
-                        <p>Edit User</p>
-                        <BiEdit />
-                      </div>
-                    </Link>
-                  </div>
+                  <div className="mx-20 flex  gap-2 my-5 "></div>
                 </div>
               </div>
             </div>
@@ -184,10 +192,9 @@ const UserProfile = () => {
           )}
         </div>
       </div>
-      <CreateClinic />
 
       <div></div>
-      <div className="flex justify-evenly bg-zinc-700 mx-20 rounded-full p-2">
+      <div className="flex justify-evenly bg-zinc-700 mx-40 rounded-full p-2">
         <p
           className={
             toggle === 1
@@ -198,26 +205,15 @@ const UserProfile = () => {
             updatetoggle(1);
           }}
         >
-          My Posts
-        </p>
-        <p
-          className={
-            toggle === 2
-              ? " border-b-4 border-white cursor-pointer"
-              : " cursor-pointer"
-          }
-          onClick={() => {
-            updatetoggle(2);
-          }}
-        >
-          Liked Posts
+          User posts
         </p>
       </div>
       <div className="flex flex-col">
         <div className={toggle === 1 ? "block" : "hidden"}>
-          {PostQuery.data?.map((post: any, index: any) => (
-            <PostCard
+          {userQuery.data?.Posts?.map((post: any, index: any) => (
+            <UserPostCard
               data={post}
+              username={username}
               key={index}
               user={post.user}
               createdAt={post.createdAt}
@@ -237,23 +233,5 @@ const UserProfile = () => {
     </div>
   );
 };
-function Profile() {
-  return (
-    <div className="">
-      <div className="">
-        <AppBar />
-        <div className="flex flex-row h-[91vh]">
-          <LeftBar />
-          <UserProfile />
-          <div className="grid justify-items-center w-[44%]  bg-zinc-900">
-            <RightUpbar />
 
-            <RightDownbar />
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-export default Profile;
+export default User;
