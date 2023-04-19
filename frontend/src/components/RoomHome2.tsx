@@ -43,7 +43,18 @@ function Home() {
               containerClass="-mx-[10px]"
               itemClass="px-[10px]"
             > */}
-            <div className="flex-1  text-center px-2 py-2 m-1">
+            <div className="flex-1  text-center px-2 py-2 m-1 group cursor-pointer ">
+              <div className="relative shadow-xl mx-auto h-24 w-24 -my-12 border-blue-300  hover:border-blue-300 hover:shadow-lg rounded-full overflow-hidden border-4 ">
+                <img
+                  className="object-cover w-full h-full"
+                  src="https://wallpapershome.com/images/pages/pic_h/10326.jpg"
+                />
+              </div>
+              <h1 className="pt-12 text-base font-semibold text-blue-300 hover:text-blue-300 group cursor-pointer hover:shadow-lg">
+                Web Development
+              </h1>
+            </div>
+            <div className="flex-1  text-center px-2 py-2 m-1 ">
               <div className="relative shadow-xl mx-auto h-24 w-24 -my-12 border-white hover:border-blue-300 hover:shadow-lg rounded-full overflow-hidden border-4 ">
                 <img
                   className="object-cover w-full h-full"
@@ -121,6 +132,32 @@ function Home() {
               </h1>
             </div>
             {/* </Carousel> */}
+          </div>
+          <div className="flex flex-col justify-center item-center pl-12">
+            <h1 className="text-base text-start cursor-pointer font-bold text-yellow-400  pb-1 w-full">
+              #WEB DEVELOPMENT
+            </h1>
+          </div>
+          <div className="flex  my-2 flex-col mx-10 bg-zinc-700 rounded-xl  ">
+            <div className="flex items-center  flex-row h-14">
+              <img
+                className=" my-8 mx-5 w-10 h-10 rounded-full"
+                src="https://scontent.fccu3-1.fna.fbcdn.net/v/t39.30808-6/311569098_1471832893328696_953621629116532090_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=174925&_nc_ohc=I7TFkrXZc7wAX-vVMC7&_nc_ht=scontent.fccu3-1.fna&oh=00_AfBsVybr-5jRKc8UeqRmoXCunPcUfYHZn3xyr3k3vdRalg&oe=643D3069"
+              />
+              {/* <p className=" p-3 bg-zinc-800  border border-gray-300 h-10 focus:outline-zinc-600 rounded-xl w-2/3 text-white ">
+                Share your Doubts
+              </p> */}
+              <p>Share your Doubts....</p>
+              <div className="flex items-center  ml-20 pl-1 ">
+                <CreateClinic />
+              </div>
+              {/* <div className="mx-8 bg-zinc-900 w-28 flex gap-1 p-1 rounded-2xl px-1">
+                <h2 className="mx-2">Media</h2>
+                <div className="justify-center items-center flex">
+                  <MdPermMedia size={18} />
+                </div>
+              </div> */}
+            </div>
           </div>
 
           {/* <div className="flex p-2 my-8  bg-zinc-700 rounded-xl flex-col mx-20">
