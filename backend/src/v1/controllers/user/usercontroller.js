@@ -2,7 +2,14 @@ import prisma from "../../../prisma";
 import { customResponse } from "../../../utils/Response";
 import { NextFunction, Request, Response } from "express";
 import createError from "http-errors";
+import { usernameSchema } from "../../schemas/index";
 import { z } from "zod";
+const usernameExistsSchema = z
+  .object({
+    username: usernameSchema,
+  })
+  .strict();
+
 const usercontroller = {
   async getUser(req, res, next) {
     try {
@@ -221,6 +228,98 @@ const usercontroller = {
         },
       });
       res.status(200).json(rooms);
+    } catch (err) {
+      console.log(err);
+      return next(createError.InternalServerError());
+    }
+  },
+  async getUserByUsername(req, res, next) {
+    try {
+      const username = req.params.username;
+      const user = await prisma.user.findFirst({
+        where: {
+          username: username,
+        },
+        select: {
+          id: true,
+          name: true,
+          username: true,
+          picture: true,
+          bio: true,
+          college: true,
+          phoneNumber: true,
+          department: true,
+          year: true,
+          createdAt: true,
+          updatedAt: true,
+          Posts: {
+            select: {
+              id: true,
+              title: true,
+              description: true,
+              createdAt: true,
+              updatedAt: true,
+              upvotes: true,
+              downvotes: true,
+
+              commentCount: true,
+              comments: {
+                select: {
+                  id: true,
+                  description: true,
+                  createdAt: true,
+                  updatedAt: true,
+                  user: {
+                    select: {
+                      id: true,
+                      name: true,
+                      username: true,
+                      picture: true,
+                    },
+                  },
+                },
+              },
+
+              user: {
+                select: {
+                  id: true,
+                  name: true,
+                  username: true,
+                  picture: true,
+                },
+              },
+            },
+          },
+        },
+      });
+      if (user) {
+        res.status(200).json(user);
+      }
+    } catch (err) {
+      console.log(err);
+      return next(createError.InternalServerError());
+    }
+  },
+  async usernamExists(req, res, next) {
+    try {
+      await usernameExistsSchema.parse(req.body);
+      res.send(customResponse(200, "OK"));
+    } catch (err) {
+      console.log(err);
+      return next(createError.InternalServerError());
+    }
+  },
+  async getRecommendedUsers(req, res, next) {
+    try {
+      const user = await prisma.user.findMany({
+        select: {
+          id: true,
+          name: true,
+          username: true,
+          picture: true,
+        },
+      });
+      res.status(200).json(user);
     } catch (err) {
       console.log(err);
       return next(createError.InternalServerError());
