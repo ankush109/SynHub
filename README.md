@@ -67,6 +67,15 @@
 
 ![](https://raw.githubusercontent.com/Ankush109/Synergy/Ankush/frontend/public/profile.png?token=GHSAT0AAAAAAB6U4VYEUWCJCUMOOQRLJWFCZCA6ZQA)
 
+### Login 
+
+![](https://raw.githubusercontent.com/Ankush109/Synergy/Ankush/frontend/public/login.png?token=GHSAT0AAAAAAB6U4VYFQGZKIEPHGYVKJOWGZCA65IQ)
+
+
+### Edit-Profile 
+
+![](https://raw.githubusercontent.com/Ankush109/Synergy/Ankush/frontend/public/edit-user.png?token=GHSAT0AAAAAAB6U4VYELR2MCC3YNLN7DH7AZCA66AA)
+
 
 
 ## Made By
