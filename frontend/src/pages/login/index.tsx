@@ -52,10 +52,7 @@ const Login = ({ googleUser }: { googleUser: googleProfile | null }) => {
         localStorage.setItem("token", data.message.accessToken);
         toast.success("Login Successful", { id: data.message });
         router.replace("/home");
-      } else if (response.status !== 200) {
-        toast.success(data.message, { id: data.message });
       }
-
       reset();
       // As reset will fallback to defaultValues
       // so they have to be cleared explicitly
@@ -71,7 +68,7 @@ const Login = ({ googleUser }: { googleUser: googleProfile | null }) => {
             });
           });
         } else {
-          toast.error(errorMessage, { id: errorMessage });
+          toast.error("Please Check your Credentials");
         }
       } else {
         toast.error("Unable to Connect to Server", { id: "server-conn-fail" });
@@ -100,7 +97,7 @@ const Login = ({ googleUser }: { googleUser: googleProfile | null }) => {
           >
             <input
               className={classNames(
-                ["p-2 mt-8 rounded-2xl border"],
+                ["p-2 mt-8 rounded-2xl border text-black"],
                 [
                   errors.email
                     ? "border-2 border-red-500 focus:outline-red-600"
@@ -121,7 +118,7 @@ const Login = ({ googleUser }: { googleUser: googleProfile | null }) => {
               {/* "p-2 rounded-2xl border w-full" */}
               <input
                 className={classNames(
-                  ["p-2 rounded-2xl border w-full"],
+                  ["p-2 rounded-2xl border w-full text-black"],
                   [
                     errors.password
                       ? "border-2 border-red-500 focus:outline-red-600"
@@ -207,7 +204,9 @@ const Login = ({ googleUser }: { googleUser: googleProfile | null }) => {
             </Link>
           </div>
           <div className="mt-3 text-s font-semibold flex justify-between items-center  text-blue-500">
-            <p>Don't have an account?</p>
+            <Link href="/signup">
+              <p>Don't have an account?</p>
+            </Link>
             <Link href="/signup">
               <button className="py-2 px-5 bg-white text-blue-800  rounded-xl hover:bg-blue-500 hover:text-white hover:scale-110 duration-300">
                 Register

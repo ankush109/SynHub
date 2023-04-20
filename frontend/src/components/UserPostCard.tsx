@@ -37,13 +37,14 @@ import {
 } from "@/api/posts";
 import { toast } from "react-hot-toast";
 import CommentCard from "./commentCard";
-import { GetPostQuery } from "@/api/user";
+import { GetPostQuery, GetUserByUsernameQuery } from "@/api/user";
 import { FiSend } from "react-icons/fi";
 import { CgRemove } from "react-icons/cg";
 import { MdDelete } from "react-icons/md";
-const PostItem: React.FC<any> = ({
+const UserPostCard: React.FC<any> = ({
   id,
   title,
+  username,
   data,
   user,
   description,
@@ -53,14 +54,16 @@ const PostItem: React.FC<any> = ({
   let images: any = [];
 
   const [comments, setComments] = useState<any>(false);
-  const GetPostQuerys = GetPostQuery();
+  const GetPostQuerys = GetUserByUsernameQuery(username);
   displayImages?.map((image: any) => {
     images.push({
       original: image,
       thumbnail: image,
     });
   });
-
+  useEffect(() => {
+    console.log(data, "data");
+  });
   var moment = require("moment");
   const handleDownvote = async () => {
     const data = await disklikePost(id);
@@ -160,14 +163,7 @@ const PostItem: React.FC<any> = ({
                       </h1>
                     </Link>
                   </div>
-                  <div>
-                    <EditPost
-                      data={description}
-                      id={id}
-                      title={title}
-                      picture={displayImages}
-                    />
-                  </div>
+                  <div></div>
                 </div>
 
                 <div className="flex items-center">
@@ -226,7 +222,6 @@ const PostItem: React.FC<any> = ({
               </div>
             </div>
           </Stack>
-
           <Flex ml={1} mb={0.5} color="gray.500" fontWeight={600}>
             <div
               onClick={() => {
@@ -326,4 +321,4 @@ const PostItem: React.FC<any> = ({
   );
 };
 
-export default PostItem;
+export default UserPostCard;

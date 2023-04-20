@@ -46,15 +46,17 @@ import {
 import { CiEdit } from "react-icons/ci";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import { GetUserQuery } from "@/api/user";
 const ProfileDropdownMenu = () => {
   const router = useRouter();
+  const userQuery = GetUserQuery();
 
   return (
     <DropdownMenu.Root>
       <DropdownMenu.Trigger className="outline-none">
-        <div className="border-2 border-gray-400 rounded-2xl ml-5 shrink-0 hover:cursor-pointer">
+        <div className="border-2 border-gray-400 rounded-full ml-5 shrink-0 hover:cursor-pointer">
           <img
-            src="/images/logo.png"
+            src={userQuery.data?.picture}
             className="h-10 w-10 rounded-full object-cover"
             alt="Synergy Logo"
           />
@@ -113,6 +115,7 @@ const ProfileDropdownMenu = () => {
 
 const AppBar = () => {
   const [selectedTab, setSelectedTab] = React.useState("");
+
   useEffect(() => {
     const path = window.location.pathname;
     console.log(path);
@@ -120,8 +123,8 @@ const AppBar = () => {
     setSelectedTab(path);
   }, [selectedTab]);
   return (
-    <nav className="bg-white border-gray-200 dark:bg-gray-800">
-      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-2.5 ">
+    <nav className="bg-white w-full border-gray-200 dark:bg-gray-800">
+      <div className=" flex flex-wrap items-center justify-between mx-10  p-2.5 ">
         <Link href="/home" className="flex items-center">
           <img
             src="/images/logo.png"
@@ -235,14 +238,14 @@ const AppBar = () => {
             />
           </div>
 
-          <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-800 dark:border-gray-700">
+          <ul className="flex flex-col m-2 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white  md:dark:bg-zinc-800  dark:border-gray-700">
             <li>
               <Link
                 href="/home"
                 onClick={() => setSelectedTab("home")}
                 className={
                   selectedTab === "/home"
-                    ? "block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500"
+                    ? "block py-2 pl-3 pr-4 text-white bg-black rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500"
                     : ""
                 }
                 aria-current="page"
@@ -257,7 +260,7 @@ const AppBar = () => {
                 onClick={() => setSelectedTab("profile")}
                 className={
                   selectedTab === "/profile"
-                    ? "block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500"
+                    ? "block py-2 pl-3 pr-4 text-white bg-black rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500"
                     : "bg-yellow-500"
                 }
               >

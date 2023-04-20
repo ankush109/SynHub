@@ -89,23 +89,29 @@ const Signup = ({ googleUser }: { googleUser: googleProfile | null }) => {
     }
   };
 
-  // const checkUsernameExistsHandler = async (e: React.ChangeEvent<HTMLInputElement>): Promise<void> => {
-  //   try {
-  //     await checkUsernameExists({ username: e.target.value });
-  //     clearErrors("username");
-  //     setIsUsernameAvailable(true);
-  //   } catch (err: any) {
-  //     if (err.response) {
-  //       setIsUsernameAvailable(false);
-  //       const errorMessage = err.response.data.message[0] as { message: string; path: [keyof registerSchemaType] };
-  //       setError(errorMessage.path[0], {
-  //         message: errorMessage.message,
-  //       });
-  //     } else {
-  //       toast.error("Unable to Connect to Server", { id: "server-conn-fail" });
-  //     }
-  //   }
-  // };
+  const checkUsernameExistsHandler = async (
+    e: React.ChangeEvent<HTMLInputElement>
+  ): Promise<void> => {
+    if (e.target.value !== " ") {
+      clearErrors("username");
+    }
+    try {
+      await checkUsernameExists({ username: e.target.value });
+      clearErrors("username");
+      setIsUsernameAvailable(true);
+    } catch (err: any) {
+      if (err.response) {
+        setIsUsernameAvailable(false);
+        const errorMessage = err.response.data.message[0] as {
+          message: string;
+          path: [keyof registerSchemaType];
+        };
+        setError(errorMessage.path[0], {
+          message: errorMessage.message,
+        });
+      }
+    }
+  };
 
   return (
     <section className="bg-gray-900 min-h-screen flex items-center justify-center">
@@ -132,7 +138,7 @@ const Signup = ({ googleUser }: { googleUser: googleProfile | null }) => {
             {/* "p-2 mt-3 rounded-2xl border" */}
             <input
               className={classNames(
-                ["p-2 mt-3 rounded-2xl border"],
+                ["p-2 mt-3 rounded-2xl border  text-black"],
                 [
                   errors.name
                     ? "border-2 border-red-500 focus:outline-red-600"
@@ -152,7 +158,7 @@ const Signup = ({ googleUser }: { googleUser: googleProfile | null }) => {
             {/* "p-2 mt-3 rounded-2xl border" */}
             <input
               className={classNames(
-                ["p-2 mt-3 rounded-2xl border"],
+                ["p-2 mt-3 rounded-2xl border text-black"],
                 [
                   errors.username
                     ? "border-2 border-red-500 focus:outline-red-600"
@@ -168,7 +174,7 @@ const Signup = ({ googleUser }: { googleUser: googleProfile | null }) => {
               type="text"
               placeholder="Choose your username"
               {...register("username")}
-              // onChange={checkUsernameExistsHandler}
+              onChange={checkUsernameExistsHandler}
             />
             {errors.username && (
               <p className="text-red-500 text-sm italic">
@@ -183,7 +189,7 @@ const Signup = ({ googleUser }: { googleUser: googleProfile | null }) => {
             {/* p-2 mt-3 rounded-2xl border */}
             <input
               className={classNames(
-                ["p-2 mt-3 rounded-2xl border "],
+                ["p-2 mt-3 rounded-2xl border  text-black"],
                 [
                   errors.email
                     ? "border-2 border-red-500 focus:outline-red-600"
@@ -204,7 +210,7 @@ const Signup = ({ googleUser }: { googleUser: googleProfile | null }) => {
               {/* p-2 mt-3 rounded-2xl border w-full */}
               <input
                 className={classNames(
-                  [" p-2 mt-3 rounded-2xl border w-full"],
+                  [" p-2 mt-3 rounded-2xl border w-full  text-black"],
                   [
                     errors.password
                       ? "border-2 border-red-500 focus:outline-red-600"
@@ -238,7 +244,7 @@ const Signup = ({ googleUser }: { googleUser: googleProfile | null }) => {
               {/* "p-2 mt-3 rounded-2xl border w-full" */}
               <input
                 className={classNames(
-                  ["p-2 mt-3 rounded-2xl border w-full"],
+                  ["p-2 mt-3 rounded-2xl border w-full  text-black"],
                   [
                     errors.confirmPassword
                       ? "border-2 border-red-500 focus:outline-red-600"
@@ -314,7 +320,9 @@ const Signup = ({ googleUser }: { googleUser: googleProfile | null }) => {
             <a href="#">Forgot your password?</a>
           </div> */}
           <div className="mt-3 text-s font-semibold flex justify-between items-center  text-blue-300">
-            <p>Already have an account?</p>
+            <Link href="/login">
+              <p>Already have an account?</p>
+            </Link>
             <Link href="/login">
               <button className="py-2 px-5 bg-white text-blue-800  rounded-xl hover:bg-blue-500 hover:text-white hover:scale-110 duration-300">
                 Login

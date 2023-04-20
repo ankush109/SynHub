@@ -21,12 +21,19 @@
 
 // export default RightUpbar;
 
-import React from "react";
+import { GetRecommendedUsersQuery } from "@/api/user";
+import { useRouter } from "next/router";
+import React, { useEffect } from "react";
 // import { data } from "../data/data.js";
 import { FaShoppingBag } from "react-icons/fa";
 import { MdBiotech } from "react-icons/md";
 
 const RightDownbar = () => {
+  const router = useRouter();
+  const userQuery = GetRecommendedUsersQuery();
+  useEffect(() => {
+    console.log(userQuery.data);
+  }, [userQuery.data]);
   return (
     <div className="w-[70%] col-span-1 relative lg:h-[40vh] h-[50vh] my-4 mx-4 border rounded-xl bg-zinc-800 overflow-scroll  scrollbar-hide ">
       <div className="sticky top-0 bg-zinc-800 bg-zinc-800    rounded-lg h-10 w-full absolute top ">
@@ -35,73 +42,22 @@ const RightDownbar = () => {
         </h1>
       </div>
       <ul>
-        <div className="flex mb-2 justify-start items-center gap-4 pl-5 hover:bg-gray-900 p-1 rounded-md group cursor-pointer hover:shadow-lg m-auto">
-          <h3 className="text-base text-gray-400 group-hover:text-white font-semibold ">
-            1.
-          </h3>
-          <h3 className="text-base text-gray-400 group-hover:text-white font-semibold ">
-            Tourist
-          </h3>
-          <h3 className="flex  text-base text-gray-400 group-hover:text-white font-semibold ">
-            203
-          </h3>
-        </div>
-        <div className="flex mb-2 justify-start items-center gap-4 pl-5 hover:bg-gray-900 p-1 rounded-md group cursor-pointer hover:shadow-lg m-auto">
-          <h3 className="text-base text-gray-400 group-hover:text-white font-semibold ">
-            2.
-          </h3>
-          <h3 className="text-base text-gray-400 group-hover:text-white font-semibold ">
-            Ron007
-          </h3>
-          <h3 className="flex  text-base text-gray-400 group-hover:text-white font-semibold ">
-            166
-          </h3>
-        </div>
-        <div className="flex mb-2 justify-start items-center gap-4 pl-5 hover:bg-gray-900 p-1 rounded-md group cursor-pointer hover:shadow-lg m-auto">
-          <h3 className="text-base text-gray-400 group-hover:text-white font-semibold ">
-            1.
-          </h3>
-          <h3 className="text-base text-gray-400 group-hover:text-white font-semibold ">
-            Tourist
-          </h3>
-          <h3 className="flex  text-base text-gray-400 group-hover:text-white font-semibold ">
-            203
-          </h3>
-        </div>
-        <div className="flex mb-2 justify-start items-center gap-4 pl-5 hover:bg-gray-900 p-1 rounded-md group cursor-pointer hover:shadow-lg m-auto">
-          <h3 className="text-base text-gray-400 group-hover:text-white font-semibold ">
-            2.
-          </h3>
-          <h3 className="text-base text-gray-400 group-hover:text-white font-semibold ">
-            Ron007
-          </h3>
-          <h3 className="flex  text-base text-gray-400 group-hover:text-white font-semibold ">
-            166
-          </h3>
-        </div>
-        <div className="flex mb-2 justify-start items-center gap-4 pl-5 hover:bg-gray-900 p-1 rounded-md group cursor-pointer hover:shadow-lg m-auto">
-          <h3 className="text-base text-gray-400 group-hover:text-white font-semibold ">
-            1.
-          </h3>
-          <h3 className="text-base text-gray-400 group-hover:text-white font-semibold ">
-            Tourist
-          </h3>
-          <h3 className="flex  text-base text-gray-400 group-hover:text-white font-semibold ">
-            203
-          </h3>
-        </div>
-        <div className="flex mb-2 justify-start items-center gap-4 pl-5 hover:bg-gray-900 p-1 rounded-md group cursor-pointer hover:shadow-lg m-auto">
-          <h3 className="text-base text-gray-400 group-hover:text-white font-semibold ">
-            2.
-          </h3>
-          <h3 className="text-base text-gray-400 group-hover:text-white font-semibold ">
-            Ron007
-          </h3>
-          <h3 className="flex  text-base text-gray-400 group-hover:text-white font-semibold ">
-            166
-          </h3>
-        </div>
-
+        {userQuery.data?.map((user: any) => {
+          return (
+            <div className="flex mb-2 justify-between items-center gap-4 pl-6  hover:bg-gray-900 p-1 px-5 rounded-md group cursor-pointer hover:shadow-lg m-auto">
+              <img src={user.picture} className="h-10 w-10 rounded-full" />
+              <h3
+                className="text-base text-gray-400 group-hover:text-white font-semibold "
+                onClick={() => {
+                  router.push(`/user/${user.username}`);
+                }}
+              >
+                {user.username}
+              </h3>
+              <h3>202</h3>
+            </div>
+          );
+        })}
         {/* <li
           key="id"
           className="bg-zinc-800 hover:bg-gray-100 rounded-lg p-2 flex items-center cursor-pointer"

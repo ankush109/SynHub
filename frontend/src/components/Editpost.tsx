@@ -35,6 +35,7 @@ import { FcPlus } from "react-icons/fc";
 import { GetPostQuery, createPost } from "@/api/user";
 import { Router, useRouter } from "next/router";
 import { updatePost } from "@/api/posts";
+import { BiEdit } from "react-icons/bi";
 
 // import { EditPost, GetClinicsQuery } from "../../api/clinic";
 const EditPost: FC<any> = ({ data, picture, id, title }) => {
@@ -80,7 +81,7 @@ const EditPost: FC<any> = ({ data, picture, id, title }) => {
   useEffect(() => {
     setValue(
       "displayImages",
-      picture.map((pic: any) => pic.picture)
+      picture?.map((pic: any) => pic.picture)
     );
     setValue("description", data);
     setValue("title", title);
@@ -202,13 +203,12 @@ const EditPost: FC<any> = ({ data, picture, id, title }) => {
   };
 
   return (
-    <div className=" mx-20 my-5 w-48  flex  items-center rounded-full bg-zinc-600">
-      <div className=" flex ">
+    <div className=" flex items-end justify-end">
+      <div className=" flex items-end justify-end ">
         <Dialog.Root>
-          <Dialog.Trigger className="h-10 justify-around rounded-full flex flex-col items-center ">
-            <div className="flex  gap-1 items-center ">
-              <div className="mx-4"> Edit Post</div>
-              <FcPlus size={25} />
+          <Dialog.Trigger className="">
+            <div className="flex justify-end items-end   ">
+              <BiEdit color="red" size={25} />
             </div>
           </Dialog.Trigger>
           <Dialog.Portal className="">
@@ -221,7 +221,7 @@ const EditPost: FC<any> = ({ data, picture, id, title }) => {
                 <div className="flex flex-col w-1/3 items-center h-full justify-between">
                   <div className="flex flex-col w-full items-center">
                     <div className="text-3xl my-5 font-bold text-white">
-                      Make a post
+                      Edit post
                     </div>
                     <Lottie
                       animationData={postAnime}

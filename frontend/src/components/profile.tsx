@@ -286,10 +286,10 @@ function Profile() {
     <div className="">
       <div className="">
         <AppBar />
-        <div className="flex flex-row h-[91vh]">
+        <div className="flex flex-row h-[98vh]">
           <LeftBar />
           <UserProfile />
-          <div className="grid justify-items-center w-[45%] mx-2 ">
+          <div className="grid justify-items-center w-[40%]   bg-zinc-900">
             <RightUpbar />
 
             <RightDownbar />

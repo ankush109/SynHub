@@ -369,10 +369,9 @@ const postController = {
   },
   async deletePost(req, res, next) {
     try {
-      const { postId } = req.body;
       const post = await prisma.post.findUnique({
         where: {
-          id: postId,
+          id: req.params.id,
         },
       });
       if (post.userId !== req.user.id) {
@@ -380,11 +379,17 @@ const postController = {
       }
       await prisma.post.delete({
         where: {
-          id: postId,
+          id: req.params.id,
         },
       });
       res.json(customResponse(200, "Post deleted successfully"));
-    } catch (err) {}
+    } catch (err) {
+      console.log(err);
+      return next({
+        status: createError.InternalServerError().status,
+        message: err,
+      });
+    }
   },
 };
 export default postController;
