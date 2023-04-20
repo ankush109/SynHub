@@ -281,7 +281,7 @@ function Edit() {
                         placeholder="Enter your branch"
                       />
                     </label>
-                    <label className="block">
+                    {/* <label className="block">
                       <span className="text-white font-semibold">
                         Your Linkedin Profile
                       </span>
@@ -299,7 +299,7 @@ function Edit() {
                         )}
                         placeholder="Enter your Linkedin profile link"
                       />
-                    </label>
+                    </label> */}
                     <div>
                       <div className="flex flex-row justify-center">
                         <button
