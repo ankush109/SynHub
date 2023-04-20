@@ -114,11 +114,7 @@ function Home() {
             </div>
             {/* </Carousel> */}
           </div>
-          <div className="flex flex-col justify-center item-center pl-12">
-            <h1 className="text-base text-start cursor-pointer font-bold text-yellow-400  pb-1 w-full">
-              #WEB DEVELOPMENT
-            </h1>
-          </div>
+
           <div className="flex  my-2 flex-col mx-10 bg-zinc-700 rounded-xl  ">
             <div className="flex items-center  flex-row h-14">
               <img

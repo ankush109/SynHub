@@ -3,7 +3,8 @@ import { customResponse } from "../../../utils/Response";
 import { NextFunction, Request, Response } from "express";
 import createError from "http-errors";
 import { usernameSchema } from "../../schemas/index";
-import { z } from "zod";
+
+import { ZodError, z } from "zod";
 const usernameExistsSchema = z
   .object({
     username: usernameSchema,
@@ -302,10 +303,15 @@ const usercontroller = {
   },
   async usernamExists(req, res, next) {
     try {
-      await usernameExistsSchema.parse(req.body);
+      await usernameExistsSchema.parseAsync(req.body);
       res.send(customResponse(200, "OK"));
     } catch (err) {
-      console.log(err);
+      if (err instanceof ZodError) {
+        return next({
+          status: createError.InternalServerError().status,
+          message: err.issues,
+        });
+      }
       return next(createError.InternalServerError());
     }
   },

@@ -160,7 +160,14 @@ const PostItem: React.FC<any> = ({
                       </h1>
                     </Link>
                   </div>
-                  <div></div>
+                  <div>
+                    <EditPost
+                      data={description}
+                      id={id}
+                      title={title}
+                      picture={displayImages}
+                    />
+                  </div>
                 </div>
 
                 <div className="flex items-center">
@@ -219,6 +226,7 @@ const PostItem: React.FC<any> = ({
               </div>
             </div>
           </Stack>
+
           <Flex ml={1} mb={0.5} color="gray.500" fontWeight={600}>
             <div
               onClick={() => {

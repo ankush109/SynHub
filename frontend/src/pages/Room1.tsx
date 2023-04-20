@@ -1,5 +1,5 @@
 import AppBar from "@/components/AppBar";
-import RoomHome from "@/components/RoomHome";
+import RoomHome2 from "@/components/RoomHome2";
 import Home from "@/components/Home";
 import LeftBar from "@/components/LeftBar";
 import RightDownbar from "@/components/RightDownbar";
@@ -18,7 +18,7 @@ function index() {
           <LeftBar />
           {/* </div>
           </div> */}
-          <RoomHome />
+          <RoomHome2 />
           {/* <div className="flex flex-col bg-zinc-900 w-[42%] py-12 px-5 hidden lg:flex ">
             <div className="flex justify-left bg-zinc-800 w-full h-[95%] rounded-2xl "> */}
           <div className="grid justify-items-center w-[45%] mx-2 ">
