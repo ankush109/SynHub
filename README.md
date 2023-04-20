@@ -57,27 +57,17 @@
 
 ### Home page
 
-![](https://github.com/Ankush109/Travigo/blob/main/frontend/src/Components/images/Screenshot_20221211_012429.png)
+![](https://raw.githubusercontent.com/Ankush109/Synergy/Ankush/frontend/public/home.png?token=GHSAT0AAAAAAB6U4VYF7BZH2AMAZTP73XIYZCA6YNQ)
 
-### Login/Register page
+### Edit Post
 
-![](https://github.com/Ankush109/Travigo/blob/main/frontend/src/Components/images/Screenshot_20221211_022410.png)
+![](https://raw.githubusercontent.com/Ankush109/Synergy/Ankush/frontend/public/edtuser.png?token=GHSAT0AAAAAAB6U4VYFVY5ZNTJMGULOUTK6ZCA62EA)
 
-### new post page
+### profile 
 
-![](https://github.com/Ankush109/Travigo/blob/main/frontend/src/Components/images/Screenshot_20221211_012454.png)
+![](https://raw.githubusercontent.com/Ankush109/Synergy/Ankush/frontend/public/profile.png?token=GHSAT0AAAAAAB6U4VYEUWCJCUMOOQRLJWFCZCA6ZQA)
 
-### accounts page
 
-![](https://github.com/Ankush109/Travigo/blob/main/frontend/src/Components/images/Screenshot_20221211_012524.png)
-
-### change password
-
-![](https://github.com/Ankush109/Travigo/blob/main/frontend/src/Components/images/Screenshot_20221211_012538.png)
-
-### search user by name
-
-![](https://github.com/Ankush109/Travigo/blob/main/frontend/src/Components/images/Screenshot_20221211_020216.png)
 
 ## Made By
 
