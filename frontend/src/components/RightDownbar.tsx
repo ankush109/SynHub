@@ -22,6 +22,7 @@
 // export default RightUpbar;
 
 import { GetRecommendedUsersQuery } from "@/api/user";
+import { Avatar } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 // import { data } from "../data/data.js";
@@ -45,7 +46,7 @@ const RightDownbar = () => {
         {userQuery.data?.map((user: any) => {
           return (
             <div className="flex mb-2 justify-between items-center gap-4 pl-6  hover:bg-gray-900 p-1 px-5 rounded-md group cursor-pointer hover:shadow-lg m-auto">
-              <img src={user.picture} className="h-10 w-10 rounded-full" />
+              <Avatar className="w-10 h-10" src={userQuery.data?.picture} />
               <h3
                 className="text-base text-gray-400 group-hover:text-white font-semibold "
                 onClick={() => {

@@ -47,6 +47,7 @@ import { CiEdit } from "react-icons/ci";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { GetUserQuery } from "@/api/user";
+import { Avatar } from "@chakra-ui/react";
 const ProfileDropdownMenu = () => {
   const router = useRouter();
   const userQuery = GetUserQuery();
@@ -55,11 +56,7 @@ const ProfileDropdownMenu = () => {
     <DropdownMenu.Root>
       <DropdownMenu.Trigger className="outline-none">
         <div className="border-2 border-gray-400 rounded-full ml-5 shrink-0 hover:cursor-pointer">
-          <img
-            src={userQuery.data?.picture}
-            className="h-10 w-10 rounded-full object-cover"
-            alt="Synergy Logo"
-          />
+          <Avatar className="w-12 h-10" src={userQuery.data?.picture} />
         </div>
       </DropdownMenu.Trigger>
       <DropdownMenu.Portal>
@@ -253,30 +250,29 @@ const AppBar = () => {
                 <BiHomeCircle size="24" />
               </Link>
             </li>
-
             <li>
               <Link
                 href="/profile"
-                onClick={() => setSelectedTab("profile")}
                 className={
                   selectedTab === "/profile"
-                    ? "block py-2 pl-3 pr-4 text-white bg-black rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500"
-                    : "bg-yellow-500"
-                }
-              >
-                <MdOutlineNotificationsActive size="24" />
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="#"
-                className={
-                  selectedTab === ""
                     ? "block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500"
                     : "bg-yellow-500"
                 }
               >
                 <CgProfile size="24" />
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/"
+                onClick={() => setSelectedTab("profile")}
+                className={
+                  selectedTab === ""
+                    ? "block py-2 pl-3 pr-4 text-white bg-black rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500"
+                    : "bg-yellow-500"
+                }
+              >
+                <MdOutlineNotificationsActive size="24" />
               </Link>
             </li>
           </ul>

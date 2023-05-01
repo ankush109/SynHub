@@ -35,15 +35,18 @@ function Edit() {
     setValue("year", user?.year as string);
     setValue("department", user?.department as string);
     // setValue("linkedin profile", user?.linkedinprofile as string);
+    setValue("linkedin", user?.linkedin as string);
 
+    setValue("instagram", user?.instagram as string);
+    setValue("facebook", user?.facebook as string);
+    setValue("twitter", user?.twitter as string);
     setValue("bio", user?.bio as string);
-    setValue("phone", user?.phoneNumber as string);
+    setValue("phoneNumber", user?.phoneNumber as string);
     setValue("dob", user?.dob?.toString().split("T")[0] as string);
-    console.log(user, "user");
   }, [userQuery.isSuccess]);
   const [isUsernameAvailable, setIsUsernameAvailable] =
     useState<boolean>(false);
-  console.log(userQuery.data);
+
   const router = useRouter();
 
   //   const checkUsernameExistsHandler = async (
@@ -88,6 +91,10 @@ function Edit() {
       college: userQuery.data?.college,
       year: userQuery.data?.year,
       department: userQuery.data?.department,
+      linkedin: userQuery.data?.linkedin,
+      instagram: userQuery.data?.instagram,
+      facebook: userQuery.data?.facebook,
+      twitter: userQuery.data?.twitter,
     },
   });
   const onSubmit: SubmitHandler<z.infer<any>> = async (formdata: any) => {
@@ -108,7 +115,7 @@ function Edit() {
         <AppBar />
         <div className="flex flex-row h-[90.7vh]">
           <LeftBar />
-          <div className="bg-zinc-900  mx-4 px-8 w-full overflow-y-scroll scrollbar-hide">
+          <div className="bg-zinc-900  mx-4 px-8 w-[80%] overflow-y-scroll scrollbar-hide">
             <div className="bg-gray-800 py-5 px-8 my-10 mx-4 rounded-lg flex-col justify-center">
               <div className="flex flex-row justify-center">
                 <h2 className="text-3xl text-yellow-300 font-bold ">
@@ -171,7 +178,6 @@ function Edit() {
                         </p>
                       )}
                     </label>
-
                     <label className="block">
                       <span className="text-white font-semibold">
                         Your Date Of Birth
@@ -186,7 +192,6 @@ function Edit() {
                         placeholder="Enter your DOB"
                       />
                     </label>
-
                     <label className="block">
                       <span className="text-white font-semibold">Your Bio</span>
                       <span className="text-white ">(Max 100 words)</span>
@@ -204,7 +209,6 @@ function Edit() {
                         placeholder="Enter your bio "
                       ></textarea>
                     </label>
-
                     <label className="block">
                       <span className="text-white font-semibold">
                         Phone number
@@ -216,7 +220,7 @@ function Edit() {
                         className={classNames(
                           ["rounded w-full py-2 px-3 text-gray-700"],
                           [
-                            errors.phone
+                            errors.phoneNumber
                               ? "border-2 border-red-500 focus:outline-red-600"
                               : "border border-gray-300 focus:outline-blue-600",
                           ]
@@ -235,7 +239,7 @@ function Edit() {
                         className={classNames(
                           ["rounded w-full py-2 px-3 text-gray-700"],
                           [
-                            errors.phone
+                            errors.college
                               ? "border-2 border-red-500 focus:outline-red-600"
                               : "border border-gray-300 focus:outline-blue-600",
                           ]
@@ -254,7 +258,7 @@ function Edit() {
                         className={classNames(
                           ["rounded w-full py-2 px-3 text-gray-700"],
                           [
-                            errors.phone
+                            errors.year
                               ? "border-2 border-red-500 focus:outline-red-600"
                               : "border border-gray-300 focus:outline-blue-600",
                           ]
@@ -273,12 +277,88 @@ function Edit() {
                         className={classNames(
                           ["rounded w-full py-2 px-3 text-gray-700"],
                           [
-                            errors.phone
+                            errors.department
                               ? "border-2 border-red-500 focus:outline-red-600"
                               : "border border-gray-300 focus:outline-blue-600",
                           ]
                         )}
                         placeholder="Enter your branch"
+                      />
+                    </label>
+                    <label className="block">
+                      <span className="text-white font-semibold">
+                        Your Linkedin Profile
+                      </span>
+
+                      <input
+                        type="text"
+                        {...register("linkedin")}
+                        className={classNames(
+                          ["rounded w-full py-2 px-3 text-gray-700"],
+                          [
+                            errors.linkedin
+                              ? "border-2 border-red-500 focus:outline-red-600"
+                              : "border border-gray-300 focus:outline-blue-600",
+                          ]
+                        )}
+                        placeholder="your linkedin profile link"
+                      />
+                    </label>
+                    <label className="block">
+                      <span className="text-white font-semibold">
+                        Your instagram Profile
+                      </span>
+
+                      <input
+                        type="text"
+                        {...register("instagram")}
+                        className={classNames(
+                          ["rounded w-full py-2 px-3 text-gray-700"],
+                          [
+                            errors.instagram
+                              ? "border-2 border-red-500 focus:outline-red-600"
+                              : "border border-gray-300 focus:outline-blue-600",
+                          ]
+                        )}
+                        placeholder="your instagram profile link"
+                      />
+                    </label>
+                    <label className="block">
+                      <span className="text-white font-semibold">
+                        Your facebook Profile
+                      </span>
+
+                      <input
+                        type="text"
+                        {...register("facebook")}
+                        className={classNames(
+                          ["rounded w-full py-2 px-3 text-gray-700"],
+                          [
+                            errors.facebook
+                              ? "border-2 border-red-500 focus:outline-red-600"
+                              : "border border-gray-300 focus:outline-blue-600",
+                          ]
+                        )}
+                        placeholder="your facebook profile link"
+                      />
+                    </label>
+                    <label className="block">
+                      <span className="text-white font-semibold">
+                        Your twitter Profile
+                      </span>
+
+                      <input
+                        type="text"
+                        {...register("twitter")}
+                        className={classNames(
+                          ["rounded w-full py-2 px-3 text-gray-700"],
+                          [
+                            errors.twitter
+                              ? "border-2 border-red-500 focus:outline-red-600"
+                              : "border border-gray-300 focus:outline-blue-600",
+                          ]
+                        )}
+                        placeholder="your twitter profile link"
                       />
                     </label>
                     {/* <label className="block">
@@ -319,7 +399,7 @@ function Edit() {
             </div>
           </div>
 
-          <div className="grid justify-items-center w-[60%] mx-2 ">
+          <div className="grid justify-items-center w-[40%] mx-2 ">
             <RightUpbar />
 
             <RightDownbar />

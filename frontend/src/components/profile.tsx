@@ -132,7 +132,7 @@ const UserProfile = () => {
                   <input {...getInputProps()} />
                   {!userQuery.data.picture ? (
                     <div className="relative shadow-xl ml-6 h-32 w-32 -my-4  rounded-2xl overflow-hidden ">
-                      <CgProfile size={80} color="gray" />
+                      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_1LLGE0kc_wAGOM3-5gfhR84pLxEed3MlyguDkz0mlA&usqp=CAU&ec=48665698" />
                     </div>
                   ) : (
                     <div className="relative shadow-xl mx-auto h-28 w-28 -my-4  rounded-full overflow-hidden  ">
@@ -207,16 +207,16 @@ const UserProfile = () => {
                     </p>
                   </div>
                   <div className="flex justify-center  gap-16 pt-2">
-                    <Link href="https://www.facebook.com/">
+                    <Link href={userQuery.data.facebook}>
                       <FaFacebookSquare className="w-6 h-6 text-blue-600 cursor-pointer" />
                     </Link>
-                    <Link href="https://twitter.com/">
+                    <Link href={userQuery.data.twitter}>
                       <BsTwitter className="w-6 h-6 text-blue-400 cursor-pointer" />
                     </Link>
-                    <Link href="https://www.instagram.com/">
+                    <Link href={userQuery.data.instagram}>
                       <FaInstagram className="w-6 h-6 text-yellow-400 cursor-pointer" />
                     </Link>
-                    <Link href="https://www.linkedin.com/">
+                    <Link href={userQuery.data.linkedin}>
                       <FaLinkedin className="w-6 h-6 text-blue-400 cursor-pointer" />
                     </Link>
                   </div>

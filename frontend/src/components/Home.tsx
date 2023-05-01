@@ -62,7 +62,7 @@ function Home() {
                 />
               </div>
               <h1 className="pt-12 text-base font-semibold text-gray-100">
-                Web Development
+                App Development
               </h1>
             </div>
             <div className="flex-1 text-center px-2 py-2 m-1">
@@ -73,7 +73,19 @@ function Home() {
                 />
               </div>
               <h1 className="pt-12 text-base font-semibold text-gray-100">
-                Web Development
+                Artificical Intelligence
+              </h1>
+            </div>
+
+            <div className="flex-1 text-center px-2 py-2 m-1">
+              <div className="relative shadow-xl mx-auto h-24 w-24 -my-12 border-white rounded-full overflow-hidden border-4">
+                <img
+                  className="object-cover w-full h-full"
+                  src="https://wallpapershome.com/images/pages/pic_h/10326.jpg"
+                />
+              </div>
+              <h1 className="pt-12 text-base font-semibold text-gray-100">
+                competitive programming
               </h1>
             </div>
             <div className="flex-1 text-center px-2 py-2 m-1">
@@ -84,40 +96,7 @@ function Home() {
                 />
               </div>
               <h1 className="pt-12 text-base font-semibold text-gray-100">
-                Web Development
-              </h1>
-            </div>
-            <div className="flex-1 text-center px-2 py-2 m-1">
-              <div className="relative shadow-xl mx-auto h-24 w-24 -my-12 border-white rounded-full overflow-hidden border-4">
-                <img
-                  className="object-cover w-full h-full"
-                  src="https://wallpapershome.com/images/pages/pic_h/10326.jpg"
-                />
-              </div>
-              <h1 className="pt-12 text-base font-semibold text-gray-100">
-                Web Development
-              </h1>
-            </div>
-            <div className="flex-1 text-center px-2 py-2 m-1">
-              <div className="relative shadow-xl mx-auto h-24 w-24 -my-12 border-white rounded-full overflow-hidden border-4">
-                <img
-                  className="object-cover w-full h-full"
-                  src="https://wallpapershome.com/images/pages/pic_h/10326.jpg"
-                />
-              </div>
-              <h1 className="pt-12 text-base font-semibold text-gray-100">
-                Web Development
-              </h1>
-            </div>
-            <div className="flex-1 text-center px-2 py-2 m-1">
-              <div className="relative shadow-xl mx-auto h-24 w-24 -my-12 border-white rounded-full overflow-hidden border-4">
-                <img
-                  className="object-cover w-full h-full"
-                  src="https://wallpapershome.com/images/pages/pic_h/10326.jpg"
-                />
-              </div>
-              <h1 className="pt-12 text-base font-semibold text-gray-100">
-                Web Development
+                Machine Learning
               </h1>
             </div>
             {/* </Carousel> */}

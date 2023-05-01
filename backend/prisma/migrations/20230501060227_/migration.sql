@@ -21,6 +21,10 @@ CREATE TABLE "User" (
     "year" TEXT,
     "isVerified" BOOLEAN NOT NULL DEFAULT false,
     "roomID" TEXT,
+    "facebook" TEXT,
+    "twitter" TEXT,
+    "instagram" TEXT,
+    "linkedin" TEXT,
 
     CONSTRAINT "User_pkey" PRIMARY KEY ("id")
 );
@@ -92,7 +96,7 @@ CREATE TABLE "Comment" (
 CREATE TABLE "DownVoteOnTopic" (
     "id" TEXT NOT NULL,
     "userId" TEXT NOT NULL,
-    "topicId" TEXT NOT NULL,
+    "PostId" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
@@ -125,7 +129,7 @@ CREATE TABLE "DownVoteOnComment" (
 CREATE TABLE "UpVoteOnTopic" (
     "id" TEXT NOT NULL,
     "userId" TEXT NOT NULL,
-    "topicId" TEXT NOT NULL,
+    "PostId" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
@@ -144,9 +148,6 @@ CREATE UNIQUE INDEX "Room_name_key" ON "Room"("name");
 -- CreateIndex
 CREATE UNIQUE INDEX "emailTokens_token_key" ON "emailTokens"("token");
 
--- CreateIndex
-CREATE UNIQUE INDEX "Comment_PostId_key" ON "Comment"("PostId");
-
 -- AddForeignKey
 ALTER TABLE "User" ADD CONSTRAINT "User_roomID_fkey" FOREIGN KEY ("roomID") REFERENCES "Room"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
@@ -163,7 +164,7 @@ ALTER TABLE "Comment" ADD CONSTRAINT "Comment_PostId_fkey" FOREIGN KEY ("PostId"
 ALTER TABLE "Comment" ADD CONSTRAINT "Comment_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "DownVoteOnTopic" ADD CONSTRAINT "DownVoteOnTopic_topicId_fkey" FOREIGN KEY ("topicId") REFERENCES "Post"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "DownVoteOnTopic" ADD CONSTRAINT "DownVoteOnTopic_PostId_fkey" FOREIGN KEY ("PostId") REFERENCES "Post"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "DownVoteOnTopic" ADD CONSTRAINT "DownVoteOnTopic_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
@@ -181,7 +182,7 @@ ALTER TABLE "DownVoteOnComment" ADD CONSTRAINT "DownVoteOnComment_commentId_fkey
 ALTER TABLE "DownVoteOnComment" ADD CONSTRAINT "DownVoteOnComment_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "UpVoteOnTopic" ADD CONSTRAINT "UpVoteOnTopic_topicId_fkey" FOREIGN KEY ("topicId") REFERENCES "Post"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "UpVoteOnTopic" ADD CONSTRAINT "UpVoteOnTopic_PostId_fkey" FOREIGN KEY ("PostId") REFERENCES "Post"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "UpVoteOnTopic" ADD CONSTRAINT "UpVoteOnTopic_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;

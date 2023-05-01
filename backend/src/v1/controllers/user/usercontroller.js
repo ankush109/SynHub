@@ -33,6 +33,11 @@ const usercontroller = {
           year: true,
           createdAt: true,
           updatedAt: true,
+          facebook: true,
+          instagram: true,
+          twitter: true,
+          linkedin: true,
+
           room: {
             select: {
               id: true,
@@ -60,9 +65,14 @@ const usercontroller = {
       phoneNumber: z.string(),
       department: z.string(),
       year: z.string(),
+      facebook: z.string(),
+      instagram: z.string(),
+      twitter: z.string(),
+      linkedin: z.string(),
+
     });
     try {
-      const resp = userSchema.parse(req.body);
+      const resp = (req.body);
       const query = {
         id: req.user.id,
       };
@@ -79,7 +89,7 @@ const usercontroller = {
       });
       res.json(customResponse(200, "User updated"));
     } catch (err) {
-      console.log(err);
+      console.log(err,'err');
       return next(createError.InternalServerError());
     }
   },

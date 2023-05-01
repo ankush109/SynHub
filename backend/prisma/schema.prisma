@@ -35,6 +35,10 @@ model User {
   UpVoteOnComment   UpVoteOnComment[]
   UpVoteonTopic     UpVoteOnTopic[]
   roomID            String?
+  facebook          String?
+  twitter           String?
+  instagram         String?
+  linkedin          String?
   room              Room?               @relation(fields: [roomID], references: [id])
 }
 
