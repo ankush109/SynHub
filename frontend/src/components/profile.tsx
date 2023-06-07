@@ -207,16 +207,32 @@ const UserProfile = () => {
                     </p>
                   </div>
                   <div className="flex justify-center  gap-16 pt-2">
-                    <Link href={userQuery.data.facebook}>
+                    <Link
+                      href={
+                        userQuery.data.facebook ? userQuery.data.facebook : ""
+                      }
+                    >
                       <FaFacebookSquare className="w-6 h-6 text-blue-600 cursor-pointer" />
                     </Link>
-                    <Link href={userQuery.data.twitter}>
+                    <Link
+                      href={
+                        userQuery.data.twitter ? userQuery.data.twitter : ""
+                      }
+                    >
                       <BsTwitter className="w-6 h-6 text-blue-400 cursor-pointer" />
                     </Link>
-                    <Link href={userQuery.data.instagram}>
+                    <Link
+                      href={
+                        userQuery.data.instagram ? userQuery.data.instagram : ""
+                      }
+                    >
                       <FaInstagram className="w-6 h-6 text-yellow-400 cursor-pointer" />
                     </Link>
-                    <Link href={userQuery.data.linkedin}>
+                    <Link
+                      href={
+                        userQuery.data.linkedin ? userQuery.data.linkedin : ""
+                      }
+                    >
                       <FaLinkedin className="w-6 h-6 text-blue-400 cursor-pointer" />
                     </Link>
                   </div>
