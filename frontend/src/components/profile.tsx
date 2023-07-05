@@ -119,9 +119,9 @@ const UserProfile = () => {
   if (userQuery.isError) return <div>Error</div>;
 
   return (
-    <div className="  relative h-screen w-full p-3 bg-zinc-900 overflow-y-scroll scrollbar-hide">
+    <div className="  relative h-[88.7vh] w-full p-3 bg-zinc-900 overflow-y-scroll scrollbar-hide">
       {userQuery.data ? (
-        <div className="flex flex-col h-[55%] w-full pt-6 mt-2 px-4 justify-center m-1">
+        <div className="flex flex-col h-[55%] w-full pt-6 mt-7 px-4 justify-center m-1">
           <div className="flex flex-col w-full rounded-xl p-4 shadow-md shadow-blue-300 bg-zinc-900">
             <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
               <div className="grid-cols-1 lg:col-span-3 py-2">
@@ -131,7 +131,7 @@ const UserProfile = () => {
                 >
                   <input {...getInputProps()} />
                   {!userQuery.data.picture ? (
-                    <div className="relative shadow-xl ml-6 h-32 w-32 -my-4  rounded-2xl overflow-hidden ">
+                    <div className="relative shadow-xl ml-2 h-32 w-32 -my-4  rounded-full overflow-hidden ">
                       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_1LLGE0kc_wAGOM3-5gfhR84pLxEed3MlyguDkz0mlA&usqp=CAU&ec=48665698" />
                     </div>
                   ) : (
@@ -247,7 +247,7 @@ const UserProfile = () => {
 
       {/* <CreateClinic /> */}
 
-      <div className="flex justify-evenly mt-16 bg-zinc-700 mx-20 rounded-full p-2">
+      <div className="flex justify-evenly mt-24 bg-zinc-700 mx-20 rounded-full p-2">
         <p
           className={
             toggle === 1
@@ -273,7 +273,7 @@ const UserProfile = () => {
           Liked Posts
         </p>
       </div>
-      <div className="flex flex-col ">
+      <div className="flex flex-col mt-4">
         <div className={toggle === 1 ? " items-center" : "hidden"}>
           {PostQuery.data?.map((post: any, index: any) => (
             <PostCard
@@ -299,20 +299,18 @@ const UserProfile = () => {
 };
 function Profile() {
   return (
-    <div className="">
-      <div className="">
-        <AppBar />
-        <div className="flex flex-row h-[98vh]">
-          <LeftBar />
-          <UserProfile />
-          <div className="grid justify-items-center w-[40%]   bg-zinc-900">
-            <RightUpbar />
+    <>
+      <AppBar />
+      <div className="flex flex-row h-[88.7vh]">
+        <LeftBar />
+        <UserProfile />
+        <div className="grid justify-items-center w-[40%]   bg-zinc-900">
+          <RightUpbar />
 
-            <RightDownbar />
-          </div>
+          <RightDownbar />
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

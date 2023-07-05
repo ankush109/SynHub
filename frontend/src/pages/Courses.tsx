@@ -1,6 +1,15 @@
 import { MdBiotech, MdOutlineDeveloperMode } from "react-icons/md";
-
+import React, { useEffect } from "react";
+import Link from "next/link";
 const cc = () => {
+  const [selectedTab, setSelectedTab] = React.useState("");
+
+  useEffect(() => {
+    const path = window.location.pathname;
+    console.log(path);
+
+    setSelectedTab(path);
+  }, [selectedTab]);
   return (
     <div className="mb-10 h-full">
       {/* HEADING START */}
@@ -30,7 +39,14 @@ const cc = () => {
             size={29}
             className="text-2xl text-gray-100"
           />
-          <h1 className="my-3">Web Development</h1>
+          <h1 className="my-3">
+            <Link
+              href="/CourseDetails"
+              onClick={() => setSelectedTab("CourseDetails")}
+            >
+              Web Development
+            </Link>
+          </h1>
         </div>
 
         <div
