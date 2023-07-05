@@ -156,7 +156,7 @@ const PostItem: React.FC<any> = ({
                   <div>
                     <Link href={`#`}>
                       <h1 className="text-lg font-extrabold  text-blue-400  cursor-pointer">
-                        # Cp Room
+                        # DEMON SLAYER
                       </h1>
                     </Link>
                   </div>
@@ -182,7 +182,7 @@ const PostItem: React.FC<any> = ({
                       rounded="full"
                       className="rounded-full"
                       boxSize="18px"
-                      src="https://scontent.fccu3-1.fna.fbcdn.net/v/t39.30808-1/323871600_892778521853988_6150767426817074706_n.jpg?stp=dst-jpg_s320x320&_nc_cat=109&ccb=1-7&_nc_sid=7206a8&_nc_ohc=W1snVqUjgBIAX85f965&_nc_ht=scontent.fccu3-1.fna&oh=00_AfAw4kZ7hbXVWyboFm5ZEzesyyOGUyOCI6TbEFWsSWY8oA&oe=643C467B"
+                      src="https://sticker.nyc3.cdn.digitaloceanspaces.com/20210879/file_1959271_512x512.webp"
                       mr={2}
                     />
                     <div>
@@ -218,11 +218,12 @@ const PostItem: React.FC<any> = ({
             <div className="flex h-full flex-col gap-2">
               <Skeleton width="100%" borderRadius={4} />
               <div className="">
-                <ImageGallery
+                {/* <ImageGallery
                   disableSwipe={true}
                   showPlayButton={false}
-                  items={images}
-                />
+                  items=
+                /> */}
+                <img src="https://economictimes.indiatimes.com/thumb/msid-101171403,width-1841,height-1035,resizemode-4,imgsize-74464/demon-slayer-season-4-on-netflix-release-date-and-plot.jpg?from=mdr" />
               </div>
             </div>
           </Stack>

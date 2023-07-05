@@ -213,7 +213,7 @@ const EditPost: FC<any> = ({ data, picture, id, title }) => {
           </Dialog.Trigger>
           <Dialog.Portal className="">
             <Dialog.Overlay className="fixed inset-0 bg-black opacity-50" />
-            <Dialog.Content className="z-10 p-2 h-[610px] w-3/5 rounded-xl bg-gray-800 shadow-lg shadow-zinc-900 fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
+            <Dialog.Content className="z-10 p-2 h-[630px] w-3/5 rounded-xl bg-gray-800 shadow-lg shadow-zinc-900 fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
               <Dialog.Close className="absolute top-4 right-4">
                 <MdOutlineCancel size={31} color="gray" />
               </Dialog.Close>
@@ -248,10 +248,10 @@ const EditPost: FC<any> = ({ data, picture, id, title }) => {
                         <p>Post Title</p>
                       </div>
                       <div>
-                        <TextField
+                        <input
                           {...register("title")}
                           value={data?.title}
-                          className="w-4/5 p-3 bg-gray-600 rounded-lg text-white"
+                          className="w-4/5 p-3 min-h-[25%] bg-gray-600 rounded-lg text"
                         />
                       </div>
                       <div>
