@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PostCard from "./PostCard";
 import { FcStackOfPhotos } from "react-icons/fc";
 import CreateClinic from "./createPost";
@@ -7,10 +7,20 @@ import { GetPostQuery, GetUserQuery } from "@/api/user";
 import { MdPermMedia } from "react-icons/md";
 import Carousel from "react-multi-carousel";
 import PostItem from "./PostCard";
+import Link from "next/link";
 
 function Home() {
   const userQuery = GetUserQuery();
   const PostQuery = GetPostQuery();
+
+  const [selectedTab, setSelectedTab] = React.useState("");
+
+  useEffect(() => {
+    const path = window.location.pathname;
+    console.log(path);
+
+    setSelectedTab(path);
+  }, [selectedTab]);
   //  const responsive = {
   //    desktop: {
   //      breakpoint: { max: 3000, min: 1024 },
@@ -45,13 +55,17 @@ function Home() {
             > */}
             <div className="flex-1  text-center px-2 py-2 m-1">
               <div className="relative shadow-xl mx-auto h-24 w-24 -my-12 border-white hover:border-blue-300 hover:shadow-lg rounded-full overflow-hidden border-4 ">
-                <img
-                  className="object-cover w-full h-full"
-                  src="https://wallpapershome.com/images/pages/pic_h/10326.jpg"
-                />
+                <Link href="/Room1" onClick={() => setSelectedTab("Room1")}>
+                  <img
+                    className="object-cover w-full h-full"
+                    src="https://wallpapershome.com/images/pages/pic_h/10326.jpg"
+                  />
+                </Link>
               </div>
               <h1 className="pt-12 text-base font-semibold  hover:text-blue-300 group cursor-pointer hover:shadow-lg">
-                Web Development
+                <Link href="/Room1" onClick={() => setSelectedTab("Room1")}>
+                  Web Development
+                </Link>
               </h1>
             </div>
             <div className="flex-1 text-center px-2 py-2 m-1">

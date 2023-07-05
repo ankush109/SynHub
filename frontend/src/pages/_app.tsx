@@ -9,6 +9,7 @@ import { Toaster, toast, useToasterStore } from "react-hot-toast";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import NextNProgress from "nextjs-progressbar";
+import { NextUIProvider } from "@nextui-org/react";
 
 import "../styles/globals.css";
 
@@ -117,7 +118,11 @@ export default function App({ Component, pageProps }: AppProps) {
         />
       )} */}
       <QueryClientProvider client={queryClient}>
-        <Toaster position="bottom-right" reverseOrder={false} toastOptions={{ duration: 5000 }} />
+        <Toaster
+          position="bottom-right"
+          reverseOrder={false}
+          toastOptions={{ duration: 5000 }}
+        />
         <NextNProgress color="gray" height={5} />
         <Component {...pageProps} />
         <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />

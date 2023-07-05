@@ -113,9 +113,9 @@ function Edit() {
     <div>
       <div>
         <AppBar />
-        <div className="flex flex-row h-[90.7vh]">
+        <div className="flex flex-row h-[88.7vh]">
           <LeftBar />
-          <div className="bg-zinc-900  mx-4 px-8 w-[80%] overflow-y-scroll scrollbar-hide">
+          <div className="bg-zinc-900   w-[70%] overflow-y-scroll scrollbar-hide">
             <div className="bg-gray-800 py-5 px-8 my-10 mx-4 rounded-lg flex-col justify-center">
               <div className="flex flex-row justify-center">
                 <h2 className="text-3xl text-yellow-300 font-bold ">
@@ -399,7 +399,7 @@ function Edit() {
             </div>
           </div>
 
-          <div className="grid justify-items-center w-[40%] mx-2 ">
+          <div className="grid justify-items-center w-[40%]  bg-zinc-900">
             <RightUpbar />
 
             <RightDownbar />

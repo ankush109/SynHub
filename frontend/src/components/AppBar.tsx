@@ -129,9 +129,8 @@ const AppBar = () => {
             alt="Synergy Logo"
           />
 
-          <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-            Synergy
-          </span>
+          <div className="text-2xl font-bold text-yellow-500">Syn</div>
+          <div className="text-2xl font-bold text-white">ergy</div>
         </Link>
         <div className="flex md:order-2">
           <button
@@ -159,9 +158,9 @@ const AppBar = () => {
           </button>
 
           <div className="relative hidden md:block">
-            <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+            <div className="absolute inset-y-0 left-0 flex items-center pl-3  pointer-events-none">
               <svg
-                className="w-5 h-5 text-gray-500"
+                className="w-5 h-5 text-gray-500 "
                 aria-hidden="true"
                 fill="currentColor"
                 viewBox="0 0 20 20"
@@ -178,7 +177,7 @@ const AppBar = () => {
             <input
               type="text"
               id="search-navbar"
-              className="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              className="block w-[50vh] p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Search..."
             />
           </div>
@@ -264,7 +263,7 @@ const AppBar = () => {
             </li>
             <li>
               <Link
-                href="/"
+                href="/Landing"
                 onClick={() => setSelectedTab("profile")}
                 className={
                   selectedTab === ""
