@@ -21,7 +21,7 @@ function index() {
           <RoomHome2 />
           {/* <div className="flex flex-col bg-zinc-900 w-[42%] py-12 px-5 hidden lg:flex ">
             <div className="flex justify-left bg-zinc-800 w-full h-[95%] rounded-2xl "> */}
-          <div className="grid justify-items-center w-[45%] mx-0 bg-zinc-900">
+          <div className="hidden lg:grid justify-items-center w-[45%] mx-0 bg-zinc-900">
             <RightUpbar />
 
             <RightDownbar />

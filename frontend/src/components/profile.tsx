@@ -119,11 +119,11 @@ const UserProfile = () => {
   if (userQuery.isError) return <div>Error</div>;
 
   return (
-    <div className="  relative h-[88.7vh] w-full p-3 bg-zinc-900 overflow-y-scroll scrollbar-hide">
+    <div className="  relative h-[90.5vh] w-full p-3 bg-zinc-900 overflow-y-scroll scrollbar-hide">
       {userQuery.data ? (
         <div className="flex flex-col h-[55%] w-full pt-6 mt-7 px-4 justify-center m-1">
           <div className="flex flex-col w-full rounded-xl p-4 shadow-md shadow-blue-300 bg-zinc-900">
-            <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
+            <div className="lg:grid grid-cols-1 gap-6 lg:grid-cols-12">
               <div className="grid-cols-1 lg:col-span-3 py-2">
                 <div
                   {...getRootProps()}
@@ -131,8 +131,8 @@ const UserProfile = () => {
                 >
                   <input {...getInputProps()} />
                   {!userQuery.data.picture ? (
-                    <div className="relative shadow-xl ml-2 h-32 w-32 -my-4  rounded-full overflow-hidden ">
-                      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_1LLGE0kc_wAGOM3-5gfhR84pLxEed3MlyguDkz0mlA&usqp=CAU&ec=48665698" />
+                    <div className=" lg:relative shadow-xl ml-2 h-32 w-32 -my-4  rounded-full overflow-hidden ">
+                      <img src="https://sticker.nyc3.cdn.digitaloceanspaces.com/20210879/file_1959271_512x512.webp" />
                     </div>
                   ) : (
                     <div className="relative shadow-xl mx-auto h-28 w-28 -my-4  rounded-full overflow-hidden  ">
@@ -301,10 +301,10 @@ function Profile() {
   return (
     <>
       <AppBar />
-      <div className="flex flex-row h-[88.7vh]">
+      <div className="flex flex-row h-[90.5vh]">
         <LeftBar />
         <UserProfile />
-        <div className="grid justify-items-center w-[40%]   bg-zinc-900">
+        <div className="hidden lg:grid justify-items-center w-[40%]   bg-zinc-900">
           <RightUpbar />
 
           <RightDownbar />

@@ -31,7 +31,7 @@ function SideNavbar() {
     setSelectedTab(path);
   }, [selectedTab]);
   return (
-    <div className="w-[37%] bg-zinc-900">
+    <div className="hidden lg:block w-[37%] bg-zinc-900">
       {/* // <div className="flex flex bg-zinc-900 w-[42%] py-12 px-5 hidden lg:flex "> */}
       <div>
         <Disclosure as="nav">
