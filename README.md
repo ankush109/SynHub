@@ -54,6 +54,10 @@
 
 # Features -->
 
+### Landing Page
+
+![](https://raw.githubusercontent.com/ankush109/SynHub/main/frontend/public/landing%20page.png?token=GHSAT0AAAAAACEURKCW4IE3MIS6JS6MLS2QZFGQGMQ)
+
 ### Home page
 
 ![](https://raw.githubusercontent.com/ankush109/Synergy/main/frontend/public/profile.png?token=GHSAT0AAAAAACEURKCW2DLDJ3QZFPVPG6PMZFGP34Q)
