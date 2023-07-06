@@ -1,6 +1,6 @@
 # SYNERGY - Buiding the biggest learning Commmunity
 
-<p>Issues with current project Synergy : -&nbsp;</p>
+<!-- <p>Issues with current project Synergy : -&nbsp;</p>
 
 <p>1. comments and likes are not refetched in other user profiles if some one likes or comments need to refresh to get the updated value&nbsp;</p>
 
@@ -52,7 +52,7 @@
 
 <p>19 Share post of other  </p>
 
-# Features
+# Features -->
 
 ### Home page
 
