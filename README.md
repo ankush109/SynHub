@@ -53,7 +53,8 @@
 <p>19 Share post of other  </p>
 
 # Features -->
-
+### Landing Page 
+![](https://raw.githubusercontent.com/ankush109/Synergy/main/frontend/public/landing%20page.png?token=GHSAT0AAAAAACEURKCX2K6DHMDZ6U7IXCIQZFGQBRA)
 ### Home page
 
 ![](https://raw.githubusercontent.com/ankush109/Synergy/main/frontend/public/profile.png?token=GHSAT0AAAAAACEURKCW2DLDJ3QZFPVPG6PMZFGP34Q)
