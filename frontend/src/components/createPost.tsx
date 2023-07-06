@@ -114,42 +114,7 @@ export default function CreateClinic() {
   });
 
   const uploadFile = async () => {
-    if (uploadedImages.current.length >= files.length) {
-      uploadedImages.current = [];
-    }
-
-    const client = new S3Client({
-      region: "ap-south-1",
-      credentials: {
-        accessKeyId: process.env.NEXT_PUBLIC_AWS_ACCESS_KEY!,
-        secretAccessKey: process.env.NEXT_PUBLIC_AWS_SECRET_ACCESS_KEY!,
-      },
-    });
-
-    files.forEach(async (file) => {
-      let keyName = createId() + "." + file.name.split(".")[1];
-      if (!uploadedImageFiles.current.includes(files)) {
-        const command = new PutObjectCommand({
-          Bucket: "hackathon-bucket-ankush",
-          Key: keyName,
-          Body: files[0],
-          ACL: "public-read",
-        });
-        let payload = {
-          picture: `https://hackathon-bucket-ankush.s3.ap-south-1.amazonaws.com/${keyName}`,
-        };
-
-        try {
-          await client.send(command);
-          uploadedImages.current.push(payload.picture);
-          uploadedImageFiles.current.push(file);
-          setUploadedFiles(uploadedImageFiles.current);
-          // console.log("Asset s3 url:", url);
-        } catch (error) {
-          console.log("Error: ", error);
-        }
-      }
-    });
+    //
   };
 
   useEffect(() => {
