@@ -116,9 +116,9 @@ function Edit() {
         <div className="flex flex-row h-[88.7vh]">
           <LeftBar />
           <div className="bg-zinc-900   w-[70%] overflow-y-scroll scrollbar-hide">
-            <div className="bg-gray-800 py-5 px-8 my-10 mx-4 rounded-lg flex-col justify-center">
+            <div className="bg-blue-900 py-5 px-8 my-10 mx-4 rounded-lg flex-col justify-center">
               <div className="flex flex-row justify-center">
-                <h2 className="text-3xl text-yellow-300 font-bold ">
+                <h2 className="text-3xl text-yellow-400 font-bold ">
                   Edit your Profile
                 </h2>
               </div>

@@ -114,9 +114,9 @@ const Signup = ({ googleUser }: { googleUser: googleProfile | null }) => {
   };
 
   return (
-    <section className="bg-gray-900 min-h-screen flex items-center justify-center">
+    <section className="min-h-screen bg-custom-image bg-cover bg-no-repeat flex items-center justify-center">
       {/* login container */}
-      <div className="bg-gray-900 flex rounded-2xl shadow-lg max-w-3xl p-5 items-center">
+      <div className=" flex rounded-2xl shadow-lg max-w-3xl p-5 items-center">
         <div className="md:block hidden w-1/2">
           <img
             className="rounded-2xl"

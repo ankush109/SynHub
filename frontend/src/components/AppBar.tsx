@@ -71,7 +71,7 @@ const ProfileDropdownMenu = () => {
             className="outline-none"
             onClick={() => router.push("/profile")}
           >
-            <div className="flex flex-row items-start w-36 pt-2 px-4 py-2 rounded-tr-md rounded-tl-md bg-purple-700 hover:bg-purple-500 hover:cursor-pointer ">
+            <div className="flex flex-row items-start w-36 pt-2 px-4 py-2 rounded-tr-md rounded-tl-md bg-blue-700 hover:bg-blue-500 hover:cursor-pointer ">
               <div>
                 <CgProfile size={25} color="white" />
               </div>
@@ -82,7 +82,7 @@ const ProfileDropdownMenu = () => {
             onClick={() => router.push("/edit-user")}
             className="outline-none"
           >
-            <div className="flex flex-row items-start w-36 px-4 py-2 bg-purple-700 hover:bg-purple-500 hover:cursor-pointer ">
+            <div className="flex flex-row items-start w-36 px-4 py-2 bg-blue-700 hover:bg-blue-500 hover:cursor-pointer ">
               <div>
                 <CiEdit size={25} color="white" />
               </div>
@@ -97,7 +97,7 @@ const ProfileDropdownMenu = () => {
               router.push("/login");
             }}
           >
-            <div className="flex flex-row items-start rounded-bl-md rounded-br-md w-36 px-4 py-2 bg-purple-700 hover:bg-purple-500 hover:cursor-pointer outline-none">
+            <div className="flex flex-row items-start rounded-bl-md rounded-br-md w-36 px-4 py-2 bg-blue-700 hover:bg-blue-500 hover:cursor-pointer outline-none">
               <div>
                 <IoIosLogOut size={25} color="white" />
               </div>
@@ -120,11 +120,13 @@ const AppBar = () => {
     setSelectedTab(path);
   }, [selectedTab]);
   return (
-    <nav className="bg-white w-full border-gray-200 dark:bg-purple-900">
+    <nav className=" w-full border-gray-200 bg-blue-900">
       <div className=" flex flex-wrap items-center justify-between mx-10  p-2.5 ">
         <Link href="/" className="flex items-center">
-          <div className="text-3xl font-bold text-yellow-500">Syn</div>
-          <div className="text-3xl font-bold text-white">Hub</div>
+          <div className="text-3xl font-bold text-white">Syn</div>
+          <div className=" bg-yellow-400 text-3xl font-bold rounded-xl p-1 text-black">
+            Hub
+          </div>
         </Link>
         <div className="flex md:order-2">
           <button
@@ -175,7 +177,7 @@ const AppBar = () => {
           <ProfileDropdownMenu />
         </div>
 
-        <div className="bg-purple-900" id="navbar-search">
+        <div className="bg-blue-900" id="navbar-search">
           <ul className="flex gap-10">
             <li>
               <Link
@@ -183,7 +185,7 @@ const AppBar = () => {
                 onClick={() => setSelectedTab("home")}
                 className={
                   selectedTab === "/home"
-                    ? "block py-2 pl-3 pr-4 text-white bg-purple-700 rounded md:bg-transparent md:text-purple-600 md:p-0 md:dark:text-blue-500"
+                    ? "block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-600 md:p-0 md:dark:text-blue-500"
                     : ""
                 }
                 aria-current="page"
@@ -196,7 +198,7 @@ const AppBar = () => {
                 href="/profile"
                 className={
                   selectedTab === "/profile"
-                    ? "block py-2 pl-3 pr-4 text-white bg-purple-700 rounded md:bg-transparent md:text-purple-600 md:p-0 md:dark:text-blue-500"
+                    ? "block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-600 md:p-0 md:dark:text-blue-500"
                     : "bg-yellow-500"
                 }
               >
@@ -209,7 +211,7 @@ const AppBar = () => {
                 onClick={() => setSelectedTab("profile")}
                 className={
                   selectedTab === ""
-                    ? "block py-2 pl-3 pr-4 text-white bg-black rounded md:bg-transparent md:text-purple-600 md:p-0 md:dark:text-blue-500"
+                    ? "block py-2 pl-3 pr-4 text-white bg-black rounded md:bg-transparent md:text-blue-600 md:p-0 md:dark:text-blue-500"
                     : "bg-yellow-500"
                 }
               >
