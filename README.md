@@ -56,15 +56,19 @@
 
 ### Landing Page
 
-![](https://raw.githubusercontent.com/ankush109/SynHub/main/frontend/public/landing%20page.png?token=GHSAT0AAAAAACEURKCW4IE3MIS6JS6MLS2QZFGQGMQ)
+![](https://raw.githubusercontent.com/ankush109/SynHub/main/frontend/public/landing%20page.png)
 
 ### Home page
 
-![](https://raw.githubusercontent.com/ankush109/Synergy/main/frontend/public/profile.png?token=GHSAT0AAAAAACEURKCW2DLDJ3QZFPVPG6PMZFGP34Q)
+![](https://raw.githubusercontent.com/ankush109/SynHub/main/frontend/public/home.png)
 
 ### Profile Page
 
-![](https://raw.githubusercontent.com/ankush109/Synergy/main/frontend/public/home.png?token=GHSAT0AAAAAACEURKCXHMIEWSWK454O6ANGZFGP5GQ)
+![](https://raw.githubusercontent.com/ankush109/SynHub/main/frontend/public/profile.png)
+
+### Login Page
+
+![](https://raw.githubusercontent.com/ankush109/SynHub/main/frontend/public/login.png)
 
 <!-- ### Edit Post
 
