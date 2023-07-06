@@ -122,7 +122,7 @@ const UserProfile = () => {
     <div className="  relative h-[90.5vh] w-full p-3 bg-zinc-900 overflow-y-scroll scrollbar-hide">
       {userQuery.data ? (
         <div className="flex flex-col h-[55%] w-full pt-6 mt-7 px-4 justify-center m-1">
-          <div className="flex flex-col w-full rounded-xl p-4 shadow-md shadow-blue-300 bg-zinc-900">
+          <div className="flex flex-col w-full rounded-xl p-4 shadow-md shadow-blue-300 bg-purple-900">
             <div className="lg:grid grid-cols-1 gap-6 lg:grid-cols-12">
               <div className="grid-cols-1 lg:col-span-3 py-2">
                 <div
@@ -247,7 +247,7 @@ const UserProfile = () => {
 
       {/* <CreateClinic /> */}
 
-      <div className="flex justify-evenly mt-24 bg-zinc-700 mx-20 rounded-full p-2">
+      <div className="flex justify-evenly mt-24 bg-purple-700 mx-20 rounded-full p-2">
         <p
           className={
             toggle === 1

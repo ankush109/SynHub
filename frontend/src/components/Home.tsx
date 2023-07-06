@@ -8,6 +8,7 @@ import { MdPermMedia } from "react-icons/md";
 import Carousel from "react-multi-carousel";
 import PostItem from "./PostCard";
 import Link from "next/link";
+import SEO from "./SEO";
 
 function Home() {
   const userQuery = GetUserQuery();
@@ -36,7 +37,8 @@ function Home() {
   //    },
   //  };
   return (
-    <div className="bg-zinc-900 w-full overflow-y-scroll scrollbar-hide ">
+    <div className="bg-zinc-900 w-full overflow-y-scroll scrollbar-hide  ">
+      <SEO title="SynHub" />
       <div className="  my-4">
         <div className="flex flex-col">
           {/* <div className="flex gap-4 justify-center">
