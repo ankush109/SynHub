@@ -50,9 +50,6 @@
 
 <p>18 Help section  </p>
 
-<p>19 Share post of other  </p>
-
-# Features -->
 
 ### Landing Page
 
