@@ -1,4 +1,4 @@
-# SYNERGY - Buiding the biggest learning Commmunity 
+# SYNERGY - Buiding the biggest learning Commmunity
 
 <p>Issues with current project Synergy : -&nbsp;</p>
 
@@ -52,31 +52,34 @@
 
 <p>19 Share post of other  </p>
 
-
 # Features
 
 ### Home page
 
-![](https://raw.githubusercontent.com/Ankush109/Synergy/Ankush/frontend/public/home.png?token=GHSAT0AAAAAAB6U4VYF7BZH2AMAZTP73XIYZCA6YNQ)
+![](https://raw.githubusercontent.com/ankush109/Synergy/main/frontend/public/profile.png?token=GHSAT0AAAAAACEURKCW2DLDJ3QZFPVPG6PMZFGP34Q)
 
-### Edit Post
+### Profile Page
+
+![](https://raw.githubusercontent.com/ankush109/Synergy/main/frontend/public/home.png?token=GHSAT0AAAAAACEURKCXHMIEWSWK454O6ANGZFGP5GQ)
+
+<!-- ### Edit Post
 
 ![](https://raw.githubusercontent.com/Ankush109/Synergy/Ankush/frontend/public/edtuser.png?token=GHSAT0AAAAAAB6U4VYFVY5ZNTJMGULOUTK6ZCA62EA)
 
-### profile 
+### profile
 
 ![](https://raw.githubusercontent.com/Ankush109/Synergy/Ankush/frontend/public/profile.png?token=GHSAT0AAAAAAB6U4VYEUWCJCUMOOQRLJWFCZCA6ZQA)
 
-### Login 
+### Login
 
 ![](https://raw.githubusercontent.com/Ankush109/Synergy/Ankush/frontend/public/login.png?token=GHSAT0AAAAAAB6U4VYFQGZKIEPHGYVKJOWGZCA65IQ)
 
 
-### Edit-Profile 
+### Edit-Profile
 
 ![](https://raw.githubusercontent.com/Ankush109/Synergy/Ankush/frontend/public/edit-user.png?token=GHSAT0AAAAAAB6U4VYELR2MCC3YNLN7DH7AZCA66AA)
 
-
+ -->
 
 ## Made By
 
