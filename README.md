@@ -50,10 +50,10 @@
 
 <p>18 Help section  </p>
 
-<p>19 Share post of other  </p>
+<p>19 Share post of other  </p>-->
 
-# Features -->
-<!--
+# Features
+
 ### Landing Page
 
 ![](https://raw.githubusercontent.com/ankush109/SynHub/main/frontend/public/landing%20page.png)
@@ -92,3 +92,5 @@
 ## Made By
 
 - [Ankush109](https://github.com/Ankush109)
+  &
+- [Souvik3469](https://github.com/Souvik3469)
