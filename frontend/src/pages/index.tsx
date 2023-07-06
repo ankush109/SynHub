@@ -21,10 +21,10 @@ const Home: NextPage = () => {
       <div className="min-h-screen bg-custom-image bg-cover bg-no-repeat">
         <SEO title="SynHub" />
 
-        <div className="relative z-10 flex justify-between p-5">
+        <div className="relative z-10 flex justify-between p-5 ">
           <div className="flex items-center">
             <div className="text-4xl font-bold text-purple-400">Syn</div>
-            <div className="text-3xl font-bold text-white">ergy</div>
+            <div className="text-3xl font-bold text-white">Hub</div>
           </div>
           <div className="flex">
             {!userQuery?.data?.name ? (
@@ -33,7 +33,7 @@ const Home: NextPage = () => {
               </button>
             ) : (
               <div className="my-1 mx-20 h-14 flex items-center  cursor-pointer rounded-xl  bg-purple-500 px-8 font-semibold text-white hover:bg-purple-900 hover:shadow-xl">
-                Welcome ""
+                Welcome Ankush
               </div>
             )}
           </div>
