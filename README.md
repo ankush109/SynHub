@@ -1,4 +1,4 @@
-# SYNERGY - Buiding the biggest learning Commmunity
+# SYNHUB - Buiding the biggest learning Commmunity
 
 <!-- <p>Issues with current project Synergy : -&nbsp;</p>
 
