@@ -43,15 +43,15 @@ function SideNavbar() {
           </Disclosure.Button>
         </Disclosure>
       </div>
-      <div className="lg:bg-purple-800 xl:bg-purple-800 md:bg-zinc-900 sm:bg-zinc-900  my-8 ml-2 rounded-2xl h-[80%] ">
+      <div className="lg:bg-zinc-800 xl:bg-zinc-800 md:bg-zinc-900 sm:bg-zinc-900  my-8 ml-2 rounded-2xl h-[80%] ">
         {/* <div className=" bg-zinc-800 w-full h-full rounded-2xl"> */}
-        <div className="p-6 w-1/2 rounded-2xl h-0 bg-purple-800 z-20 relative top-0 -left-96 lg:left-0 lg:w-60  peer-focus:left-0 peer:transition ease-out delay-150 duration-200">
+        <div className="p-6 w-1/2 rounded-2xl h-0 bg-zinc-800 z-20 relative top-0 -left-96 lg:left-0 lg:w-60  peer-focus:left-0 peer:transition ease-out delay-150 duration-200">
           <div className="flex flex-col justify-center item-center">
             <h1 className="text-base text-center cursor-pointer font-bold text-gray-200 border-b border-gray-100 pb-4 w-full">
               Virtual Dashboard
             </h1>
             <div className=" my-4 border-b border-gray-100 pb-4">
-              <div className="flex mb-2 justify-start items-center gap-4 pl-5 hover:bg-purple-900 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
+              <div className="flex mb-2 justify-start items-center gap-4 pl-5 hover:bg-zinc-900 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
                 <MdBiotech className="text-2xl text-gray-400 group-hover:text-white " />
                 <h3 className="text-base text-gray-400 group-hover:text-white font-semibold ">
                   <Link
@@ -62,7 +62,7 @@ function SideNavbar() {
                   </Link>
                 </h3>
               </div>
-              <div className="flex  mb-2 justify-start items-center gap-4 pl-5 hover:bg-purple-900 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
+              <div className="flex  mb-2 justify-start items-center gap-4 pl-5 hover:bg-zinc-900 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
                 <SiBookstack className="text-2xl text-gray-400 group-hover:text-white " />
                 <h3 className="text-base text-gray-400  group-hover:text-white font-semibold ">
                   <Link
@@ -73,19 +73,19 @@ function SideNavbar() {
                   </Link>
                 </h3>
               </div>
-              <div className="flex  mb-2 justify-start items-center gap-4 pl-5 hover:bg-purple-900 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
+              <div className="flex  mb-2 justify-start items-center gap-4 pl-5 hover:bg-zinc-900 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
                 <MdBusiness className="text-2xl text-gray-400 group-hover:text-white " />
                 <h3 className="text-base text-gray-400  group-hover:text-white font-semibold ">
                   Company Details
                 </h3>
               </div>
-              <div className="flex mb-2 justify-start items-center gap-4 pl-5 hover:bg-purple-900 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
+              <div className="flex mb-2 justify-start items-center gap-4 pl-5 hover:bg-zinc-900 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
                 <MdOutlineBusinessCenter className="text-2xl text-gray-400 group-hover:text-white " />
                 <h3 className="text-base text-gray-400 group-hover:text-white font-semibold ">
                   Company Openings
                 </h3>
               </div>
-              <div className="flex mb-2 justify-start items-center gap-4 pl-5 hover:bg-purple-900 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
+              <div className="flex mb-2 justify-start items-center gap-4 pl-5 hover:bg-zinc-900 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
                 <IoBookSharp className="text-2xl text-gray-400 group-hover:text-white " />
                 <h3 className="text-base text-gray-400 group-hover:text-white font-semibold ">
                   Platforms
@@ -95,7 +95,7 @@ function SideNavbar() {
 
             {/* setting  */}
             <div className=" my-4  pb-4">
-              <div className="flex mb-2 justify-start items-center gap-4 pl-5 hover:bg-purple-900 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
+              <div className="flex mb-2 justify-start items-center gap-4 pl-5 hover:bg-zinc-900 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
                 <MdOutlineSettings className="text-2xl text-gray-400 group-hover:text-white " />
                 <h3 className="text-base text-gray-400 group-hover:text-white font-semibold ">
                   Settings

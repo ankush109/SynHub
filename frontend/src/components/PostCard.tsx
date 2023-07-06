@@ -112,7 +112,7 @@ const PostItem: React.FC<any> = ({
     <>
       <Flex
         border="1px solid"
-        backgroundColor="rgba(102, 51, 153)"
+        backgroundColor="rgba(255, 255, 255, 0.1)"
         borderColor={"purple.300"}
         borderRadius={4}
         cursor={"pointer"}

@@ -22,17 +22,19 @@ const Home: NextPage = () => {
         <SEO title="SynHub" />
 
         <div className="relative z-10 flex justify-between p-5 ">
-          <div className="flex items-center">
-            <div className="text-4xl font-bold text-purple-400">Syn</div>
-            <div className="text-3xl font-bold text-white">Hub</div>
+          <div className="flex items-center px-10">
+            <div className="text-3xl font-bold text-white">Syn</div>
+            <div className=" bg-yellow-400 text-3xl font-bold rounded-xl p-1 text-black">
+              Hub
+            </div>
           </div>
           <div className="flex">
             {!userQuery?.data?.name ? (
-              <button className="my-1 mx-20 h-14  cursor-pointer rounded-xl  bg-purple-500 px-8 font-semibold text-white hover:bg-purple-900 hover:shadow-xl">
+              <button className="my-1 mx-20 h-14  cursor-pointer rounded-xl  bg-yellow-500 px-8 font-semibold text-white hover:bg-yellow-900 hover:shadow-xl">
                 Login/Signup
               </button>
             ) : (
-              <div className="my-1 mx-20 h-14 flex items-center  cursor-pointer rounded-xl  bg-purple-500 px-8 font-semibold text-white hover:bg-purple-900 hover:shadow-xl">
+              <div className="my-1 mx-20 h-14 flex items-center  cursor-pointer rounded-xl  bg-yellow-500 px-8 font-semibold text-black font-semi-bold hover:bg-yellow-900 hover:shadow-xl">
                 Welcome Ankush
               </div>
             )}
@@ -45,7 +47,7 @@ const Home: NextPage = () => {
                 <div className="flex ">
                   <div className="text-5xl font-bold ">One </div>
                   &nbsp; &nbsp;&nbsp;&nbsp;
-                  <div className="text-5xl  font-bold text-purple-500">
+                  <div className="text-5xl  font-bold text-yellow-300">
                     Stop{" "}
                   </div>
                   &nbsp; &nbsp;&nbsp;&nbsp;
@@ -56,7 +58,7 @@ const Home: NextPage = () => {
                 <p className="text-base font-semibold text-gray-300 md:text-3xl">
                   For All Your Tech Related Queries
                 </p>
-                <p className="text-base font-semibold text-purple-500 md:text-3xl">
+                <p className="text-base font-semibold text-yellow-500 md:text-3xl">
                   Discuss with your peers and get your doubts cleared
                 </p>
                 <div className="mt-12 flex items-start justify-start gap-5 text-center ">
@@ -64,11 +66,11 @@ const Home: NextPage = () => {
                     onClick={() => {
                       router.push("/home");
                     }}
-                    className=" h-14  cursor-pointer rounded-xl  bg-purple-500 px-8 font-semibold text-white hover:bg-purple-900 hover:shadow-xl"
+                    className=" h-14  cursor-pointer rounded-xl  bg-yellow-500 px-8 font-semibold text-white hover:bg-yellow-900 hover:shadow-xl"
                   >
                     Home
                   </button>
-                  <button className="h-14 cursor-pointer rounded-xl  border border-purple-500 px-8 font-semibold text-ywllow-500 hover:bg-purple-900 hover:text-white hover:shadow-xl">
+                  <button className="h-14 cursor-pointer rounded-xl  border border-yellow-500 px-8 font-semibold text-ywllow-500 hover:bg-yellow-900 hover:text-white hover:shadow-xl">
                     Login/SignUp
                   </button>
                 </div>
@@ -86,7 +88,7 @@ const Home: NextPage = () => {
 
           <div className="  rotate-container animate-spin-slow">
             <div className="flex justify-center my-3">
-              <p className="text-5xl font-bold text-purple-500 m-5 p-2">
+              <p className="text-5xl font-bold text-yellow-500 m-5 p-2">
                 Features
               </p>
             </div>
@@ -138,12 +140,12 @@ const Home: NextPage = () => {
           </div>
           <div className="p-20 ">
             <div className="flex justify-center my-2">
-              <p className="text-5xl font-bold text-purple-500 m-5 p-2">
+              <p className="text-5xl font-bold text-yellow-500 m-5 p-2">
                 Testimonials
               </p>
             </div>
             <div className="flex justify-around my-14">
-              <div className="w-[20%] p-2 md-2 bg-purple-300 flex rounded-2xl flex-col items-center hover:bg-purple-600 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">
+              <div className="w-[20%] p-2 md-2 bg-yellow-300 flex rounded-2xl flex-col items-center hover:bg-yellow-600 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">
                 <div>
                   <img
                     className="w-32 h-32 object-cover rounded-full shadow-xl mx-5 my-4"
@@ -161,7 +163,7 @@ const Home: NextPage = () => {
                   </p>
                 </div>
               </div>
-              <div className="w-[20%]  bg-purple-300 flex flex-col rounded-2xl items-center hover:bg-purple-600 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">
+              <div className="w-[20%]  bg-yellow-300 flex flex-col rounded-2xl items-center hover:bg-yellow-600 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">
                 <div>
                   <img
                     className="w-32 h-32 object-cover rounded-full shadow-xl mx-5 my-4"
@@ -179,7 +181,7 @@ const Home: NextPage = () => {
                   </p>
                 </div>
               </div>
-              <div className="w-[20%]  bg-purple-300 flex flex-col rounded-2xl items-center hover:bg-purple-600 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 ">
+              <div className="w-[20%]  bg-yellow-300 flex flex-col rounded-2xl items-center hover:bg-yellow-600 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 ">
                 <div>
                   <img
                     className="w-32 h-32 object-cover rounded-full shadow-xl mx-5 my-4"
@@ -197,7 +199,7 @@ const Home: NextPage = () => {
                   </p>
                 </div>
               </div>
-              <div className="w-[20%]  bg-purple-300 flex flex-col rounded-2xl items-center hover:bg-purple-600 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">
+              <div className="w-[20%]  bg-yellow-300 flex flex-col rounded-2xl items-center hover:bg-yellow-600 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">
                 <div>
                   <img
                     className="w-32 h-32 object-cover rounded-full shadow-xl mx-5 my-4"

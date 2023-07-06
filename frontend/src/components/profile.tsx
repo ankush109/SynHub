@@ -92,7 +92,7 @@ const UserProfile = () => {
     <div className="  relative h-[90.5vh] w-full p-3 bg-zinc-900 overflow-y-scroll scrollbar-hide">
       {userQuery.data ? (
         <div className="flex flex-col h-[55%] w-full pt-6 mt-7 px-4 justify-center m-1">
-          <div className="flex flex-col w-full rounded-xl p-4 shadow-md shadow-blue-300 bg-purple-900">
+          <div className="flex flex-col w-full rounded-xl p-4 shadow-md shadow-zinc-300 bg-zinc-800">
             <div className="lg:grid grid-cols-1 gap-6 lg:grid-cols-12">
               <div className="grid-cols-1 lg:col-span-3 py-2">
                 <div
@@ -159,11 +159,11 @@ const UserProfile = () => {
                   </div>
                 </div>
                 <div className="mt-4 grid grid-cols-2 gap-8">
-                  <button className="w-full rounded-xl border-2 border-blue-500 bg-white px-2 py-2 font-semibold text-blue-500 hover:bg-blue-500 hover:text-white">
+                  <button className="w-full rounded-xl border-2 border-zinc-500 bg-white px-2 py-2 font-semibold text-zinc-500 hover:bg-zinc-500 hover:text-white">
                     Follow
                   </button>
                   <Link href="/edit-user">
-                    <button className="w-full rounded-xl border-2 border-blue-500 bg-white px-2 py-2 font-semibold text-blue-500 hover:bg-blue-500 hover:text-white">
+                    <button className="w-full rounded-xl border-2 border-zinc-500 bg-white px-2 py-2 font-semibold text-zinc-500 hover:bg-zinc-500 hover:text-white">
                       {/* <BiEdit className="justify-center" /> */}
                       Edit Profile
                     </button>
@@ -172,7 +172,7 @@ const UserProfile = () => {
 
                 <div>
                   <div className="flex justify-center ">
-                    <p className="text-md font-semibold text-blue-300 mt-2  ">
+                    <p className="text-md font-semibold text-zinc-300 mt-2  ">
                       Stay Connected With
                     </p>
                   </div>
@@ -189,14 +189,14 @@ const UserProfile = () => {
                         userQuery.data.twitter ? userQuery.data.twitter : ""
                       }
                     >
-                      <BsTwitter className="w-6 h-6 text-blue-400 cursor-pointer" />
+                      <BsTwitter className="w-6 h-6 text-blue-500 cursor-pointer" />
                     </Link>
                     <Link
                       href={
                         userQuery.data.instagram ? userQuery.data.instagram : ""
                       }
                     >
-                      <FaInstagram className="w-6 h-6 text-yellow-400 cursor-pointer" />
+                      <FaInstagram className="w-6 h-6 text-pink-400 cursor-pointer" />
                     </Link>
                     <Link
                       href={
@@ -217,7 +217,7 @@ const UserProfile = () => {
 
       {/* <CreateClinic /> */}
 
-      <div className="flex justify-evenly mt-24 bg-purple-700 mx-20 rounded-full p-2">
+      <div className="flex justify-evenly mt-24 bg-zinc-700 mx-20 rounded-full p-2">
         <p
           className={
             toggle === 1
