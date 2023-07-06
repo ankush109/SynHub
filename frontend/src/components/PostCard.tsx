@@ -112,8 +112,8 @@ const PostItem: React.FC<any> = ({
     <>
       <Flex
         border="1px solid"
-        backgroundColor="rgba(255, 255, 255, 0.1)"
-        borderColor={"gray.300"}
+        backgroundColor="rgba(102, 51, 153)"
+        borderColor={"purple.300"}
         borderRadius={4}
         cursor={"pointer"}
         _hover={{ borderColor: "gray.500" }}
@@ -155,7 +155,7 @@ const PostItem: React.FC<any> = ({
                 <div className="flex items-center justify-between w-full ">
                   <div>
                     <Link href={`#`}>
-                      <h1 className="text-lg font-extrabold  text-blue-400  cursor-pointer">
+                      <h1 className="text-lg font-extrabold  text-purple-300  cursor-pointer">
                         # DEMON SLAYER
                       </h1>
                     </Link>

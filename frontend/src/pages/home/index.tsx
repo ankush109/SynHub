@@ -9,18 +9,18 @@ import React from "react";
 
 function index() {
   return (
-    <div className="">
+    <div className="t">
       <div className="">
         <AppBar />
-        <div className="flex flex-row h-[90vh]">
+        <div className="flex flex-row h-[90vh] ">
           {/* <div className="bg-zinc-900 w-[42%] py-12 px-5 hidden lg:flex ">
-            <div className="flex justify-left bg-zinc-800 w-full h-[95%] rounded-2xl "> */}
+      <div className="flex justify-left bg-zinc-800 w-full h-[95%] rounded-2xl "> */}
           <LeftBar />
           {/* </div>
-          </div> */}
+    </div> */}
           <Home />
           {/* <div className="flex flex-col bg-zinc-900 w-[42%] py-12 px-5 hidden lg:flex ">
-            <div className="flex justify-left bg-zinc-800 w-full h-[95%] rounded-2xl "> */}
+      <div className="flex justify-left bg-zinc-800 w-full h-[95%] rounded-2xl "> */}
           <div className="hidden lg:grid justify-items-center w-[43%]   bg-zinc-900">
             <RightUpbar />
 

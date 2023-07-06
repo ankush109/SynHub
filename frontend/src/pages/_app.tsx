@@ -123,7 +123,7 @@ export default function App({ Component, pageProps }: AppProps) {
           reverseOrder={false}
           toastOptions={{ duration: 5000 }}
         />
-        <NextNProgress color="gray" height={5} />
+        <NextNProgress color="pink" height={5} />
         <Component {...pageProps} />
         <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />
       </QueryClientProvider>

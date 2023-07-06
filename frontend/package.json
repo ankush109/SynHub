@@ -36,7 +36,7 @@
     "deepmerge": "^4.3.1",
     "eslint": "8.30.0",
     "eslint-config-next": "13.1.1",
-    "framer-motion": "^10.12.2",
+    "framer-motion": "^10.12.18",
     "goober": "^2.1.12",
     "jsonwebtoken": "^9.0.0",
     "lightweight-charts": "^3.8.0",
