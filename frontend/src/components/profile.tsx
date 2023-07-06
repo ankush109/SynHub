@@ -53,37 +53,7 @@ const UserProfile = () => {
     []
   );
 
-  const uploadImage = async () => {
-    const client = new S3Client({
-      region: "ap-south-1",
-      credentials: {
-        accessKeyId: process.env.NEXT_PUBLIC_AWS_ACCESS_KEY!,
-        secretAccessKey: process.env.NEXT_PUBLIC_AWS_SECRET_ACCESS_KEY!,
-      },
-    });
-    if (files.length > 0) {
-      let keyName = createId() + "." + files[0].name.split(".")[1];
-      const command = new PutObjectCommand({
-        Bucket: "hackathon-bucket-ankush",
-        Key: keyName,
-        Body: files[0],
-        ACL: "public-read",
-      });
-      let payload = {
-        picture: `https://hackathon-bucket-ankush.s3.ap-south-1.amazonaws.com/${keyName}`,
-      };
-
-      try {
-        await client.send(command);
-        await updateProfilePicture(payload);
-        profileImage.current = payload.picture;
-        userQuery.refetch();
-        setFiles([]);
-      } catch (error) {
-        console.log("Error: ", error);
-      }
-    }
-  };
+  const uploadImage = async () => {};
   useEffect(() => {
     uploadImage();
   }, [files]);
